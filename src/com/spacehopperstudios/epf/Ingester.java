@@ -35,25 +35,25 @@ class Ingester {
 	// so there's no point in cluttering up the output with them.
 	// warnings.filterwarnings('ignore', 'Unknown table.*');
 
-	String filePath;
-	String fileName;
-	String tableName;
-	String tmpTableName;
-	String incTableName;
-	String unionTableName;
-	String dbHost;
-	String dbUser;
-	String dbPassword;
-	String dbName;
-	long lastRecordIngested;
-	Parser parser;
-	Date startTime;
-	Date endTime;
-	Date abortTime;
-	boolean didAbort;
-	Map<String, String> statusDict;
-	long lastRecordCheck = 0;
-	Date lastTimeCheck;
+	private String filePath;
+	private String fileName;
+	private String tableName;
+	private String tmpTableName;
+	private String incTableName;
+	private String unionTableName;
+	private String dbHost;
+	private String dbUser;
+	private String dbPassword;
+	private String dbName;
+	private long lastRecordIngested;
+	private Parser parser;
+	private Date startTime;
+	private Date endTime;
+	private Date abortTime;
+	private boolean didAbort;
+	private Map<String, String> statusDict;
+	private long lastRecordCheck = 0;
+	private Date lastTimeCheck;
 
 	public Ingester(String filePath, String tablePrefix/* =null */, String dbHost/* ='localhost' */, String dbUser/* ='epfimporter' */, String dbPassword/*
 																																						 * ='epf123'
@@ -112,7 +112,7 @@ class Ingester {
 	public void ingest(boolean skipKeyViolators/* =False */) throws IOException, SubstringNotFoundException, SQLException, NullPointerException,
 			InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-		if ("INCREMENTAL".equals(this.parser.exportMode)) {
+		if ("INCREMENTAL".equals(this.parser.getExportMode())) {
 			this.ingestIncremental(0, skipKeyViolators);
 		} else {
 			this.ingestFull(skipKeyViolators);
@@ -122,15 +122,12 @@ class Ingester {
 	/**
 	 * Perform a full ingest of the file at this.filePath.
 	 * 
-	 * This is done as follows: 
-	 * 1. Create a new table with a temporary name 
-	 * 2. Populate the new table 
-	 * 3. Drop the old table and rename the new one
+	 * This is done as follows: 1. Create a new table with a temporary name 2. Populate the new table 3. Drop the old table and rename the new one
 	 */
 	public void ingestFull(boolean skipKeyViolators/* =False */) throws IOException, SubstringNotFoundException, SQLException, NullPointerException,
 			InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-		LOGGER.info(String.format("Beginning full ingest of %s (%i records)", this.tableName, this.parser.recordsExpected));
+		LOGGER.info(String.format("Beginning full ingest of %s (%i records)", this.tableName, this.parser.getRecordsExpected()));
 		this.startTime = new Date();
 		try {
 			createTable(this.tmpTableName);
@@ -158,7 +155,7 @@ class Ingester {
 			InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info(String.format("Resuming full ingest of %s (%i records)", this.tableName, this.parser.recordsExpected));
+			LOGGER.info(String.format("Resuming full ingest of %s (%d records)", this.tableName, this.parser.getRecordsExpected()));
 		}
 
 		this.lastRecordIngested = fromRecord - 1;
@@ -176,7 +173,7 @@ class Ingester {
 
 		endTime = new Date();
 		long ts = this.endTime.getTime() - this.startTime.getTime();
-		
+
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info(String.format("Resumed full ingest of %s took %d", this.tableName, ts));
 		}
@@ -186,12 +183,9 @@ class Ingester {
 	 * Update the table with the data in the file at filePath.
 	 * 
 	 * If the file to ingest has < 500,000 records, we do a simple REPLACE operation on the existing table. If it's larger than that, we use the following
-	 * 3-step process: 
-	 * 1. Create a temporary table, and populate it exactly as though it were a Full ingest
-	 * 2. Perform a SQL query which selects all rows in the
+	 * 3-step process: 1. Create a temporary table, and populate it exactly as though it were a Full ingest 2. Perform a SQL query which selects all rows in the
 	 * old table whose primary keys *don't* match those in the new table, unions the result with all rows in the new table, and writes the resulting set to
-	 * another temporary table. 
-	 * 3. Swap out the old table for the new one via a rename (same as for Full ingests) This proves to be much faster for large files.
+	 * another temporary table. 3. Swap out the old table for the new one via a rename (same as for Full ingests) This proves to be much faster for large files.
 	 */
 	public void ingestIncremental(long fromRecord/* =0 */, boolean skipKeyViolators /* =False */) throws NullPointerException, SQLException, IOException,
 			SubstringNotFoundException, InstantiationException, IllegalAccessException, ClassNotFoundException {
@@ -202,27 +196,27 @@ class Ingester {
 			LOGGER.warn(String.format("Table '%s' does not exist in the database; skipping", this.tableName));
 		} else {
 			int tableColCount = this.columnCount(null, null);
-			int fileColCount = this.parser.columnNames.size();
-			
+			int fileColCount = this.parser.getColumnNames().size();
+
 			assert (tableColCount <= fileColCount); // It's possible for the existing table
 			// to have fewer columns than the file we're importing, but it should never have more.
 
 			if (fileColCount > tableColCount) { // file has "extra" columns
 				LOGGER.warn("File contains additional columns not in the existing table. These will not be imported.");
-				this.parser.columnNames = this.parser.columnNames.subList(0, tableColCount); // trim the columnNames
+				this.parser.setColumnNames(this.parser.getColumnNames().subList(0, tableColCount)); // trim the columnNames
 				// to equal those in the existing table. This will result in the returned records
 				// also being sliced.
 			}
 
 			String s = (fromRecord > 0 ? "Resuming" : "Beginning");
-			LOGGER.info(String.format("%s incremental ingest of %s (%d records)", s, this.tableName, this.parser.recordsExpected));
+			LOGGER.info(String.format("%s incremental ingest of %s (%d records)", s, this.tableName, this.parser.getRecordsExpected()));
 			this.startTime = new Date();
 
 			// Different ingest techniques are faster depending on the size of the input.
 			// If there are a large number of records, it's much faster to do a prune-and-merge technique;
 			// for fewer records, it's faster to update the existing table.
 			try {
-				if (this.parser.recordsExpected < 500000) { // update table in place
+				if (this.parser.getRecordsExpected() < 500000) { // update table in place
 					populateTable(this.tableName, fromRecord, true, skipKeyViolators);
 				} else { // Import as full, then merge the proper records into a new table
 					createTable(this.incTableName);
@@ -349,8 +343,8 @@ class Ingester {
 		// create the column name part of the table creation string
 		String colDef;
 		List<String> lst = new ArrayList<String>();
-		for (int i = 0; i < this.parser.columnNames.size(); i++) {
-			colDef = this.parser.columnNames.get(i) + " " + this.parser.dataTypes.get(i);
+		for (int i = 0; i < this.parser.getColumnNames().size(); i++) {
+			colDef = this.parser.getColumnNames().get(i) + " " + this.parser.getDataTypes().get(i);
 			lst.add(colDef);
 		}
 
@@ -369,7 +363,7 @@ class Ingester {
 	private void applyPrimaryKeyConstraints(String tableName) throws NullPointerException, SQLException, InstantiationException, IllegalAccessException,
 			ClassNotFoundException {
 
-		List<String> pkLst = this.parser.primaryKey;
+		List<String> pkLst = this.parser.getPrimaryKey();
 
 		if (pkLst != null) {
 			Connection conn = this.connect();
@@ -423,7 +417,7 @@ class Ingester {
 		String commandString = (isIncremental ? "REPLACE" : "INSERT");
 		String ignoreString = (skipKeyViolators && !isIncremental ? "IGNORE" : "");
 		String exStrTemplate = "%s %s INTO %s %s VALUES %s";
-		String colNamesStr = String.format("(%s)", Joiner.on(", ").join(this.parser.columnNames));
+		String colNamesStr = String.format("(%s)", Joiner.on(", ").join(this.parser.getColumnNames()));
 
 		this.parser.seekToRecord(resumeNum); // advance to resumeNum
 		Connection conn = this.connect();
@@ -459,7 +453,7 @@ class Ingester {
 				LOGGER.error("", e);
 			}
 
-			this.lastRecordIngested = this.parser.latestRecordNum;
+			this.lastRecordIngested = this.parser.getLatestRecordNum();
 			long recCheck = checkProgress(5000, 120 * 1000);
 
 			if (recCheck != 0) {
@@ -548,7 +542,7 @@ class Ingester {
 	 */
 	private String incrementalWhereClause() {
 
-		List<String> pCols = this.parser.primaryKey;
+		List<String> pCols = this.parser.getPrimaryKey();
 		List<String> substrings = new ArrayList<String>();
 		for (String aCol : pCols) {
 			substrings.add(String.format("%s.%s=%s.%s", this.tableName, aCol, this.incTableName, aCol));

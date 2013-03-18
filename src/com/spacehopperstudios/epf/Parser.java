@@ -40,14 +40,42 @@ public class Parser {
 	private String fieldDelim = "\u0001";
 	private String commentChar = "#";
 
-	public long recordsExpected;
-	public long latestRecordNum;
-	public String exportMode;
-	public List<String> columnNames;
-	public List<String> primaryKey;
-	public List<String> dataTypes;
+	private long recordsExpected;
+	private long latestRecordNum;
+	private String exportMode;
+	private List<String> columnNames;
+	private List<String> primaryKey;
+	private List<String> dataTypes;
 
 	private RandomAccessFile eFile;
+
+	public long getRecordsExpected() {
+		return recordsExpected;
+	}
+
+	public long getLatestRecordNum() {
+		return latestRecordNum;
+	}
+
+	public String getExportMode() {
+		return exportMode;
+	}
+
+	public List<String> getColumnNames() {
+		return columnNames;
+	}
+
+	public void setColumnNames(List<String> value) {
+		columnNames = value;
+	}
+
+	public List<String> getPrimaryKey() {
+		return primaryKey;
+	}
+
+	public List<String> getDataTypes() {
+		return dataTypes;
+	}
 
 	public static Map<String, String> DEFAULT_TYPE_MAP;
 
