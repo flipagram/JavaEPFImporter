@@ -13,21 +13,23 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
 
+import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -100,6 +102,8 @@ public class Program {
 	public static final String SNAPSHOT_DIRPATH = "dirPath";
 	public static final String SNAPSHOT_FILESLEFT = "filesLeft";
 	public static final String SNAPSHOT_FILESIMPORTED = "filesImported";
+	public static final String SNAPSHOT_FILESTOIMPORT = "filesToImport";
+	public static final String SNAPSHOT_FAILEDFILES = "failedFiles";
 
 	private static final String LOGS_FOLDER = "EPFLogs";
 
@@ -536,120 +540,190 @@ public class Program {
 		return null;
 	}
 
+	/**
+    Perform a full import of the EPF files in the directory specified by directoryPath.
+    
+    importMode can be 'full' or 'incremental'
+    
+    whiteList is a sequence of regular expressions. Only files whose basenames (i.e., the last 
+    element in the path) match one or more of the regexes in whiteList will be imported. For 
+    example, whiteList=[".*song.*", ".*video.*"] would result in all files containing "song" or 
+    "video" anywhere in the filename being imported, and the rest being ignored. To import only
+    exact matches, precede the name with a caret (^) and follow it with a dollar sign ($), e.g.
+    "^video$".
+    
+    The default is for all files to be whitelisted.
+    
+    blackList works similarly; any filenames matching any of the items in blackList will be 
+    excluded from the import, even if they are matched in whiteList. By default, any filename 
+    with a dot (".") in it will be excluded. Since EPF filenames never include a dot, this permits 
+    placing any file with an extension (e.g., .txt) in the directory without disrupting the import.
+    
+    Returns a list of any files for which the import failed (empty if all succeeded)
+    */
 	public static List<String> doImport(String directoryPath, String dbHost, String dbUser, String dbPassword, String dbName, List<String> whiteList,
-			List<String> blackList, String tablePrefix, boolean allowExtensions, boolean skipKeyViolators, String recordSep, String fieldSep) {
+			List<String> blackList, String tablePrefix, boolean allowExtensions, boolean skipKeyViolators, String recordDelim, String fieldDelim) {
 
-		// if (! allowExtensions) {
-		// blackList.add(".*\\..*?");
-		// }
-		//
-		// // wListRe = (r"|".join(whiteList) if whiteList else r"$a^") #The latter can never match anything
-		// // bListRe = (r"|".join(blackList) if blackList else r"$a^") #The latter can never match anything
-		// // wMatcher = re.compile(wListRe)
-		// // bMatcher = re.compile(bListRe)
-		//
-		// File dirPath = new File(directoryPath);
-		// String [] fileList = dirPath.list(); // list paths
-		// //filter the list down to the entries matching our whitelist/blacklist
-		// // List<String> fileList = null; // [f for f in fileList if (wMatcher.search(f) and not bMatcher.search(f))]
-		// // fileList.sort();
-		// List<String> filesLeft = fileList.copy();
-		// List <String>filesImported = new ArrayList<String>();
-		// List <String >failedFiles = new ArrayList<String>();
-		//
-		// SNAPSHOT_DICT.add(OPTION_FULL_TABLEPREFIX, new JsonPrimitive(tablePrefix);
-		//
-		// JsonArray stringArray;
-		// SNAPSHOT_DICT.add(SNAPSHOT_WLIST, stringArray = new JsonArray());
-		// for (String mask : whiteList) {
-		// stringArray.add(new JsonPrimitive(mask));
-		// }
-		//
-		// SNAPSHOT_DICT.add(SNAPSHOT_BLIST, stringArray = new JsonArray());
-		// for (String mask : blackList) {
-		// stringArray.add(new JsonPrimitive(mask));
-		// }
-		//
-		//
-		// stringArray = SNAPSHOT_DICT.get(SNAPSHOT_DIRSLEFT).getAsJsonArray();
-		//
-		// List<String> dirPathList = new ArrayList<String>();
-		// for (JsonElement element : stringArray) {
-		// dirPathList.add(element.getAsString());
-		// }
-		//
-		// dirPathList.remove(dirPath)
-		//
-		// currentDict = SNAPSHOT_DICT['currentDict']
-		// currentDict['recordSep'] = recordDelim
-		// currentDict['fieldSep'] = fieldDelim
-		// currentDict['dirPath'] = dirPath
-		// currentDict['filesToImport'] = fileList
-		// currentDict['filesLeft'] = filesLeft
-		// currentDict['filesImported'] = filesImported
-		// currentDict['failedFiles'] = failedFiles
-		//
-		// _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH)
-		//
-		// pathList = [os.path.join(dirPath, fileName) for fileName in fileList]
-		//
-		// Date startTime = new Date();
-		//
-		// LOGGER.info(String.format("Starting import of %s...", dirPath));
-		// for (String aPath : pathList) {
-		// fName = os.path.basename(aPath);
-		// //In order to keep supposedly "matching" warnings from being suppressed during future
-		// //ingests, we need to clear the module's warning registry before each ingest
-		// try {
-		// EPFIngester.__warningregistry__.clear()
-		// catch (AttributeException e) {
-		// throw e;
-		// }
-		//
-		// try {
-		// ing = EPFIngester.Ingester(aPath,
-		// tablePrefix=tablePrefix,
-		// dbHost=dbHost,
-		// dbUser=dbUser,
-		// dbPassword=dbPassword,
-		// dbName=dbName,
-		// recordDelim=recordDelim,
-		// fieldDelim=fieldDelim);
-		// } catch( Exception e) {
-		// if (LOGGER.isLoggable(Level.SEVERE)) {
-		// LOGGER.log(Level.SEVERE, String.format("Unable to create EPFIngester for %s", fName), e);
-		// }
-		//
-		// failedFiles.add(fName);
-		// _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
-		//
-		// continue;
-		// }
-		//
-		// try {
-		// ing.ingest(skipKeyViolators);
-		// filesLeft.remove(fName);
-		// filesImported.add(fName);
-		//
-		// _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
-		// }catch (SQLException e) {
-		// failedFiles.append(fName)
-		// _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH)
-		// continue;
-		// }
-		//
-		// Date endTime = new Date();
-		// long ts = endTime.getTime() - startTime.getTime();
-		// dirName = os.path.basename(dirPath);
-		// LOGGER.info(String.format("Import of %s completed at: %s", dirName, endTime.strftime(EPFIngester.DATETIME_FORMAT)));
-		// LOGGER.info(String.format("Total import time for %s: %d" , dirName, ts));
-		// if (failedFiles != null && failedFiles.size() > 0) {
-		// LOGGER.warning("The following files encountered errors and were not imported:\n %s",
-		// ", ".join(failedFiles));
-		// }
-		// return failedFiles;
+		if (!allowExtensions) {
+			blackList.add(".*\\..*?");
+		}
 
-		return null;
+		String wListRe;
+		if (whiteList != null) {
+			wListRe = Joiner.on("|").join(whiteList);
+		} else {
+			wListRe = "$a^"; // The latter can never match anything
+		}
+
+		String bListRe;
+		if (blackList != null) {
+			bListRe = Joiner.on("|").join(blackList);
+		} else {
+			bListRe = "$a^"; // The latter can never match anything
+		}
+
+		Pattern wMatcher = Pattern.compile(wListRe);
+		Pattern bMatcher = Pattern.compile(bListRe);
+
+		File dirPath = new File(directoryPath);
+		List<String> fileList = Arrays.asList(dirPath.list()); // list paths
+		// filter the list down to the entries matching our whitelist/blacklist
+
+		String f;
+		for (int i = fileList.size() - 1; i >= 0; i--) {
+			f = fileList.get(i);
+			if (!wMatcher.matcher(f).matches() || bMatcher.matcher(f).matches()) {
+				fileList.remove(f);
+			}
+		}
+
+		// fileList.sort();
+
+		List<String> filesLeft = new ArrayList<String>(fileList);
+		List<String> filesImported = new ArrayList<String>();
+		List<String> failedFiles = new ArrayList<String>();
+
+		SNAPSHOT_DICT.add(OPTION_FULL_TABLEPREFIX, new JsonPrimitive(tablePrefix));
+
+		JsonArray stringArray;
+		SNAPSHOT_DICT.add(SNAPSHOT_WLIST, stringArray = new JsonArray());
+		for (String mask : whiteList) {
+			stringArray.add(new JsonPrimitive(mask));
+		}
+
+		SNAPSHOT_DICT.add(SNAPSHOT_BLIST, stringArray = new JsonArray());
+		for (String mask : blackList) {
+			stringArray.add(new JsonPrimitive(mask));
+		}
+
+		// remove this directory from the "left to do" directories
+	    
+	        stringArray = SNAPSHOT_DICT.get(SNAPSHOT_DIRSLEFT).getAsJsonArray();
+	        
+	        JsonArray anotherArray = new JsonArray();
+	        
+	        for (JsonElement jsonElement : stringArray) {
+				if (!dirPath.getAbsolutePath().equals(jsonElement.getAsString())) {
+					anotherArray.add(jsonElement);
+				}
+			}
+	        
+	        SNAPSHOT_DICT.add(SNAPSHOT_DIRSTOIMPORT, anotherArray);
+	        		
+	    
+	        
+	    JsonObject currentDict = SNAPSHOT_DICT.get(SNAPSHOT_CURRENTDICT).getAsJsonObject();
+	    
+	    currentDict.add(OPTION_FULL_RECORDSEPARATOR, new JsonPrimitive(recordDelim));
+	    currentDict.add(OPTION_FULL_FIELDSEPARATOR, new JsonPrimitive(fieldDelim));
+	    currentDict.add(SNAPSHOT_DIRPATH, new JsonPrimitive(dirPath.getAbsolutePath()));
+	    
+	    currentDict.add(SNAPSHOT_FILESTOIMPORT, stringArray = new JsonArray());
+	    for (String file : fileList) {
+			stringArray.add(new JsonPrimitive(file));
+		}
+	    
+	    currentDict.add(SNAPSHOT_FILESLEFT, stringArray = new JsonArray());
+	    for (String file : filesLeft) {
+	    	stringArray.add(new JsonPrimitive(file));
+	    }
+	    										
+	    currentDict.add(SNAPSHOT_FILESIMPORTED, stringArray = new JsonArray());
+	    for (String file : filesImported) {
+	    	stringArray.add(new JsonPrimitive(file));
+	    }
+	    
+	    currentDict.add(SNAPSHOT_FAILEDFILES,  stringArray = new JsonArray());
+	    for (String file : failedFiles) {
+	    	stringArray.add(new JsonPrimitive(file));
+	    }
+	    
+	    _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
+	    
+	    List <String> pathList = new ArrayList<String>();
+	    for (String fileName : fileList) {
+	    	pathList.add(dirPath + File.separator + fileName);
+	    }
+	    
+	    Date startTime = new Date();
+	    if (LOGGER.isInfoEnabled()) {
+	    	LOGGER.info(String.format("Starting import of %s...", dirPath.getAbsolutePath()));
+	    }
+	    
+	    for (String aPath : pathList) {
+	        String fName = (new File(aPath)).getName();
+//	        // In order to keep supposedly "matching" warnings from being suppressed during future
+//	        // ingests, we need to clear the module's warning registry before each ingest
+//	        try:
+//	            EPFIngester.__warningregistry__.clear()
+//	        except AttributeError:
+//	            pass
+	            
+	        Ingester ing;
+	        try {
+	            ing = new Ingester(aPath,
+	                tablePrefix,
+	                dbHost,
+	                dbUser,
+	                dbPassword,
+	                dbName,
+	                recordDelim,
+	                fieldDelim);
+	        } catch (Exception e) {
+	            LOGGER.error(String.format("Unable to create EPFIngester for %s", fName), e);
+	            failedFiles.add(fName);
+	            _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
+	            continue;
+	        }
+	                        
+	        try {
+	            ing.ingest(skipKeyViolators);
+	            filesLeft.remove(fName);
+	            filesImported.add(fName);
+	            _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
+	        } catch (/* SQLException */ Exception e) {
+	            failedFiles.add(fName);
+	            _dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
+	            continue;
+	        } 
+	    }
+	    
+	    Date endTime = new Date();
+	    long ts = endTime.getTime() - startTime.getTime();
+	    String dirName = dirPath.getName();
+	    
+	    if (LOGGER.isInfoEnabled()) {
+	    	LOGGER.info(String.format("Import of %s completed at: %d", dirName, endTime.getTime() 
+	    			/*Ingester.DATETIME_FORMAT endTime)*/));
+	    	LOGGER.info(String.format("Total import time for %s: %d" , dirName, ts));
+	    }
+	    
+	    if (failedFiles != null) {
+	        LOGGER.warn(String.format("The following files encountered errors and were not imported:\n %s",
+	            Joiner.on(", ").join(failedFiles)));
+	    }
+	            
+	    return failedFiles;
 	}
 
 	public static List<String> resumeImport(JsonObject currentDict, String tablePrefix, String dbHost, String dbUser, String dbPassword, String dbName,
@@ -678,5 +752,16 @@ public class Program {
 
 		return doImport(dirPath, dbHost, dbUser, dbPassword, dbName, wList, bList, tablePrefix, false, skipKeyViolators, recordSep, fieldSep);
 
+	}
+	
+	/**
+	    Opens the file at filePath (creating it if it doesn't exist, overwriting if not),
+	    writes aDict to it in json format, then closes it
+	   */
+	private static void _dumpDict(JsonObject aDict, String filePath) {
+	    LOGGER.debug(String.format("Dumping dictionary: %s", aDict.toString()));
+	    LOGGER.debug(String.format("json path: %s", filePath));
+
+	    
 	}
 }
