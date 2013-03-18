@@ -10,26 +10,20 @@ import org.apache.log4j.Logger;
 public class Connection {
 
 	private String server;
-
 	private String database;
-
 	private java.sql.Connection connection;
-
 	private String username;
-
 	private String password;
-
 	private ResultSet queryResult;
-
 	private Statement statement;
-
 	private long affectedRowCount;
 	private long insertedId;
 	private boolean isTransactionMode;
 
-	private static Logger LOGGER = Logger.getLogger(Connection.class);
+	private static final Logger LOGGER = Logger.getLogger(Connection.class);
 
-	public Connection(String server, String database, String username, String password) throws InstantiationException, IllegalAccessException, ClassNotFoundException  {
+	public Connection(String server, String database, String username, String password) throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("create connection with server " + server + ", database: " + database + ", username: " + username + " and password: " + password);
 		}
@@ -50,8 +44,6 @@ public class Connection {
 
 		String databaseDriver = getDatabaseDriverName();
 		Class.forName(databaseDriver).newInstance();
-
-		return;
 	}
 
 	private String getDatabaseDriverName() {
@@ -64,8 +56,6 @@ public class Connection {
 		if (connection == null) {
 			connection = DriverManager.getConnection(url, username, password);
 		}
-
-		return;
 	}
 
 	public void executeQuery(String query) throws NullPointerException, SQLException {
@@ -90,8 +80,6 @@ public class Connection {
 		} else {
 			queryResult = statement.getGeneratedKeys();
 		}
-
-		return;
 	}
 
 	public long getInsertedId() throws SQLException {
@@ -115,23 +103,17 @@ public class Connection {
 	public void fetchNextRow() throws SQLException {
 
 		if (queryResult != null) {
-
 			if (queryResult.next()) {
 				// everyone is happy
 			}
-
 		}
-
-		return;
 	}
 
 	public Object getCurrentRowValue(String key) throws SQLException {
 		Object value = null;
 
 		if (queryResult != null) {
-
 			value = queryResult.getObject(key);
-
 		}
 
 		return value;
@@ -141,9 +123,7 @@ public class Connection {
 		Integer value = null;
 
 		if (queryResult != null) {
-
 			value = queryResult.getInt(key);
-
 		}
 
 		return value;
@@ -153,9 +133,7 @@ public class Connection {
 		String value = null;
 
 		if (queryResult != null) {
-
 			value = queryResult.getString(key);
-
 		}
 
 		return value;
@@ -165,11 +143,9 @@ public class Connection {
 		int count = 0;
 
 		if (queryResult != null) {
-
 			queryResult.last();
 			count = queryResult.getRow();
 			queryResult.beforeFirst();
-
 		}
 
 		return count;
@@ -177,39 +153,29 @@ public class Connection {
 
 	public void disconnect() throws SQLException {
 		if (connection != null) {
-
 			if (!connection.isClosed()) {
 				connection.close();
 				connection = null;
 			}
-
 		}
-
-		return;
 	}
 
 	public long getAffectedRowCount() throws SQLException {
 		if (statement != null) {
-
 			affectedRowCount = statement.getUpdateCount();
-
 		}
 
 		return affectedRowCount;
 	}
 
 	public boolean isConnected() throws SQLException {
-
 		return connection != null && !connection.isClosed();
-
 	}
 
 	public void commit() throws SQLException {
 		if (isTransactionMode) {
 			if (isConnected()) {
-
 				connection.commit();
-
 			}
 		} else {
 			LOGGER.info("Attemting to commit when not in transaction mode");
