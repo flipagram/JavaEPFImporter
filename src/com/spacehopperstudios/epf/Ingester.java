@@ -26,7 +26,7 @@ import com.spacehopperstudios.database.Connection;
 
 class Ingester {
 	
-	private static final String DATETIME_FORMAT = "%y-%m-%d %H:%M:%S";
+	public static final String DATETIME_FORMAT = "%y-%m-%d %H:%M:%S";
 
 	private static final Logger	LOGGER = Logger.getLogger(Ingester.class);
 
@@ -379,31 +379,34 @@ class Ingester {
     }
         
 
-    List<List<String>> _escapeRecords(List<List<String>> recordList, Connection connection/*=null*/) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-        /*
-        Appropriately escape the contents of a list of records (as returned by the parser)
-        so that there are no illegal characters (e.g. internal quotes) in the SQL query.
-        
-        This is done here rather than in the parser because it uses the literal() method of the
-        connection object.
-        */
-    	Connection conn;
-    	
-        if (connection == null) {
-        	conn = connect();
-        } else {
-        	conn = connection;
-        }
-        List<List<String>> escapedRecords = new ArrayList<List<String>>(); 
-        for (List<String> aRec : recordList) {
-        	List<String >escRec = new ArrayList<String>();
-        	for (String aField : aRec) {
-        		// TODO: escape string
-        		 escRec.add(aField);
-        	}
-            escapedRecords.add(escRec);
-        }
-        return escapedRecords;
+    /**
+    Appropriately escape the contents of a list of records (as returned by the parser)
+    so that there are no illegal characters (e.g. internal quotes) in the SQL query.
+    
+    This is done here rather than in the parser because it uses the literal() method of the
+    connection object.
+    
+    For now: this does nothing
+    */
+    private List<List<String>> _escapeRecords(List<List<String>> recordList, Connection connection/*=null*/) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+//    	Connection conn;
+//    	
+//        if (connection == null) {
+//        	conn = connect();
+//        } else {
+//        	conn = connection;
+//        }
+//        List<List<String>> escapedRecords = new ArrayList<List<String>>(); 
+//        for (List<String> aRec : recordList) {
+//        	List<String> escRec = new ArrayList<String>();
+//        	for (String aField : aRec) {
+//        		// TODO: escape string
+//        		 escRec.add(aField);
+//        	}
+//            escapedRecords.add(escRec);
+//        }
+//        return escapedRecords;
+    	return recordList;
     }
         
 
