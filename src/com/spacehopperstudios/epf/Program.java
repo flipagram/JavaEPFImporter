@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -501,10 +502,26 @@ public class Program {
 
 			try {
 				ing.ingest(skipKeyViolators);
+				
 				filesLeft.remove(fName);
+				currentDict.add(SNAPSHOT_FILESLEFT, stringArray = new JsonArray());
+				for (String file : filesLeft) {
+					stringArray.add(new JsonPrimitive(file));
+				}
+				
 				filesImported.add(fName);
+				currentDict.add(SNAPSHOT_FILESIMPORTED, stringArray = new JsonArray());
+				for (String file : filesImported) {
+					stringArray.add(new JsonPrimitive(file));
+				}
+				
 				dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
-			} catch (/* SQLException */Exception e) {
+			} catch (SQLException e) {
+				failedFiles.add(fName);
+				dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
+				continue;
+			} catch (Exception e) {
+				LOGGER.error("An error occured while ingesting data.", e);
 				failedFiles.add(fName);
 				dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
 				continue;
@@ -635,8 +652,6 @@ public class Program {
 
 			return;
 		}
-
-		// TODO: rollover the log file
 
 		JsonObject config = getConfig(optionsMap.get(OPTION_FULL_FLAT) == null ? false : ((Boolean) optionsMap.get(OPTION_FULL_FLAT)).booleanValue());
 

@@ -7,10 +7,13 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import org.apache.log4j.Logger;
 
 import com.google.common.base.Charsets;
 
@@ -23,6 +26,8 @@ import com.google.common.base.Charsets;
  * typeMap is a dictionary mapping datatype strings in the file to corresponding types for the database being used. The default map is for MySQL.
  */
 public class Parser {
+
+	private static final Logger LOGGER = Logger.getLogger(Parser.class);
 
 	private static final String PRIMARY_KEY_TAG = "primaryKey:";
 	private static final String DATA_TYPES_TAG = "dbTypes:";
@@ -105,7 +110,7 @@ public class Parser {
 
 		// Seek to the end and parse the recordsWritten line
 		this.eFile.seek(eFile.length() - 40);
-		byte [] b = new byte[40];
+		byte[] b = new byte[40];
 		this.eFile.read(b);
 		String str = new String(b, Charsets.UTF_8);
 		String[] lst = str.split(this.commentChar + Parser.RECORD_COUNT_TAG);
@@ -229,7 +234,7 @@ public class Parser {
 
 			ln = new String(ln.getBytes(), Charsets.UTF_8);
 			ln += "\n"; // add the line end that seems to fall off when calling readLine
-			
+
 			if (isFirstLine && ignoreComments && ln.startsWith(this.commentChar)) { // comment
 				continue;
 			}
@@ -238,7 +243,7 @@ public class Parser {
 			if (isFirstLine) {
 				isFirstLine = false;
 			}
-			
+
 			if (ln.contains(this.recordDelim)) { // last textual line of this record
 				break;
 			}
@@ -265,14 +270,14 @@ public class Parser {
 
 		while (true) {
 			String ln = this.eFile.readLine();
-			
+
 			if (ln == null) { // end of file
 				return;
 			}
-			
+
 			ln = new String(ln.getBytes(), Charsets.UTF_8);
 			ln += "\n"; // add the line end that seems to fall off when calling readLine
-			
+
 			if (ln.startsWith(commentChar)) { // comment; always skip
 				continue;
 			}
@@ -298,12 +303,26 @@ public class Parser {
 				String expl = String.format("Required prefix '%s' was not found in '%s'", requiredPrefix, rowString);
 				throw new SubstringNotFoundException(expl);
 			}
+
 			rowString = rowString.split(requiredPrefix)[1];
 		}
 
 		String str = rowString.split(this.recordDelim)[0];
+		String[] splitStr = str.split(this.fieldDelim);
 
-		return Arrays.asList(str.split(this.fieldDelim));
+		List<String> row = null;
+
+		if (splitStr != null && splitStr.length != 0) {
+			row = new ArrayList<String>();
+
+			Collections.addAll(row, splitStr);
+
+			if (str.endsWith(this.fieldDelim)) {
+				row.add("");
+			}
+		}
+
+		return row;
 	}
 
 	/**
@@ -315,8 +334,13 @@ public class Parser {
 		if (rowString != null) {
 			this.latestRecordNum += 1; // update the record counter
 			List<String> rec = this.splitRow(rowString, null);
-			rec = rec.subList(0, this.columnNames.size()); // if there are more data records than column names,
-			// trim any surplus records via a slice
+
+			if (rec.size() > this.columnNames.size()) {
+				rec = rec.subList(0, this.columnNames.size()); // if there are more data records than column names,
+				// trim any surplus records via a slice
+			} else if (rec.size() < this.columnNames.size()) {
+				LOGGER.warn("Number of records is less than expected");
+			}
 
 			// replace empty strings with NULL
 			for (int i = 0; i < rec.size(); i++) {
@@ -328,7 +352,13 @@ public class Parser {
 			// there are also some cases where there's only a year; we'll pad it out with a bogus month/day
 			Pattern yearMatch = Pattern.compile("^\\d\\d\\d\\d$");
 			for (Integer j : this.dateColumns) {
-				rec.set(j.intValue(), rec.get(j.intValue()).trim().replace(" ", "-").substring(0, 19)); // Include at most the first 19 chars
+				String corrected = rec.get(j.intValue()).trim().replace(" ", "-");
+
+				if (corrected.length() > 19) {
+					corrected = corrected.substring(0, 19);
+				}
+
+				rec.set(j.intValue(), corrected); // Include at most the first 19 chars
 
 				if (yearMatch.matcher(rec.get(j.intValue())).matches()) {
 					rec.set(j.intValue(), String.format("%s-01-01", rec.get(j.intValue())));

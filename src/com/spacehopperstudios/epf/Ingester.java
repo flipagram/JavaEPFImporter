@@ -65,11 +65,11 @@ class Ingester {
 		this.fileName = (new File(filePath)).getName();
 		String pref = tablePrefix == null ? "" : String.format("%s_", tablePrefix);
 		this.tableName = (pref + this.fileName).replace("-", "_"); // hyphens aren't allowed in table names
-		
+
 		if (this.tableName.contains(".")) {
 			this.tableName = this.tableName.split(".")[0];
 		}
-		
+
 		this.tmpTableName = this.tableName + "_tmp";
 		this.incTableName = this.tableName + "_inc"; // used during incremental ingests
 		this.unionTableName = this.tableName + "_un"; // used during incremental ingests
@@ -131,14 +131,17 @@ class Ingester {
 	public void ingestFull(boolean skipKeyViolators/* =False */) throws IOException, SubstringNotFoundException, SQLException, NullPointerException,
 			InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-		LOGGER.info(String.format("Beginning full ingest of %s (%i records)", this.tableName, this.parser.getRecordsExpected()));
+		if (LOGGER.isInfoEnabled()) {
+			LOGGER.info(String.format("Beginning full ingest of %s (%d records)", this.tableName, this.parser.getRecordsExpected()));
+		}
+
 		this.startTime = new Date();
 		try {
 			createTable(this.tmpTableName);
 			populateTable(this.tmpTableName, 0, false, skipKeyViolators);
 			renameAndDrop(this.tmpTableName, this.tableName);
 		} catch (SQLException e) {
-			LOGGER.error(String.format("Fatal error encountered while ingesting '%s'", this.filePath));
+			LOGGER.error(String.format("Fatal error encountered while ingesting '%s'", this.filePath), e);
 			LOGGER.error(String.format("Last record ingested before failure: %d", this.lastRecordIngested));
 			this.abortTime = new Date();
 			this.didAbort = true;
@@ -149,7 +152,10 @@ class Ingester {
 		// ingest completed
 		this.endTime = new Date();
 		this.updateStatusDict();
-		LOGGER.info(String.format("Full ingest of %s took %d", this.tableName, this.endTime.getTime() - this.startTime.getTime()));
+
+		if (LOGGER.isInfoEnabled()) {
+			LOGGER.info(String.format("Full ingest of %s took %d", this.tableName, this.endTime.getTime() - this.startTime.getTime()));
+		}
 	}
 
 	/**
@@ -384,29 +390,20 @@ class Ingester {
 	 * SQL query.
 	 * 
 	 * This is done here rather than in the parser because it uses the literal() method of the connection object.
-	 * 
-	 * For now: this does nothing
 	 */
 	private List<List<String>> escapeRecords(List<List<String>> recordList, Connection connection/* =null */) throws InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
-		// Connection conn;
-		//
-		// if (connection == null) {
-		// conn = connect();
-		// } else {
-		// conn = connection;
-		// }
-		// List<List<String>> escapedRecords = new ArrayList<List<String>>();
-		// for (List<String> aRec : recordList) {
-		// List<String> escRec = new ArrayList<String>();
-		// for (String aField : aRec) {
-		// // TODO: escape string
-		// escRec.add(aField);
-		// }
-		// escapedRecords.add(escRec);
-		// }
-		// return escapedRecords;
-		return recordList;
+		List<List<String>> escapedRecords = new ArrayList<List<String>>();
+		for (List<String> aRec : recordList) {
+			List<String> escRec = new ArrayList<String>();
+			for (String aField : aRec) {
+				String escaped = aField.replace("\\'", "'").replace("'", "\\'");
+				escRec.add("'" + escaped  + "'");
+			}
+			escapedRecords.add(escRec);
+		}
+		return escapedRecords;
+
 	}
 
 	/**
@@ -451,10 +448,9 @@ class Ingester {
 			try {
 				conn.executeQuery(exStr);
 			} catch (SQLException e) {
-				LOGGER.error("", e);
+				LOGGER.error(String.format("Error occured executing %s", exStr), e);
 				// } catch (SQLIntegrityConstraintViolationException e) {
 				// This is likely a primary key constraint violation; should only be hit if skipKeyViolators is False
-				LOGGER.error("", e);
 			}
 
 			this.lastRecordIngested = this.parser.getLatestRecordNum();
@@ -462,7 +458,7 @@ class Ingester {
 
 			if (recCheck != 0) {
 				if (LOGGER.isInfoEnabled()) {
-					LOGGER.info(String.format("...at record %i...", recCheck));
+					LOGGER.info(String.format("...at record %d...", recCheck));
 				}
 			}
 		}

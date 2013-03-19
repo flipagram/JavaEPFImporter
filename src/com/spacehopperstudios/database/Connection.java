@@ -24,8 +24,8 @@ public class Connection {
 
 	public Connection(String server, String database, String username, String password) throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException {
-		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("create connection with server " + server + ", database: " + database + ", username: " + username + " and password: " + password);
+		if (LOGGER.isTraceEnabled()) {
+			LOGGER.trace("Create connection with server " + server + ", database: " + database + ", username: " + username + " and password: " + password);
 		}
 
 		if (server == null)
@@ -55,12 +55,13 @@ public class Connection {
 
 		if (connection == null) {
 			connection = DriverManager.getConnection(url, username, password);
+			executeQuery("set names \'utf8\'");
 		}
 	}
 
 	public void executeQuery(String query) throws NullPointerException, SQLException {
-		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("executing query: " + query);
+		if (LOGGER.isTraceEnabled()) {
+			LOGGER.trace("executing query: " + query);
 		}
 
 		if (query == null)
@@ -75,7 +76,7 @@ public class Connection {
 		connect();
 
 		statement = connection.createStatement();
-		if (statement.execute(query)) {
+		if (statement.execute(query, Statement.RETURN_GENERATED_KEYS)) {
 			queryResult = statement.getResultSet();
 		} else {
 			queryResult = statement.getGeneratedKeys();
