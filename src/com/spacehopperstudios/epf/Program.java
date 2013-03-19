@@ -28,6 +28,7 @@ import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 
 import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
@@ -102,7 +103,7 @@ public class Program {
 	public static final String SNAPSHOT_FAILEDFILES = "failedFiles";
 
 	private static final String LOGS_FOLDER = "EPFLogs";
-	private static final String LOGGER_CONFIG_PATH = "./EPFLogger.conf";
+	private static final String LOGGER_CONFIG_PATH = "./EPFLogger.xml";
 
 	private static final Logger LOGGER;
 
@@ -265,7 +266,7 @@ public class Program {
 	}
 
 	private static void configureLogger() {
-
+		DOMConfigurator.configure(LOGGER_CONFIG_PATH);
 	}
 
 	private static JsonObject getFileConfig(String filePath) {
