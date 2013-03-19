@@ -109,7 +109,7 @@ public class Parser {
 		this.eFile.read(b);
 		String str = new String(b, Charsets.UTF_8);
 		String[] lst = str.split(this.commentChar + Parser.RECORD_COUNT_TAG);
-		String numStr = lst[0].split(this.recordDelim)[1];
+		String numStr = lst[lst.length - 1].split(this.recordDelim)[0];
 		this.recordsExpected = Integer.parseInt(numStr);
 		this.eFile.seek(0); // seek back to the beginning
 		// Extract the column names
@@ -236,6 +236,7 @@ public class Parser {
 			if (isFirstLine) {
 				isFirstLine = false;
 			}
+			
 			if (ln.contains(this.recordDelim)) { // last textual line of this record
 				break;
 			}
