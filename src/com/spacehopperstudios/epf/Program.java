@@ -129,12 +129,12 @@ public class Program {
 		SNAPSHOT_DICT.add(SNAPSHOT_DIRSLEFT, new JsonArray());
 		SNAPSHOT_DICT.add(SNAPSHOT_CURRENTDICT, new JsonObject());
 
-		// Create a directory for rotating logs
-		createLogFolder();
-
 		configureLogger();
 
 		LOGGER = Logger.getLogger(Program.class.getName());
+		
+		// Create a directory for rotating logs
+		createLogFolder();
 	}
 
 	private static void createDefaultFlatConfigFile() {
