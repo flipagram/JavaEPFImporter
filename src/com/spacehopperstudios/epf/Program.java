@@ -564,7 +564,7 @@ public class Program {
 		OutputStream configStream = null;
 		OutputStreamWriter configWriter = null;
 		try {
-			configStream = new FileOutputStream(CONFIG_PATH);
+			configStream = new FileOutputStream(filePath);
 			configWriter = new OutputStreamWriter(configStream);
 			configWriter.write(aDict.toString());
 
