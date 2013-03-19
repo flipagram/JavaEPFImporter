@@ -105,7 +105,9 @@ public class Parser {
 
 		// Seek to the end and parse the recordsWritten line
 		this.eFile.seek(eFile.length() - 40);
-		String str = this.eFile.readLine();
+		byte [] b = new byte[40];
+		this.eFile.read(b);
+		String str = new String(b, Charsets.UTF_8);
 		String[] lst = str.split(this.commentChar + Parser.RECORD_COUNT_TAG);
 		String numStr = lst[0].split(this.recordDelim)[1];
 		this.recordsExpected = Integer.parseInt(numStr);
