@@ -28,7 +28,6 @@ import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
 
 import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
