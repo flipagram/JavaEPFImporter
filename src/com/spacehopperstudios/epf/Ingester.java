@@ -65,7 +65,11 @@ class Ingester {
 		this.fileName = (new File(filePath)).getName();
 		String pref = tablePrefix == null ? "" : String.format("%s_", tablePrefix);
 		this.tableName = (pref + this.fileName).replace("-", "_"); // hyphens aren't allowed in table names
-		this.tableName = this.tableName.split(".")[0];
+		
+		if (this.tableName.contains(".")) {
+			this.tableName = this.tableName.split(".")[0];
+		}
+		
 		this.tmpTableName = this.tableName + "_tmp";
 		this.incTableName = this.tableName + "_inc"; // used during incremental ingests
 		this.unionTableName = this.tableName + "_un"; // used during incremental ingests
