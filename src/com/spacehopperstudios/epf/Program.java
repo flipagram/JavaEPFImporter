@@ -630,7 +630,17 @@ public class Program {
 				if ("true".equals(value) || "false".equals(value)) {
 					optionsMap.put(entry.getKey(), Boolean.valueOf(value));
 				} else {
-					optionsMap.put(entry.getKey(), value);
+					if (entry.getValue().isJsonArray()) {
+						List<String> stringArray = new ArrayList<String>();
+						
+						for (JsonElement element : entry.getValue().getAsJsonArray()) {
+							stringArray.add(element.getAsString());
+						}
+						
+						optionsMap.put(entry.getKey(), stringArray);
+					} else {
+						optionsMap.put(entry.getKey(), value);
+					}
 				}
 			}
 		}
