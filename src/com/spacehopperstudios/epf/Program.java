@@ -624,6 +624,7 @@ public class Program {
 
 		overwriteDefaults(optionsMap, parsed);
 
+		@SuppressWarnings("unchecked")
 		List<String> dirsToImport = parsed.getArgList();
 		if ((dirsToImport == null || dirsToImport.size() == 0) && !((Boolean) optionsMap.get(OPTION_FULL_RESUME)).booleanValue()) {
 			if (LOGGER.isInfoEnabled()) {
@@ -663,8 +664,13 @@ public class Program {
 		Map<String, List<String>> failedFilesMap = new HashMap<String, List<String>>();
 
 		String tablePrefix = (String) optionsMap.get(OPTION_FULL_TABLEPREFIX);
+		
+		@SuppressWarnings("unchecked")
 		List<String> wList = (List<String>) optionsMap.get(OPTION_FULL_WHITELIST);
+		
+		@SuppressWarnings("unchecked")
 		List<String> bList = (List<String>) optionsMap.get(OPTION_FULL_BLACKLIST);
+		
 		String recordSep = (String) optionsMap.get(OPTION_FULL_RECORDSEPARATOR);
 		String fieldSep = (String) optionsMap.get(OPTION_FULL_FIELDSEPARATOR);
 		boolean allowExtensions = ((Boolean) optionsMap.get(OPTION_FULL_ALLOWEXTENSIONS)).booleanValue();
