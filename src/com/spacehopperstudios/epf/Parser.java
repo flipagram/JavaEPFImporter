@@ -228,7 +228,9 @@ public class Parser {
 			}
 
 			ln = new String(ln.getBytes(), Charsets.UTF_8);
-			if (isFirstLine && ignoreComments && !ln.startsWith(this.commentChar)) { // comment
+			ln += "\n"; // add the line end that seems to fall off when calling readLine
+			
+			if (isFirstLine && ignoreComments && ln.startsWith(this.commentChar)) { // comment
 				continue;
 			}
 
@@ -263,9 +265,14 @@ public class Parser {
 
 		while (true) {
 			String ln = this.eFile.readLine();
+			
 			if (ln == null) { // end of file
 				return;
 			}
+			
+			ln = new String(ln.getBytes(), Charsets.UTF_8);
+			ln += "\n"; // add the line end that seems to fall off when calling readLine
+			
 			if (ln.startsWith(commentChar)) { // comment; always skip
 				continue;
 			}
@@ -291,7 +298,7 @@ public class Parser {
 				String expl = String.format("Required prefix '%s' was not found in '%s'", requiredPrefix, rowString);
 				throw new SubstringNotFoundException(expl);
 			}
-			rowString = rowString.split(requiredPrefix)[2];
+			rowString = rowString.split(requiredPrefix)[1];
 		}
 
 		String str = rowString.split(this.recordDelim)[0];
