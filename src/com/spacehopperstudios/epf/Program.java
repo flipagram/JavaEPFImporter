@@ -132,7 +132,7 @@ public class Program {
 		configureLogger();
 
 		LOGGER = Logger.getLogger(Program.class.getName());
-		
+
 		// Create a directory for rotating logs
 		createLogFolder();
 	}
@@ -297,30 +297,46 @@ public class Program {
 		return getFileConfig(isFlat ? FLAT_CONFIG_PATH : CONFIG_PATH);
 	}
 
-	private static CommandLine parseArgs(String[] args) {
+	private static CommandLine parseArgs(String[] args, Map<String, Object> optionsMap) {
 		Options options = new Options();
 		try {
 			CommandLineParser cliParser = new GnuParser();
 
 			options.addOption(OPTION_SHORT_FLAT, OPTION_FULL_FLAT, false, "Import EPF Flat files, using values from EPFFlat.config if not overridden");
+			optionsMap.put(OPTION_FULL_FLAT, Boolean.FALSE);
+			
 			options.addOption(OPTION_SHORT_RESUME, OPTION_FULL_RESUME, false,
 					"Resume the most recent import according to the relevant .json status file (EPFStatusIncremental.json if -i, otherwise EPFStatusFull.json)");
+			optionsMap.put(OPTION_FULL_RESUME, Boolean.FALSE);
+			
 			options.addOption(OPTION_SHORT_DBHOST, OPTION_FULL_DBHOST, true, "The hostname of the database (default is localhost)");
+			
 			options.addOption(OPTION_SHORT_DBUSER, OPTION_FULL_DBUSER, true,
 					"The user which will execute the database commands; must have table create/drop priveleges");
+			
 			options.addOption(OPTION_SHORT_DBPASSWORD, OPTION_FULL_DBPASSWORD, true, "The user's password for the database");
+			
 			options.addOption(OPTION_SHORT_DBNAME, OPTION_FULL_DBNAME, true, "The name of the database to connect to");
+			
 			options.addOption(OPTION_SHORT_RECORDSEPARATOR, OPTION_FULL_RECORDSEPARATOR, true, "The string separating records in the file");
+			
 			options.addOption(OPTION_SHORT_FIELDSEPARATOR, OPTION_FULL_FIELDSEPARATOR, true, "The string separating fields in the file");
+			
 			options.addOption(OPTION_SHORT_ALLOWEXTENSIONS, OPTION_FULL_ALLOWEXTENSIONS, false, "Include files with dots in their names in the import");
+			optionsMap.put(OPTION_FULL_ALLOWEXTENSIONS, Boolean.FALSE);
+			
 			options.addOption(OPTION_SHORT_TABLEPREFIX, OPTION_FULL_TABLEPREFIX, true,
 					"Optional prefix which will be added to all table names, e.g. \"MyPrefix_video_translation\"");
+			
 			options.addOption(OPTION_SHORT_WHITELIST, OPTION_FULL_WHITELIST, true,
 					"A regular expression to add to the whiteList; repeated -w arguments will append");
+			
 			options.addOption(OPTION_SHORT_BLACKLIST, OPTION_FULL_BLACKLIST, true,
 					"A regular expression to add to the whiteList; repeated -b arguments will append");
+			
 			options.addOption(OPTION_SHORT_SKIPKEYVIOLATORS, OPTION_FULL_SKIPKEYVIOLATORS, false,
 					"Ignore inserts which would violate a primary key constraint; only applies to full imports");
+			optionsMap.put(OPTION_FULL_SKIPKEYVIOLATORS, Boolean.FALSE);
 
 			return cliParser.parse(options, args);
 
@@ -604,13 +620,12 @@ public class Program {
 
 		Map<String, Object> optionsMap = new HashMap<String, Object>();
 
-		CommandLine parsed = parseArgs(args);
+		CommandLine parsed = parseArgs(args, optionsMap);
 
 		overwriteDefaults(optionsMap, parsed);
 
 		List<String> dirsToImport = parsed.getArgList();
-		if ((dirsToImport == null || dirsToImport.size() == 0)
-				&& (optionsMap.get(OPTION_FULL_RESUME) != null && !((Boolean) optionsMap.get(OPTION_FULL_RESUME)).booleanValue())) {
+		if ((dirsToImport == null || dirsToImport.size() == 0) && !((Boolean) optionsMap.get(OPTION_FULL_RESUME)).booleanValue()) {
 			if (LOGGER.isInfoEnabled()) {
 				LOGGER.info(DESCRIPTION);
 				LOGGER.info(VERSION);
@@ -632,11 +647,11 @@ public class Program {
 				} else {
 					if (entry.getValue().isJsonArray()) {
 						List<String> stringArray = new ArrayList<String>();
-						
+
 						for (JsonElement element : entry.getValue().getAsJsonArray()) {
 							stringArray.add(element.getAsString());
 						}
-						
+
 						optionsMap.put(entry.getKey(), stringArray);
 					} else {
 						optionsMap.put(entry.getKey(), value);
