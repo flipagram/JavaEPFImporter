@@ -15,7 +15,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,9 +41,9 @@ import com.google.gson.JsonPrimitive;
 
 public class Program {
 
-	private static final String USAGE_FORMAT = "usage = \"usage: %S [-fxrak] [-d db_host] [-u db_user] [-p db_password] [-n db_name]" + "\r\n"
+	private static final String USAGE_FORMAT = "usage: %s [-fxrak] [-d db_host] [-u db_user] [-p db_password] [-n db_name]" + "\r\n"
 			+ "[-s record_separator] [-t field_separator] [-w regex [-w regex2 [...]]]" + "\r\n"
-			+ "[-b regex [-b regex2 [...]]] source_directory [source_directory2 ...]\\";
+			+ "[-b regex [-b regex2 [...]]] source_directory [source_directory2 ...]";
 
 	private static final String OPTION_SHORT_FLAT = "f";
 	private static final String OPTION_FULL_FLAT = "flat";
@@ -191,12 +191,14 @@ public class Program {
 	}
 
 	private static void overwriteDefaults(Map<String, Object> defaults, CommandLine commandLine) {
+		List<String> stringList = null;
+		
 		if (commandLine.hasOption(OPTION_SHORT_FLAT)) {
-			defaults.put(OPTION_FULL_FLAT, Boolean.parseBoolean(commandLine.getOptionValue(OPTION_SHORT_FLAT)));
+			defaults.put(OPTION_FULL_FLAT, Boolean.TRUE);
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_RESUME)) {
-			defaults.put(OPTION_FULL_RESUME, Boolean.parseBoolean(commandLine.getOptionValue(OPTION_SHORT_RESUME)));
+			defaults.put(OPTION_FULL_RESUME, Boolean.TRUE);
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_DBHOST)) {
@@ -224,23 +226,25 @@ public class Program {
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_ALLOWEXTENSIONS)) {
-			defaults.put(OPTION_FULL_ALLOWEXTENSIONS, Boolean.parseBoolean(commandLine.getOptionValue(OPTION_SHORT_ALLOWEXTENSIONS)));
+			defaults.put(OPTION_FULL_ALLOWEXTENSIONS, Boolean.TRUE);
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_TABLEPREFIX)) {
 			defaults.put(OPTION_FULL_TABLEPREFIX, commandLine.getOptionValue(OPTION_SHORT_TABLEPREFIX));
 		}
 
-		if (commandLine.hasOption(OPTION_SHORT_WHITELIST)) {
-			defaults.put(OPTION_FULL_WHITELIST, commandLine.getOptionValue(OPTION_SHORT_WHITELIST));
+		if (commandLine.hasOption(OPTION_SHORT_WHITELIST)) {			
+			defaults.put(OPTION_FULL_WHITELIST, stringList = new ArrayList<String>());
+			Collections.addAll(stringList, commandLine.getOptionValues(OPTION_SHORT_WHITELIST));
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_BLACKLIST)) {
-			defaults.put(OPTION_FULL_BLACKLIST, commandLine.getOptionValue(OPTION_SHORT_BLACKLIST));
+			defaults.put(OPTION_FULL_BLACKLIST, stringList = new ArrayList<String>());
+			Collections.addAll(stringList, commandLine.getOptionValues(OPTION_SHORT_BLACKLIST));
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_SKIPKEYVIOLATORS)) {
-			defaults.put(OPTION_FULL_SKIPKEYVIOLATORS, Boolean.parseBoolean(commandLine.getOptionValue(OPTION_SHORT_SKIPKEYVIOLATORS)));
+			defaults.put(OPTION_FULL_SKIPKEYVIOLATORS, Boolean.TRUE);
 		}
 
 	}
@@ -398,7 +402,8 @@ public class Program {
 		Pattern bMatcher = Pattern.compile(bListRe);
 
 		File dirPath = new File(directoryPath);
-		List<String> fileList = Arrays.asList(dirPath.list()); // list paths
+		List<String> fileList = new ArrayList<String>();
+		Collections.addAll(fileList, dirPath.list()); // list paths
 		// filter the list down to the entries matching our whitelist/blacklist
 
 		String f;
@@ -538,7 +543,7 @@ public class Program {
 			LOGGER.info(String.format("Total import time for %s: %d", dirName, ts));
 		}
 
-		if (failedFiles != null) {
+		if (failedFiles != null && failedFiles.size() > 0) {
 			LOGGER.warn(String.format("The following files encountered errors and were not imported:\n %s", Joiner.on(", ").join(failedFiles)));
 		}
 

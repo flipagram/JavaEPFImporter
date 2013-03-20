@@ -339,7 +339,7 @@ public class Parser {
 				rec = rec.subList(0, this.columnNames.size()); // if there are more data records than column names,
 				// trim any surplus records via a slice
 			} else if (rec.size() < this.columnNames.size()) {
-				LOGGER.warn("Number of records is less than expected");
+				LOGGER.warn("Number of fields is less than expected");
 			}
 
 			// replace empty strings with NULL
@@ -380,7 +380,7 @@ public class Parser {
 		for (long j = 0; j < maxNum; j++) {
 			List<String> lst = this.nextRecord();
 
-			if (lst == null) {
+			if (lst == null || lst.size() == 0) {
 				break;
 			}
 

@@ -280,7 +280,7 @@ class Ingester {
 	public boolean tableExists(String tableName/* =null */, Connection connection/* =null */) throws SQLException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
 
-		String exStr = "SELECT COUNT(*) AS count FROM information_schema.tables WHERE table_schema = %s AND table_name = %s";
+		String exStr = "SELECT COUNT(*) AS count FROM information_schema.tables WHERE table_schema = '%s' AND table_name = '%s'";
 
 		if (tableName == null) {
 			tableName = this.tableName;
@@ -295,7 +295,7 @@ class Ingester {
 
 		conn.executeQuery(String.format(exStr, this.dbName, tableName));
 		conn.fetchNextRow(); // this will always be a 1-tuple; the items's value will be 0 or 1
-		boolean doesExist = conn.getCurrentRowInteger("count") == 1;
+		boolean doesExist = (conn.getCurrentRowInteger("count") == 1);
 
 		if (connection == null) {
 			conn.disconnect();
@@ -397,7 +397,7 @@ class Ingester {
 		for (List<String> aRec : recordList) {
 			List<String> escRec = new ArrayList<String>();
 			for (String aField : aRec) {
-				String escaped = aField.replace("\\'", "'").replace("'", "\\'");
+				String escaped = aField.replace("\\'", "'").replace("\\\\", "\\").replace("\\", "\\\\").replace("'", "\\'");
 				escRec.add("'" + escaped  + "'");
 			}
 			escapedRecords.add(escRec);
@@ -428,7 +428,7 @@ class Ingester {
 			// a large batch size per insert improves performance, until you start hitting max_packet_size issues.
 			// If you increase MySQL server's max_packet_size, you may get increased performance by increasing maxNum
 			List<List<String>> records = this.parser.nextRecords(200);
-			if (records == null) {
+			if (records == null || records.size() == 0) {
 				break;
 			}
 
@@ -448,7 +448,7 @@ class Ingester {
 			try {
 				conn.executeQuery(exStr);
 			} catch (SQLException e) {
-				LOGGER.error(String.format("Error occured executing %s", exStr), e);
+				LOGGER.error(String.format("Error occured executing: %s", exStr), e);
 				// } catch (SQLIntegrityConstraintViolationException e) {
 				// This is likely a primary key constraint violation; should only be hit if skipKeyViolators is False
 			}
