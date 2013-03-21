@@ -67,7 +67,7 @@ class Ingester {
 		this.tableName = (pref + this.fileName).replace("-", "_"); // hyphens aren't allowed in table names
 
 		if (this.tableName.contains(".")) {
-			this.tableName = this.tableName.split(".")[0];
+			this.tableName = this.tableName.split(".", -1)[0];
 		}
 
 		this.tmpTableName = this.tableName + "_tmp";

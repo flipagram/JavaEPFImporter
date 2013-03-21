@@ -113,8 +113,8 @@ public class Parser {
 		byte[] b = new byte[40];
 		this.eFile.read(b);
 		String str = new String(b, Charsets.UTF_8);
-		String[] lst = str.split(this.commentChar + Parser.RECORD_COUNT_TAG);
-		String numStr = lst[lst.length - 1].split(this.recordDelim)[0];
+		String[] lst = str.split(this.commentChar + Parser.RECORD_COUNT_TAG, -1);
+		String numStr = lst[lst.length - 1].split(this.recordDelim, -1)[0];
 		this.recordsExpected = Integer.parseInt(numStr);
 		this.eFile.seek(0); // seek back to the beginning
 		// Extract the column names
@@ -304,22 +304,17 @@ public class Parser {
 				throw new SubstringNotFoundException(expl);
 			}
 
-			rowString = rowString.split(requiredPrefix)[1];
+			rowString = rowString.split(requiredPrefix, -1)[1];
 		}
 
-		String str = rowString.split(this.recordDelim)[0];
-		String[] splitStr = str.split(this.fieldDelim);
+		String str = rowString.split(this.recordDelim, -1)[0];
+		String[] splitStr = str.split(this.fieldDelim, -1);
 
 		List<String> row = null;
 
 		if (splitStr != null && splitStr.length != 0) {
 			row = new ArrayList<String>();
-
 			Collections.addAll(row, splitStr);
-
-			if (str.endsWith(this.fieldDelim)) {
-				row.add("");
-			}
 		}
 
 		return row;
