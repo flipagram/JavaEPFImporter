@@ -8,4 +8,5 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.spacehopperstudios.epf.Program"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="epfimporter"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx1024m"/>
 </launchConfiguration>
