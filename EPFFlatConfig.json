@@ -1,0 +1,1 @@
+{"dbhost":"localhost","dbuser":"epfimporter","dbpassword":"epf123","dbname":"epf","allowextensions":true,"tableprefix":"epfflat","whitelist":[".*?"],"blacklist":["^\\."],"recordseparator":"\n","fieldseparator":"\t"}
