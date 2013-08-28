@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.spacehopperstudios.epf;
+package com.spacehopperstudios.epf.parse;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 
 import com.google.common.base.Charsets;
+import com.spacehopperstudios.epf.SubstringNotFoundException;
 
 /**
  * Parses an EPF file.
@@ -25,9 +26,9 @@ import com.google.common.base.Charsets;
  * 
  * typeMap is a dictionary mapping datatype strings in the file to corresponding types for the database being used. The default map is for MySQL.
  */
-public class Parser {
+public class V3Parser {
 
-	private static final Logger LOGGER = Logger.getLogger(Parser.class);
+	private static final Logger LOGGER = Logger.getLogger(V3Parser.class);
 
 	private static final String PRIMARY_KEY_TAG = "primaryKey:";
 	private static final String DATA_TYPES_TAG = "dbTypes:";
@@ -89,7 +90,7 @@ public class Parser {
 		DEFAULT_TYPE_MAP.put("CLOB", "LONGTEXT");
 	}
 
-	public Parser(String filePath, Map<String, String> typeMap/* ={"CLOB":"LONGTEXT"} */, String recordDelim/* ='\x02\n' */, String fieldDelim/* ='\x01' */)
+	public void init(String filePath, Map<String, String> typeMap/* ={"CLOB":"LONGTEXT"} */, String recordDelim/* ='\x02\n' */, String fieldDelim/* ='\x01' */)
 			throws IOException, SubstringNotFoundException {
 		dataTypeMap = typeMap;
 		numberTypes = Arrays.asList(new String[] { "INTEGER", "INT", "BIGINT", "TINYINT" });
@@ -113,7 +114,7 @@ public class Parser {
 		byte[] b = new byte[40];
 		this.eFile.read(b);
 		String str = new String(b, Charsets.UTF_8);
-		String[] lst = str.split(this.commentChar + Parser.RECORD_COUNT_TAG, -1);
+		String[] lst = str.split(this.commentChar + V3Parser.RECORD_COUNT_TAG, -1);
 		String numStr = lst[lst.length - 1].split(this.recordDelim, -1)[0];
 		this.recordsExpected = Integer.parseInt(numStr);
 		this.eFile.seek(0); // seek back to the beginning
@@ -122,9 +123,9 @@ public class Parser {
 		this.columnNames = this.splitRow(line1, this.commentChar);
 
 		// We'll now grab the rest of the header data, without assuming a particular order
-		String primStart = this.commentChar + Parser.PRIMARY_KEY_TAG;
-		String dtStart = this.commentChar + Parser.DATA_TYPES_TAG;
-		String exStart = this.commentChar + Parser.EXPORT_MODE_TAG;
+		String primStart = this.commentChar + V3Parser.PRIMARY_KEY_TAG;
+		String dtStart = this.commentChar + V3Parser.DATA_TYPES_TAG;
+		String exStart = this.commentChar + V3Parser.EXPORT_MODE_TAG;
 
 		// Grab the next 6 lines, which should include all the header comments
 		List<String> firstRows = new ArrayList<String>();

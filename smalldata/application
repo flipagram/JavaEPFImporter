@@ -1,0 +1,751 @@
+#export_dateapplication_idtitlerecommended_ageartist_nameseller_namecompany_urlsupport_urlview_urlartwork_url_largeartwork_url_smallitunes_release_datecopyrightdescriptionversionitunes_versiondownload_size
+#primaryKey:application_id
+#dbTypes:BIGINTINTEGERVARCHAR(1000)VARCHAR(20)VARCHAR(1000)VARCHAR(1000)VARCHAR(1000)VARCHAR(1000)VARCHAR(1000)VARCHAR(1000)VARCHAR(1000)DATETIMEVARCHAR(4000)LONGTEXTVARCHAR(100)VARCHAR(100)BIGINT
+#exportMode:FULL
+##legal: IMPORTANT: The Apple Enterprise Partner Feed and data incorporated therein ("EPF")
+##legal: is supplied to you by Apple Inc. ("Apple") in consideration of your agreement to
+##legal: the following terms, and your use, installation, modification, or redistribution
+##legal: of the EPF constitutes acceptance of these terms.  If you do not agree with these
+##legal: terms, please do not use, install, modify, or redistribute the EPF.
+##legal: 
+##legal: In consideration of your agreement to abide by the following terms, and subject to
+##legal: these terms, Apple grants you a personal, non-exclusive, non-transferable, non-sublicenseable
+##legal: license to use, reproduce, modify, and redistribute the EPF solely in connection
+##legal: with links to the iTunes Store.  Except as expressly stated in this notice, no other
+##legal: rights or licenses, express or implied, are granted by Apple herein.  The EPF is
+##legal: provided by Apple on an "AS IS" basis.  APPLE MAKES NO WARRANTIES, EXPRESS OR IMPLIED,
+##legal: INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY
+##legal: AND FITNESS FOR A PARTICULAR PURPOSE, REGARDING THE EPF OR ITS USE AND OPERATION
+##legal: ALONE OR IN COMBINATION WITH YOUR MATERIALS. APPLE DOES NOT WARRANT THAT THE EPF
+##legal: WILL MEET YOUR REQUIREMENTS, THAT THEIR OPERATION WILL BE UNINTERRUPTED OR ERROR-FREE,
+##legal: THAT DEFECTS IN THE MATERIALS WILL BE CORRECTED, OR THAT THE EPF WILL BE COMPATIBLE
+##legal: WITH FUTURE APPLE PRODUCTS, SOFTWARE, OR SERVICES.  NO ORAL OR WRITTEN INFORMATION
+##legal: OR ADVICE GIVEN BY APPLE OR AN APPLE AUTHORIZED REPRESENTATIVE WILL CREATE A WARRANTY
+##legal: 
+##legal: IN NO EVENT SHALL APPLE BE LIABLE FOR ANY DIRECT, SPECIAL, INDIRECT, INCIDENTAL OR
+##legal: CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+##legal: OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) ARISING IN
+##legal: ANY WAY OUT OF THE USE, INABILITY TO USE, REPRODUCTION, MODIFICATION AND/OR DISTRIBUTION
+##legal: OF THE EPF, HOWEVER CAUSED AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING
+##legal: NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
+##legal: POSSIBILITY OF SUCH DAMAGE.
+##legal: 
+##legal: This agreement and your use of the EPF are governed by California law.
+##legal: 
+1362564068339564783832Eyelashes4+Char RoomChar Roomhttp://http://ios.charroom.net/http://itunes.apple.com/app/eyelashes/id564783832?uo=5http://a2.mzstatic.com/us/r30/Purple/v4/4b/d5/d0/4bd5d0c4-cbec-a8bf-051f-bc7970d0d560/mzl.mstvclnl.100x100-75.jpghttp://a5.mzstatic.com/us/r30/Purple/v4/46/f7/c9/46f7c9c4-c5f7-162e-66f8-59a3f65defd5/Icon.png2012 10 04Â© Char RoomIt is downward, it acts as Flick of the eyelashes, and flies to the upper eye. 
+It is a high score, so that it attaches to a suitable position. 
+1.0.11138840811003298
+1362564068339414141016Videator4+Big Stone PhoneStone Design Corphttp://stone.com/Videatorhttp://stone.com/Form.htmlhttp://itunes.apple.com/app/videator/id414141016?mt=12&uo=5http://a4.mzstatic.com/us/r1000/012/Purple/ef/66/83/mzi.hvgwsqwe.100x100-75.jpg2011 01 25Â© Copyright 2005-2011 Stone Design CorporationVJ and Movie Magic!  Add 100's of effects to live video or movies, including other movies, text, images,  and paint layers. Add sound tracks to your video. Save movies, slideshows and images. Add media from iMovie, iPhoto, iTunes and Finder. Turn your Mac into a VJ station and project full screen interactive performance video with the Magic Die.5.0332270311164291
+1362564068339306360016PSA NetNiedertronicsCraig Niederbergerhttp://urocomp.comhttp://urocomp.comhttp://itunes.apple.com/app/psa-net/id306360016?uo=5http://a3.mzstatic.com/us/r1000/012/Purple/2d/20/1a/mzl.lcchtibx.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/020/Purple/96/1e/a2/mzl.gwuoqpyc.png2009 02 26Â© 2009 Craig NiederbergerPSA Net is a neural network that predicts whether a man will have prostate cancer on biopsy from the patient's age, total PSA, complexed PSA, results of the International Prostate Symptom Score, ethnicity, family history and rectal exam.  It is intended to be used by qualified healthcare professionals.
+
+The application is an adaptation of the algorithm published in Kalra P, Togami J, Bansal B S G, Partin AW, Brawer MK, Babaian RJ, Ross LS, Niederberger CS: A neurocomputational model for prostate carcinoma detection: Cancer 2003 Nov 1;98(9):1849-54.1.0148989243116
+1362564068339582205080Easter Egg Escape4+Little Quake, Inc.Little Quake, Inc.http://www.littlequake.comhttp://itunes.apple.com/app/easter-egg-escape/id582205080?mt=12&uo=5http://a1.mzstatic.com/us/r1000/095/Purple/v4/da/37/40/da3740b8-e68c-22a1-2b43-12458b4b56a8/IconEEE.100x100-75.jpg2013 01 24Â© "2012 Little Quake Inc."Hurry up! You almost slept through Easter! Now just before the big day arrives you have to get down to the top Secret Candy Factory in your custom Egg Mobile to pick up as many eggs as possible! To pick up eggs you have to zoom over them in your Egg Mobile but watch out for obstacles along the way!
+Easter Egg Escape is fun for all ages and you can compete against your friends through leaderboards â€“ who can collect the most eggs!
+1.01252743225980189
+1362564068339586234320The Secret Agent Opera12+KnowledgeBinKnowledgeBinhttp://files.zpaper.com/mobile/TheSecretAgent/home.htmhttp://files.zpaper.com/mobile/TheSecretAgent/home.htmhttp://itunes.apple.com/app/the-secret-agent-opera/id586234320?uo=5http://a5.mzstatic.com/us/r1000/089/Purple/v4/ef/b3/12/efb3127b-70b9-015d-9a17-cb68c828cb81/mzl.lawpiwqs.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/100/Purple/v4/df/ee/bd/dfeebdc8-6df6-273b-289c-f814c5ccbec5/homeTSA.57x57.png2012 12 31Â© 2012-2013 THE SECRET AGENT is a newly completed opera based upon the 1907 novel "The Secret Agent" by Joseph Conrad.   It features a libretto by New York forensic psychiatrist Allen Reichman and music by Atlanta composer Curtis Bryant.  Atlanta's Capitol City Opera Company will give the world premiere performance of the entire two act opera with chamber orchestra in three performances on March 15-17, 2013 at Oglethorpe University's Conant Center.  Tax deductible contributions toward the world premiere production can be made directly to the Capitol City Opera Company by writing "The Secret Agent" or "World Premiere" on a check.  Donors will be acknowledged by personal letter and in the performance program.1.0.1132014514353440
+1362564068339596833280Fitur 2013 Provincia de Valencia4+Diputacion de ValenciaDiputacion de Valenciahttp://www.valenciaterraimar.org/http://itunes.apple.com/app/fitur-2013-provincia-valencia/id596833280?uo=5http://a2.mzstatic.com/us/r1000/092/Purple/v4/f6/d1/64/f6d16467-9e81-e2a4-0b47-7ad66a6b3ce4/mzl.jdndrrqh.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/075/Purple/v4/d6/3b/12/d63b1256-c509-a926-75e8-16fc8f057149/icono.png2013 01 25Â© Diputacion de ValenciaEl Patronato Provincial de Turismo de la DiputaciÃ³n de Valencia, Valencia, Terra i Mar, adaptÃ¡ndose a las nuevas tecnologÃ­as, desarrolla esta aplicaciÃ³n APP. 
+
+Un espacio donde todos, empresas del sector turÃ­stico, ayuntamientos y ciudadanos, tienen cabida. Un espacio con vocaciÃ³n de crecimiento y que pretende visualizar en los distintos dispositivos mÃ³viles la mejor informaciÃ³n turÃ­stica de la provincia de Valencia, asÃ­ como las mejores ofertas del sector, desde las referidas al turismo rural y de interior, en auge en los Ãºltimos aÃ±os, hasta las relacionadas con nuestro ya tradicional turismo de sol y playa. Un amplio abanico de posibilidades que se combina con nuestra gastronomÃ­a excelente, nuestras fiestas y tradiciones populares y nuestro rico patrimonio histÃ³rico-artÃ­stico.
+
+Adaptados a los nuevos tiempos y conocedores de que la provincia de Valencia es, por nuestro clima, por nuestras playas, por la riqueza paisajÃ­stica y por la gastronomÃ­a, uno de los principales destinos turÃ­sticos, tanto para el turismo nacional como para el internacional, por lo que hemos decidido emprender este nuevo y apasionante proyecto para llegar a tod@s de manera mÃ¡s Ã¡gil, dinÃ¡mica y directa. 
+
+Esperamos que esta aplicaciÃ³n APP, contribuya a difundir la oferta turÃ­stica de la provincia de Valencia y acercaros todas las novedades que tanto Patronato como municipios y empresas de la provincia, presentamos este aÃ±o en FITUR.
+1.01371571118137441
+1362564068339338987336æ–½å…¬æ¡ˆ12+Fee Tanrice mihttp://www.feetan.comhttp://www.feetan.comhttp://itunes.apple.com/app/shi-gong-an/id338987336?uo=5http://a3.mzstatic.com/us/r1000/060/Purple/v4/e1/5a/e5/e15ae552-9a3d-b6e6-f5de-94013711bfb1/mzl.ougrmban.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/072/Purple/v4/f1/55/38/f1553834-a494-2f4d-05d2-1d22aeada474/icon-57.png2009 11 14Â© Feetané£žèž³ç§‘æŠ€**æ›´å¤šå¤å…¸å›¾ä¹¦ï¼Œè¯·æœç´¢â€œå¤å…¸ä¹¦åŸŽâ€ã€‚**
+æ™šæ¸…å°è¯´ã€‚äº¦ç§°ã€Šæ–½å…¬æ¡ˆä¼ ã€‹ã€ã€Šæ–½æ¡ˆå¥‡é—»ã€‹ã€ã€Šç™¾æ–­å¥‡è§‚ã€‹,8å·,97å›ž,æœªè‘—æ’°äººã€‚å¤§çº¦ç”±äºŽå…¶æ•…äº‹å§‹äºŽè¯´ä¹¦ï¼ŒåŽç»æ–‡äººåŠ å·¥æ•´ç†æ•·æ¼”è€Œæˆã€‚çŽ°å­˜é“å…‰å››å¹´(1824)åˆŠæœ¬ï¼Œæœ‰å˜‰åº†ä¸‰å¹´ï¼ˆ1798ï¼‰åºæ–‡ï¼Œå¯æŽ¨çŸ¥å®ƒå¤§çº¦æˆä¹¦äºŽä¹¾éš†ã€å˜‰åº†å¹´é—´ã€‚çŽ°å°šå­˜å¤šç§é“å…‰å¹´é—´çš„åˆ»æœ¬ã€‚1982å¹´åŒ—äº¬å®æ–‡å ‚æ–°æŽ’å°æœ¬ 402å›žï¼ŒåŒ…æ‹¬éƒ¨åˆ†ç»­ä¹¦ã€‚å°è¯´çš„ä¸­å¿ƒäººç‰©æ–½ä»•çº¶ï¼Œå®žå³åº·ç†™å¹´é—´æ–½ä¸–çº¶,å­—æ–‡è´¤,æ¸…æ±‰å†›é•¶é»„æ——äºº,æ›¾ä»»æ‰¬å·žã€æ±Ÿå®çŸ¥åºœã€æ¼•è¿æ€»ç£ç­‰å®˜,è‘—æœ‰ã€Šå—å ‚é›†ã€‹ï¼Œã€Šæ¸…å²ç¨¿ã€‹æœ‰ä¼ ã€‚å°è¯´ã€Šåºã€‹ç§°â€œé‡‡å…¶å®žäº‹æ•°åæ¡ï¼Œè¡¨è€Œå‡ºä¹‹ï¼Œä½¿å¤©ä¸‹åŽä¸–çŸ¥æ–½å…¬ä¹‹ä¸ºäººï¼Œä¸”ä½¿ä¸ºå®˜è€…çŸ¥ä»¥æ–½å…¬ä¸ºæ³•ä¹Ÿâ€ã€‚ä½†ä¹¦ä¸­è®¸å¤šå…¬æ¡ˆé¢˜æå’Œæƒ…èŠ‚ï¼Œå¤§éƒ½å‡ºäºŽè™šæž„ã€‚â€¨
+Â·Feetané£›èž³ç§‘æŠ€è‡´åŠ›æ–¼æŽ¨å»£ä¸­åœ‹å‚³çµ±æ–‡åŒ–ï¼Œå°‡æºæºä¸æ–·ç‚ºç”¨æˆ¶æŽ¨å‡ºä¸­åœ‹å‚³çµ±æ–‡åŒ–ç›¸é—œçš„æ‡‰ç”¨ç¨‹åºç”¢å“ã€‚
+
+ï¼Šï¼Šè”ç³»æˆ‘ä»¬ï¼Šï¼Š 
+æ–°æµªå¾®åšï¼šweibo.com/gudianshucheng 
+è…¾è®¯å¾®åšï¼št.qq.com/gudianshucheng 
+å¾®ä¿¡ï¼šgudianshucheng 
+é‚®ä»¶åé¦ˆï¼šgudianshucheng@feetan.cn 
+
+*********************************************************
+æ›´å¤šé£žèž³äº§å“ï¼Œè¯·æœç´¢â€œfee tanâ€ æˆ–â€œé£žèž³â€
+-ç”Ÿæ´»å®žç”¨å›¾ä¹¦ã€Šé£Ÿç‰©ç›¸å…‹ã€‹ä½åˆ—ã€Šä¿¡æ¯å‚è€ƒã€‹ç¬¬3å-0.99
+-è¿žç»­4ä¸ªæœˆæŽ’åœ¨ä¹¦ç±å‰åçš„ã€Šå¥³ç”Ÿä¸èƒ½çœ‹çš„æ¼«ç”»ã€‹0.99
+-ã€Šå”è¯—å®‹è¯å…ƒæ›²ä¸‰ç™¾é¦–ã€‹ç®€ç¹ä½“6æœ¬ä¹¦ï¼Œä»…å”®1.99
+-ã€Šä¸­æ–‡å¤å…¸åè‘—ã€‹åˆé›†60æœ¬ï¼Œä»…å”®2.99
+-ã€ŠäºŒåå››å²ã€‹ä»…å”®2.99
+
+
+æ›´å¤šå›¾ä¹¦ï¼Œè¯·ç™»å½• www.feetan.com
+*********************************************************4.0.1136689498164518
+1362564068339422360968VPL Mobile4+BiblioCommonsBiblioCommons, Inc.http://www.vpl.bibliocommons.com/http://www.vpl.bibliocommons.com/http://itunes.apple.com/app/vpl-mobile/id422360968?uo=5http://a1.mzstatic.com/us/r1000/112/Purple/v4/f6/e1/15/f6e115db-f032-0950-0ebd-7aa92c4a2b2f/mzl.ttmkojri.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/063/Purple/v4/c1/cc/ab/c1ccab57-827b-3d1d-351a-48e2e998a361/Icon.png2011 02 25Â© Bibliocommons IncKeep a library in your pocket! VPL Mobile makes it easy to find and discover titles, manage your account, and get the branch and availability information you need, anytime and anywhere. 
+
+Features: 
+
+â€¢ quickly search, with filters to zero-in on what you want 
+â€¢ get descriptions and community reviews for titles
+â€¢ save titles to your â€˜For Laterâ€™ list 
+â€¢ check availability â€“ and map the locations where your title is available now 
+â€¢ instantly check your due dates and renew
+â€¢ check if your holds are ready 
+â€¢ find and download ebooks and audiobooks 
+â€¢ browse bestsellers, new arrivals, and recent reviews 
+â€¢ rate titles with one touch
+â€¢ check branch hours or get directions to the nearest branch of VPL1.3136795572005582
+1362564068339538073632Woodstock Public Library4+BiblioCommonsBiblioCommons, Inc.http://woodstock.bibliocommons.comhttp://woodstock.bibliocommons.comhttp://itunes.apple.com/app/woodstock-public-library/id538073632?uo=5http://a5.mzstatic.com/us/r1000/098/Purple/v4/e1/83/e9/e183e9b3-1602-27cf-d423-f73b0cca5cd5/mzl.uhrtbrjb.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/118/Purple/v4/f8/2d/99/f82d99c1-3db8-29bb-7fcf-a36254177b72/Icon.png2012 07 03Â© Bibliocommons IncKeep a library in your pocket! The Woodstock Public Library app makes it easy to find and discover titles, manage your account, and get the library and availability information you need, anytime and anywhere.â€¨
+
+Features:
+â€¢ quickly search, with filters to zero-in on what you want
+â€¢ get descriptions and community reviews for titles
+â€¢ save titles to your â€˜For Laterâ€™ list
+â€¢ check availability
+â€¢ instantly check your due dates and renew
+â€¢ check if your holds are ready
+â€¢ browse bestsellers, new arrivals, and recent reviews
+â€¢ rate titles with one touch
+â€¢ check library hours or get directions1.2136816342063303
+1362564068339465337024Chinook Arch Mobile4+BiblioCommonsBiblioCommons, Inc.http://chinookarch.bibliocommons.com/http://chinookarch.bibliocommons.com/http://itunes.apple.com/app/chinook-arch-mobile/id465337024?uo=5http://a2.mzstatic.com/us/r1000/071/Purple/v4/e8/a7/1a/e8a71ae1-61bb-8508-d14a-cb66cf3a9719/mzl.fqqwrokw.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/062/Purple/v4/ec/6f/0d/ec6f0d15-eae7-b434-3f88-0616ff27d6f6/Icon.png2011 10 16Â© Bibliocommons IncKeep a library in your pocket! Chinook Arch Mobile makes it easy to find and discover titles, manage your account, and get the library and availability information you need - anytime and anywhere.
+
+Features:
+Â· quickly search to find what you want
+Â· get descriptions and reviews for titles
+Â· save titles to your â€˜For Laterâ€™, 'In Progress' and 'Completed' shelves
+Â· check availability â€“ and map the locations where your title is available now
+Â· instantly check your due dates and renew
+Â· check if your holds are ready
+Â· find and download eBooks and audiobooks
+Â· browse bestsellers, new arrivals, and recent reviews
+Â· rate titles with one touch
+Â· check library hours or get directions to all Chinook Arch Regional Library member locations1.3136808852145019
+1362564068339592719896The Pilates Company4+Petrol Designs, LLC.Petrol Designs, LLChttp://www.fitnessmobileapps.com/http://itunes.apple.com/app/the-pilates-company/id592719896?uo=5http://a2.mzstatic.com/us/r1000/113/Purple/v4/d2/37/29/d2372973-e00d-f88a-4a77-1ed468c3ceb7/mzl.coleamii.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/079/Purple/v4/d2/81/bf/d281bf05-5de3-1a48-fb84-616dc4048cff/Icon.png2013 01 11Â© 2012 FitnessMobileApps.com All Rights ReservedDownload The Pilates Company iPhone App today to plan and schedule your classes! From this iPhone App you can view class schedules, sign-up for classes, buy class packages, view ongoing promotions, and view the studioâ€™s location and contact information. You can also click through to our Facebook and Twitter pages! Optimize your time and maximize the convenience of signing up for classes from your iPhone! Download this App today!
+
+Also be sure to check out our website at: http://woodinvillepilates.com/1.0.2136648457734853
+1362564068339576856000Hot Yoga by the Sea4+Petrol Designs, LLC.Petrol Designs, LLChttp://www.fitnessmobileapps.com/http://itunes.apple.com/app/hot-yoga-by-the-sea/id576856000?uo=5http://a1.mzstatic.com/us/r1000/102/Purple/v4/f4/78/d4/f478d43c-12a8-42f2-fbaf-8c3913c13ccc/mzl.rwchqvjz.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/119/Purple/v4/d2/de/89/d2de895b-2361-cf32-56b5-26679f2c2735/Icon.png2012 11 14Â© 2012 FitnessMobileApps.com All Rights ReservedDownload the Hot Yoga by the Sea iPhone App today to plan and schedule your classes!  From this iPhone App you can view class schedules, sign-up for classes, buy class packages, view ongoing promotions, as well as view studioâ€™s location and contact information.  You can also click through to our Facebook and Twitter pages!  Optimize your time and maximize the convenience of signing up for classes from your iPhone!  Download this App today!
+
+Also be sure to check out our website at: http://www.hotyogabythesea.com/1.0.1136834717120217
+1362564068339569490320Pure Skin4+Tommy AhearneTommy Ahearnehttp://gorillaapps.co.ukhttp://itunes.apple.com/app/pure-skin/id569490320?uo=5http://a1.mzstatic.com/us/r1000/106/Purple/v4/c2/74/da/c274da86-3fe3-97bc-b969-382168ea8631/mzl.gflyojdf.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/074/Purple/v4/f8/7f/55/f87f555e-f70f-c96f-9f12-60e8012107af/Icon.png2012 10 24Â© Pure Skin 2012At Pureskin we provide a unique and medical-led service to our clients who expect cutting-edge technology and products.  We offer a full range of medical and cosmetic dermatology services.
+ 
+This app allows you to keep up to date with all of Pureskinâ€™s latest news, offers and products. The in app loyalty card allows you to earn redeemable rewards for regular use.1.3135729455002337
+1362564068339570620632Fosters Fish & Chips4+Tommy AhearneTommy Ahearnehttp://www.gorillaapps.co.ukhttp://itunes.apple.com/app/fosters-fish-chips/id570620632?uo=5http://a2.mzstatic.com/us/r1000/097/Purple/v4/e6/8e/63/e68e636f-db9e-caf1-63a5-e488434707d0/mzl.ersvizzu.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/085/Purple/v4/de/6c/18/de6c18ad-ec04-68a5-c74a-5ff2ec78e8f0/Icon.png2012 10 24Â© 2012 Fosters Fish & ChipsWe are committed to making great, traditional fish and chips.  We have both a take away and restaurant option in Alderley Edge and Didsbury and we can't wait to see you at the chippy!
+
+Use our app to keep up to date with our latest offers and events.  Youâ€™ll receive rewards which can be redeemed at either chippy and can use the in app loyalty card to earn rewards for regular use.
+1.3135718955636237
+1362564068339570588992The Gallery Bar & Kitchen12+Tommy AhearneTommy Ahearnehttp://www.gorillaapps.co.ukhttp://itunes.apple.com/app/the-gallery-bar-kitchen/id570588992?uo=5http://a3.mzstatic.com/us/r1000/113/Purple/v4/d6/ea/19/d6ea197d-8e46-80f3-b675-59954f02a054/mzl.ysmnoekw.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/091/Purple/v4/dc/2a/a9/dc2aa9fa-04e1-2620-4827-295beb7f4639/Icon.png2012 10 24Â© 2012 The Gallery Bar & KitchenThe Gallery Bar and Kitchen blends elements of contemporary style and a relaxed, comforting atmosphere to bring you the ultimate in informal dining.  
+
+Feel free to join us for a drink, a light bite, or a full dining experience.  At The Gallery Bar and Kitchen we pride ourselves onÂ the welcome you will receive.
+
+Use our app to keep up to date with our latest offers and events.  Youâ€™ll receive rewards which can be redeemed at The Gallery Bar and Kitchen and can use the in app loyalty card to earn rewards for regular use.
+1.3135748707606195
+1362564068339582129080TranquillitÃ© Ligne H4+P. UNGPatrick UNGhttp://www.pung.frhttp://itunes.apple.com/app/tranquillite-ligne-h/id582129080?uo=5http://a1.mzstatic.com/us/r1000/100/Purple2/v4/38/f8/90/38f8908e-0cef-6e20-c25f-11f865cbce6f/mzl.sanosnvs.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/060/Purple/v4/f0/77/83/f0778314-2576-c1ab-3812-c7d5b5eeffc3/appicon.png2012 12 08Â© Ligne HDonnez votre avis sur la Ligne H !
+
+Chaque jour, venez exprimer votre avis pour une meilleure tranquillitÃ© sur la Ligne H.
+
+Grace Ã  ce questionnaire, exprimez chaque jour votre ressenti sur la tranquillitÃ© de votre trajet de la ligne H.
+
+Nous vous remercions de votre participation pour amÃ©liorer votre quotidien.
+1.01137342422325226
+1362564068339376390360News10 WX4+WSI CorporationWSI Corporationhttp://www.news10.net/company/contact/default.aspxhttp://itunes.apple.com/app/news10-wx/id376390360?uo=5http://a2.mzstatic.com/us/r1000/061/Purple/v4/dd/18/89/dd1889c2-bcf9-6f37-d263-e44e71cd282d/mzl.ghecdken.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/112/Purple/v4/c8/b0/df/c8b0dfac-143a-600d-3cdd-8d3d66ee300b/icon_logo.png2010 06 09Â© WSI CorporationNews10â€™s iPhone weather app makes viewing and getting the latest Sacramento, Modesto, Stockton and Tahoe weather forecasts easy. With a few steps, you can get the current weather conditions, check out Doppler radars and see the 10-day forecast. 
+
+Whether you are looking for the current Sacramento forecast, the probability of rain over the next few days in Northern California or the weather outlook for Tahoe and the Sierra area, the News10 iPhone Weather application keeps you in-the-know while you're on-the-go.
+
+The News10 Mobile weather iPhone app includes:
+â€¢ Current weather conditions
+â€¢ 10-day forecasts with both daily and hourly detail
+â€¢ Severe weather alerts
+â€¢ Weather video forecasts
+â€¢ Interactive weather maps optimized for 3G and WiFi performance
+â€¢ Vertical and horizontal map display with looping
+â€¢ Road Weather Index
+â€¢ Color coded weather alerts arranged by severity
+â€¢ Integrated GPS for current location awareness
+â€¢ Ability to save your favorite locations
+
+
+2.5136835156314380
+1362564068339386964232FCN Wx4+WSI CorporationWSI Corporationhttp://www.firstcoastnews.com/inside/contactus/#webmasterhttp://itunes.apple.com/app/fcn-wx/id386964232?uo=5http://a4.mzstatic.com/us/r1000/110/Purple/v4/d0/eb/97/d0eb9708-0721-dce7-081d-54757a9aacec/mzl.kvqcdfil.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/120/Purple/v4/c0/03/18/c0031863-1d42-3f3a-e074-9963ebd6078d/icon_logo.png2010 08 20Â© WSI CorporationFirst Coast News is pleased to announce a full featured weather app for the iPhone and iPod touch platform. 
+
+Features 
+
+âˆ™ Highly responsive interactive map optimized for 3G and WiFi performance 
+âˆ™ Vertical and horizontal map display with looping 
+âˆ™ NOWrad the gold standard for radar in the weather industry 
+âˆ™ Highest resolution satellite cloud imagery available 
+âˆ™ Exclusive patent pending Road Weather Index 
+âˆ™ Color coded weather alerts arranged by severity 
+âˆ™ Fully integrated GPS for current location awareness 
+âˆ™ Integrated compass overlay for 3GS models 
+âˆ™ Most accurate 10 day forecasts with both daily and hourly detail 
+âˆ™ Ability to easily save your favorite locations 
+âˆ™ Full featured and user tested 
+âˆ™ Earthquake plotting; tap on an earthquake to display its detail 
+âˆ™ Storm Track Plotting; tap on a storm track to see its detail 
+âˆ™ Hurricane Track Plotting; tap on forecast, historical or present storm position to see its detail 
+âˆ™ Tropical Satellite Sector 
+âˆ™ iOS 4 compatibility2.5136835203857801
+1362564068339592422776Corporate Excellence4+Echoboom S.L.Echoboom S.L.http://www.corporateexcellence.orghttp://itunes.apple.com/app/corporate-excellence/id592422776?uo=5http://a3.mzstatic.com/us/r1000/103/Purple/v4/c9/3c/f8/c93cf857-4a4c-5cc9-8f43-c6a3d6ec69c3/mzl.jsnuwamm.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/079/Purple/v4/e2/2d/d3/e22dd3a9-c748-3d68-cefc-b7f548f9468b/Icon-Large.png2013 01 22Â© Corporate ExcellenceA content platform that enables users to easily locate, view and share content related to intangible assets management â€“i.e. corporate reputation, brand, communications, metrics and public affairs. It is launched by Corporate Excellence â€“ Centre for Reputation Leadership, a think tank to professionalize management of intangible assets promoted by major Spanish Corporations.
+
+Our Trustees (BBVA, La Caixa, Iberdrola, Repsol, Santander and TelefÃ³nica) represent 65% of the IBEX-35 (250 million of euros in stock market capitalization). Also, relevant public and private corporations have joined this initiative including Adif, Agbar, Bankinter, Correos, Danone, El Corte InglÃ©s, Gas Natural Fenosa, MeliÃ¡ Hotels International and Renfe.
+1.0.11366889613898750
+1362564068339542382888Teachers Federal Credit Union Mobile Banking4+Teachers Federal Credit UnionTeachers Federal Credit Unionhttp://www.teachersfcu.org/contactushttp://itunes.apple.com/app/teachers-federal-credit-union/id542382888?uo=5http://a4.mzstatic.com/us/r1000/078/Purple2/v4/76/99/00/76990084-3d86-07ac-10e0-34ea05bb4fcb/mzl.gbtrctwz.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/074/Purple/v4/e5/ed/c9/e5edc96b-572e-25f0-4b24-2707a73f6a7a/WebClipIcon.png2012 08 09Â© 2012 PM Systems Corp.Teachers Federal Credit Union has gone Mobile!Â  Bring TFCU with you to access your accounts on the go!Â  TFCU Mobile Banking gives you the ability to: 
+Check Balances, View Recent Transactions, and Transfer Funds.
+
+Get started today!Â  Simply download the TFCU Mobile Banking App or go to teachersfcu.org on your mobile device.Â  Sign in using your existing member number and password.1.513756864115688
+1362564068339596258520å­—æ¯DEF-çˆ±å¤šç‰›4+Shundao MaShundao Mahttp://www.iduoniu.comhttp://itunes.apple.com/app/zi-mudef-ai-duo-niu/id596258520?uo=5http://a1.mzstatic.com/us/r1000/060/Purple/v4/e9/f2/c2/e9f2c2d3-de6c-81b3-bcdb-227d9e257f67/mzl.mjjrscnt.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/089/Purple/v4/df/32/2f/df322f4a-4670-ce3a-8dfb-db181d741ae3/Icon-72.png2013 01 25Â© neuappsâ˜…â˜…â˜…â˜…â˜…â˜…â˜…çˆ±å¤šç‰›å®¶åº­å¹¼å„¿å›­â˜…â˜…â˜…â˜…â˜…â˜…â˜…
+äº§å“ç®€ä»‹:
+å­—æ¯Få®¶ä¸¢äº†å‡ åªå°é¸¡,å­—æ¯Dè­¦å¯Ÿå¸¦ç€å°å°è­¦çŠ¬æ¥å¸®å¿™,ç»“æžœä»–ä»¬ä¸€é€šæŠ˜è…¾å´æ²¡èƒ½æŠ“ä½å·é¸¡è´¼å°ç‹ç‹¸ã€‚Få’ŒDåˆå«æ¥äº†æœ€æœ€èªæ˜Žçš„å­—æ¯E,å˜¿å˜¿,è‡³äºŽæœ€åŽä»–ä»¬æ˜¯æ€Žä¹ˆæŠ“ä½ç‹¡çŒ¾çš„å°ç‹ç‹¸çš„,å°±æ¥çœ‹çœ‹è¿™ä¸ªæœ‰è¶£çš„æ•…äº‹å§ã€‚
+â˜…PS:åœ¨æœç´¢æ¡†é‡Œé¢è¾“å…¥â€œçˆ±å¤šç‰›â€å¯ä»¥æ£€ç´¢åˆ°çˆ±å¤šç‰›çš„æ‰€æœ‰äº§å“ã€‚
+â˜…æ¬¢è¿Žè”ç³»:
+å¾®åš:http://e.weibo.com/neuapps.cn
+å®˜ç½‘:http://www.iduoniu.com
+v1.0136653896916202
+1362564068339531340272å—é€šæ—…æ¸¸4+æ—…äººç½‘(lvren.com)Beijing Emark Information Technology Co, Ltdhttp://www.lvren.comhttp://itunes.apple.com/app/nan-tong-lu-you/id531340272?uo=5http://a5.mzstatic.com/us/r1000/110/Purple/v4/d8/50/67/d850679c-6ffb-188c-abf9-9837fe7ad21e/mzl.tidmkikk.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/114/Purple/v4/e2/0f/17/e20f1794-d5bf-ed09-8c5c-d909600134e8/Icon.png2012 06 21Â© 2013 æ—…äººç½‘æ—…äººæŒ‡å—ï¼Œæ—…è¡Œè€…çš„æ´»åœ°å›¾
+
+é€‚ç”¨å¯¹è±¡ï¼šä¸çˆ±åšè¯¦ç»†çš„æ—…è¡Œè®¡åˆ’ï¼Œåªè¦å®‰è£…æ—…äººæŒ‡å—ï¼Œå°±å¯ä»¥è½»æ¾ä¸Šè·¯ï¼Œä¸€åˆ‡åˆ°äº†å†è¯´ï¼Œé«˜æž•æ— å¿§
+
+æ—…äººå°ç¼–ä¸¥è‚ƒæ‰¿è¯ºï¼š
+â¤æ™¯åŒºå†…å®¹é€ä¸€ç”µè¯æ ¸å®ž
+â¤æ™¯ç‚¹ã€é…’åº—ã€å¨±ä¹ã€è´­ç‰©ã€ç¾Žé£Ÿç»†å¿ƒæ‰“ç†ï¼Œç²¾é€‰æŽ¨è
+â¤å¤šæ–¹å‚è€ƒï¼Œè®¾è®¡é€‚åˆä¸åŒäººç¾¤çš„ä¸»é¢˜çº¿è·¯å’Œç²¾é€‰çº¿è·¯
+â¤å¸¸ç”¨ç”µè¯ã€èˆªç©ºç”µè¯ç­‰ç¡®è®¤æ ¸å®žï¼ŒçœåŽ»æŸ¥æ‰¾114
+â¤ç”„é€‰ä¸å¾—ä¸åšçš„Nä»¶äº‹ï¼Œæ·±åº¦ä½“éªŒç›®çš„åœ°é£Žæƒ…
+
+â˜…ä¸»è¦åŠŸèƒ½â˜…
+ã€æ—…äººæŽ¨èã€‘å—é€šæ™¯ç‚¹ã€é…’åº—ã€å¨±ä¹ã€è´­ç‰©ã€ç¾Žé£Ÿã€çº¿è·¯ç­‰ç²¾é€‰æŽ¨èï¼Œæ›´æœ‰å®žç”¨ä¿¡æ¯ã€ç½‘å‹ç‚¹è¯„ã€è‡ªé©¾è·¯çº¿ã€å…¬äº¤è·¯çº¿ç­‰äº¤é€šä¿¡æ¯ï¼Œä¸°å¯Œå¤šå½©ï¼
+ã€å—é€šæŒ‡å—ã€‘å—é€šæ—…æ¸¸å›¾æ–‡èµ„è®¯ã€å…¨é¢çš„å—é€šæ—…æ¸¸èµ„æ–™ï¼Œæ— éœ€æºå¸¦åŽšåŽšçš„æ”»ç•¥ä¹¦ç±ä¹Ÿå¯äº†è§£å—é€šï¼
+ã€è´´èº«å¯¼æ¸¸ã€‘å®šä½åŠŸèƒ½ï¼Œæ”¯æŒèº«è¾¹æ™¯ç‚¹ã€é…’åº—ã€å¨±ä¹ã€è´­ç‰©ã€é¤åŽ…ç­‰ä¿¡æ¯æŸ¥è¯¢ã€‚
+ã€ç¦»çº¿æ¨¡å¼ã€‘é¢„å…ˆå…è´¹ä¸‹è½½ç¦»çº¿åŒ…ï¼Œæ²¡æœ‰ç½‘ç»œçš„æƒ…å†µä¸‹ä¹Ÿå¯ä»¥éšæ—¶éšåœ°ä½¿ç”¨ã€‚
+ã€å·¥å…·ç®±ã€‘è´§å¸æ¢ç®—ã€ä¸–ç•Œæ—¶é—´ã€å¸¸ç”¨ç”µè¯ã€å¤©æ°”ç­‰å°å·¥å…·ï¼Œå®žç”¨åˆè´´å¿ƒï¼
+
+å—é€šæ—…æ¸¸æŒ‡å—åŒ…æ‹¬çš„æ™¯ç‚¹æœ‰ç‹¼å±±ï¼Œæ°´ç»˜å›­ï¼Œå¼ è¬‡çºªå¿µé¦†ï¼Œåœ†é™€è§’ï¼Œå—é€šåšç‰©è‹‘ï¼Œæ±Ÿæµ·é£Žæƒ…å›­ï¼Œå®šæ…§ç¦…å¯ºï¼Œæ²ˆå¯¿è‰ºæœ¯é¦†ï¼Œæ¿ æ²³ï¼Œå—é€šç ç®—åšç‰©é¦†ï¼Œè‹é€šå¤§æ¡¥ï¼Œè“å°èŠ±å¸ƒåšç‰©é¦†ï¼Œä¸œæ–¹å¤§å¯¿æ˜Ÿå›­ï¼Œæµ·ä¸Šè¿ªæ–¯ç§‘ï¼Œé»„é‡‘æµ·æ»©ï¼Œé£Žç­åšç‰©é¦†ï¼Œå•å››æ¸”æ¸¯ï¼Œé»„æµ·å¤§æ¡¥å¤ªé˜³å²›ï¼Œå›½æ¸…å¯ºï¼Œæµ·å°å¯ºï¼Œæ´‹å£å›½å®¶ä¸­å¿ƒæ¸”æ¸¯ï¼Œé»„æµ·å¤§æ¡¥å¤ªé˜³å²›
+ç›®å‰å·²ä¸Šçº¿åŸŽå¸‚ï¼šåŒ—äº¬ã€è¥¿å®‰ã€æˆéƒ½ã€åŽ¦é—¨ã€ä¸‰äºšã€æ‹‰è¨ã€é’å²›ã€æ­å·žã€ä¸Šæµ·ã€å¹¿å·žã€é¦™æ¸¯ã€æ¾³é—¨ã€å°åŒ—ã€ä¼¦æ•¦ã€æ›¼è°·ã€å¢¨å°”æœ¬ã€æ‚‰å°¼ã€å—é€šã€å“ˆå°”æ»¨ã€ä¸½æ±Ÿã€æ–°åŠ å¡ã€æ¸…è¿ˆã€å‰éš†å¡ã€é¦–å°”ç­‰ï¼ˆä¸æ–­å¢žåŠ ä¸­ï¼‰ã€‚
+
+å®˜æ–¹QQç”¨æˆ·ç¾¤ï¼š189936224ï¼Œæ¬¢è¿ŽåŠ å…¥ï¼Œåˆ†äº«æ„Ÿå—
+æ–°æµªå¾®åšï¼šè¯·å…³æ³¨@æ—…äººç½‘
+è…¾è®¯å¾®åšï¼šè¯·å…³æ³¨@æ—…äººç½‘2.41360204423089232
+1362564068339596557656Projets4+IT Mentor APPSIT Mentor Group, Inc.http://www.projets.ushttp://itunes.apple.com/app/projets/id596557656?uo=5http://a2.mzstatic.com/us/r1000/086/Purple/v4/ec/fd/5f/ecfd5f10-c71e-fde7-c7de-08bb1aba3229/mzl.schvmjjv.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/087/Purple/v4/de/f2/0e/def20e70-2c03-3613-c1a7-028e88a028d2/icon.png2013 01 28Â© 2013 IT Mentor APPSThe official app of Projets, Inc!  With our app you can browse our current aircraft for sale inventory including full specifications and photos.  You can easily notify us of what you are looking for and we will attempt to locate the right aircraft to suit your specific requirements. You can also let us know the details of the aircraft you would like to sell and we will locate your ideal buyer.  Inside our app youâ€™ll find a calendar with upcoming aviation related events, conferences and trainings.  You can check weather before your flight or access complete flight tracker information.  What are you waiting for?  Download the Projets, Inc. app today!
+
+
+Browse current aircraft for sale
+Tell us what aircraft you are looking for
+Tell us what aircraft do you currently own that you would like to sell
+Easy access to our aviation calendar of events
+Stay up to date on the latest news in the aviation industry
+Track your aircraft
+Check the weather
+1.01369383412040629
+1362564068339596871184Tease Fitness4+Petrol Designs, LLC.Petrol Designs, LLChttp://www.fitnessmobileapps.com/http://itunes.apple.com/app/tease-fitness/id596871184?uo=5http://a2.mzstatic.com/us/r1000/073/Purple2/v4/3a/70/e2/3a70e285-6e5d-0fa1-c11b-ca642591933d/mzl.kqanbrtw.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/069/Purple2/v4/16/63/3b/16633b99-1d0d-db66-a481-0541f697fa48/Icon.png2013 01 28Â© 2012 FitnessMobileApps.com All Rights ReservedDownload the Tease Fitness Studio iPhone App today to plan and schedule your classes!
+From this iPhone App you can view class schedules, sign-up for classes, buy class packages,
+view ongoing promotions, as well as view studioâ€™s location and contact information. You can
+also click through to our Facebook and Twitter pages! Optimize your time and maximize the
+convenience of signing up for classes from your iPhone! Download this App today!
+
+Also be sure to check out our website at: http://www.teasefitnessstudio.com/1.0137173237538187
+1362564068339584336184æˆ˜åœº12+èœ‚é”(åŒ—äº¬)Zhang Qinghttp://battle.fengruigame.com/supporthttp://itunes.apple.com/app/zhan-chang/id584336184?uo=5http://a3.mzstatic.com/us/r1000/078/Purple/v4/d0/ec/6d/d0ec6d25-ead4-ee21-3474-13296b616326/mzl.wnvoruor.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/104/Purple/v4/c9/95/33/c995331a-f67f-4469-0e9f-11dc244696cd/Icon.png2013 01 17Â© fengrui(beijing)ã€Šæˆ˜åœºã€‹æ˜¯ä¸€æ¬¾ä»¥ä¸–ç•Œå¤§æˆ˜ä¸ºèƒŒæ™¯çš„å³æ—¶æˆ˜æ–—ç±»æ¸¸æˆåº”ç”¨ï¼Œæ˜¯èœ‚é”æ¸¸æˆé¦–æ¬¾æ”¯æŒIOSå¹³å°å·¨åˆ¶ã€‚åœ¨æ¸¸æˆä¸­çŽ©å®¶å°†æŒ‡æŒ¥ä¸‰å†›å°†å£«ï¼Œè‡ªç”±åˆ›é€ å´­æ–°çš„åŽ†å²ï¼Œæ‰“é€ å…¨æ–°çš„å†›äº‹ä¼ å¥‡!
+
+ã€Šæˆ˜åœºã€‹å…¨æ–°ç‰¹è‰²:
+å…¨æ–°æ”»é˜²æ¨¡å¼ï¼Œæ¯ä¸€è¾†å¦å…‹ã€æ¯ä¸€ä¸ªå£«å…µï¼Œéƒ½ç”±æ‚¨äº²è‡ªæ¥å†³å®šéƒ¨ç½²ï¼ŒæŠ›å¼ƒåŽŸå§‹çš„æˆ˜æ–—æ–¹å¼ï¼Œæ‰“é€ å…¨æ–°çš„æ”»é˜²æ¨¡å¼ã€‚
+
+ç‰ˆæœ¬ 1.0.0 ä¸­çš„åŠŸèƒ½ä»‹ç»ï¼š
+1ã€ ã€Šæˆ˜åœºã€‹iOSç‰ˆæ­£å¼ä¸Šçº¿
+2ã€ ä¸–ç•Œåå¤§é¡¶çº§å¦å…‹å…¨é¢ä¸Šçº¿ï¼Œé—´è°å«æ˜Ÿã€è£…å¤‡åŸºåœ°ã€åŽå‹¤ä¿éšœåŸºåœ°ç­‰å»ºç­‘å…¨é¢ä¸Šçº¿1.0.21369365441548604
+1362564068339471951896é‡åº†åœ°é“-rGuide4+TSP HOLDINGS LIMITEDTSP HOLDINGS LIMITEDhttp://www.rguide.info/http://www.rguide.info/http://itunes.apple.com/app/zhong-qing-de-tie-rguide/id471951896?uo=5http://a3.mzstatic.com/us/r1000/101/Purple/v4/cb/ab/f2/cbabf26b-9b45-6404-8111-ddbd26c7d7f5/mzl.hzrbtcqj.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/103/Purple/v4/d3/2b/b8/d32bb81b-b4cc-621c-71d9-19afdfbfb57a/icon.png2011 10 14Â© 2011 RGuideFeatures
+-HD route map
+-Station info and map
+-Journey planner with 4 routing methods, est. traveling time
+-Offline support
+-Multilingual UI & 5 station selection methods
+
+More Metro Guide Apps available on the App Store (Beijing, Shanghai, Guangzhou, Shenzhen, Hong Kong, Nanjing, Taipei, Kaohsiung and Singapore)6.2.4135194603344949
+1362564068339526296264Rolling Rolling Falling! Green4+Atech inc.Atech inc.http://edu.atech.jp/?utm_source=store&utm_campaign=support&utm_medium=mp10cipnhttp://itunes.apple.com/app/rolling-rolling-falling!-green/id526296264?uo=5http://a1.mzstatic.com/us/r1000/064/Purple/v4/c0/88/12/c088127c-65f3-9568-4fa7-91169e268999/mzl.ejfienjz.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/065/Purple/v4/f8/77/8a/f8778ada-4890-bd23-2365-8de6e8193b7f/Icon.png2012 07 31Â© Atech Inc.The 3rd edition of Rolling Rolling Falling, "Rolling Green" is out!
+Added new gimmicks!
+
+
+It is an educational application for young kids. 
+Rollig down slope, carried by gears or blown by the windmill, 
+kids can enjoy just touching appropriately and will nourish a child's sensibility. 
+
+*** Operation *** 
+
+- The Ball will born when you tap empty area. 
+- You can grab and move the ball by dragging. 
+- Gimmick will move when you tap the button. 
+
+*Tap "Remove Ads" and you can choose Ads removable option (Paid option). 
+*Follow us to get our application information @Atech_apps on Twitter.
+
+
+Keywords Intellectual,Education,Intellectual training,Ball,Goldberg machine,Infant,Gimmick,Gear,Windmill1.2136304252219935
+1362564068339549054992Touch and Find! Sea Creatures4+Atech inc.Atech inc.http://edu.atech.jp/?utm_source=store&utm_campaign=support&utm_medium=mp12ipnhttp://itunes.apple.com/app/touch-and-find!-sea-creatures/id549054992?uo=5http://a3.mzstatic.com/us/r1000/091/Purple/v4/dc/3f/8b/dc3f8bcf-e43f-6cf7-a38a-3f557382c5e4/mzl.nluemaxw.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/114/Purple/v4/c7/4a/0e/c74a0ea4-cec0-bf6f-e861-db93a5063792/Icon.png2012 08 21Â© Atech Inc.Move the screen to find fish!
+It's in the sea, colorful fish are swimming around.
+
+It's easy to play!
+Just drag the screen!
+
+Cute fish are swimming in shallow.
+Strange fish are swimming in deep water.
+
+Move the fish a lot and observe them!
+You can also feed them!
+
+*** How to play ****
+-Drag the screen to move.
+-Tap the empty area on the screen to feed the fish.
+-The fish run away when you touch them.
+
+*Follow us to get our application information @Atech_apps on Twitter.1.2136304261998163
+1362564068339518591064Rolling Rolling Falling! Red4+Atech inc.Atech inc.http://edu.atech.jp/?utm_source=store&utm_campaign=support&utm_medium=mp10bipnhttp://itunes.apple.com/app/rolling-rolling-falling!-red/id518591064?uo=5http://a2.mzstatic.com/us/r1000/107/Purple/v4/c4/f0/2e/c4f02e54-5ada-8411-c1ba-e7bd146c868e/mzl.odmevazm.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/062/Purple/v4/d9/bd/40/d9bd40a0-29d6-6b30-1149-358b1076a16a/Icon.png2012 05 10Â© Atech Inc.The 2nd edition of Rolling Rolling Falling, "Rolling Red" is already released!
+ 
+It is an educational application for kids.
+Rollig down slope, carried by gears or blown by the windmill,
+kids can enjoy just touching appropriately and will nourish a child's sensibility.
+
+*** Operation ***
+
+- The Ball will born when you tap empty area.
+- You can grab and move the ball by dragging.
+- Gimmick will move when you tap the button.
+
+*Tap "Remove Ads" and you can choose Ads removable option (Paid option).
+*Follow us to get our application information @Atech_apps on Twitter.1.2136304242199155
+1362564068339453459392Talkin' Drawin' for iPad4+Atech inc.Atech inc.http://edu.atech.jp/?utm_source=store&utm_campaign=support&utm_medium=mp02ipahttp://itunes.apple.com/app/talkin-drawin-for-ipad/id453459392?uo=5http://a2.mzstatic.com/us/r1000/116/Purple/v4/c2/7a/95/c27a9590-e7a8-84e3-3822-dc597dcd1e6a/mzl.sdntkaqg.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/070/Purple/v4/fd/1f/74/fd1f74fe-abad-d276-7509-df895f9b5a6a/Icon.png2011 08 10Â© 2011 Atech inc."Talkin' Drawin' (For Kids)" is an intellectual education app for young kids (Qualifying age : 6 years old and under). 
+It is different from the application program only of the talk. 
+Only your kids have to do is just touch and tap your screen, then the painting which drawn a lot of lines by them will begin to talk with eyes and mouth. 
+
+Your kids feel it familiar. Because of the painting which drawn by themself, they learn a lot unconsciously with unique painting. 
+
+* There are 43 kinds of talk patterns. 
+
+
+How To Play 
+
+Please draw a lot of lines, then the painting will begin to talk with eyes and mouth.1.1136374613392266
+1362564068339593657216Quest Diagnostics NSM 2013 HD4+CrowdCompass, Inc.CrowdCompass, Inc.http://www.crowdcompass.comhttp://itunes.apple.com/app/quest-diagnostics-nsm-2013-hd/id593657216?uo=5http://a2.mzstatic.com/us/r1000/111/Purple/v4/df/61/2d/df612d81-1a9b-2f4b-d755-1ac0fc00737d/mzl.jwxynlwh.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/074/Purple/v4/c3/8c/dc/c38cdca2-d871-960c-938f-85bddf0daefb/Icon-72.png2013 01 22Â© QUEST & CrowdCompass 2013Join us for the 2013 Quest Diagnostics National Sales Meeting in Nashville, TN - February 5-8. This app will help guide you through the meeting with session lists and locations, useful maps, and attendee information. Have a great meeting!2.31369100513367022
+1362564068339289300792Kiwi4+Red Rome LogicTimothy Ritcheyhttp://redromelogic.com/kiwi.htmlhttp://redromelogic.com/support.htmlhttp://itunes.apple.com/app/kiwi/id289300792?uo=5http://a3.mzstatic.com/us/r1000/037/Purple/9d/a1/77/mzl.pwybrngh.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/058/Purple/a1/d3/82/mzl.hhdalzzk.png2008 09 06Â© 2008 Red Rome LogicKiwi delivers Wikipedia for the iPhone and iPod touch as never before. Quickly and easily search the vast store of Wikipedia knowledge all in a clean, well designed user interface that takes full advantage of your mobile device.
+
+â€¢ Keep track of recently visited Wikipedia pages
+â€¢ Mark your favorite pages
+â€¢ Save pages locally so you can read later offline
+â€¢ Email links to your friends
+1.0.1507782692319
+1362564068339294126984iDict - Finnish Quick4+Super Art SoftwareLiu Yuehttp://sites.google.com/a/superarts.org/soft/Home/iDict-Serieshttp://sites.google.com/a/superarts.org/studio/Home/projects/superdichttp://itunes.apple.com/app/idict-finnish-quick/id294126984?uo=5http://a5.mzstatic.com/us/r1000/054/Purple/e1/96/79/mzl.mgpejsba.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/051/Purple/a5/89/35/mzl.fxxjpeka.png2008 10 23Â© 2008 Super Art SoftwareiDict - Finnish Quick (From/To 6 Languages/Dictionaries)
+
+Dictionaries:
+ * iDict - Danish to Finnish (Quick)
+ * iDict - English to Finnish (Quick)
+ * iDict - Finnish to Danish (Quick)
+ * iDict - Finnish to English (Quick)
+ * iDict - Finnish to Swedish (Quick)
+ * iDict - svenska-finska (Quick)
+
+Totally 11448 Entries.
+Size: 315KB.
+__________
+
+About iDict Series
+
+*Main features:
+
+- FAST AND CONVENIENCE. iDict is based on SQLite3 database, which is the most fast and reliable way of data storage and querying, so that you don't need any internet connection nor any additional downloading.
+- ALL THE DICTIONARIES YOU WANT. iDict is primary language oriented, which means when you buy an "English" version, you'll get all-languages-to-English and English-to-all-languages dictionaries.
+- YOUR OWN LIBRARY. You can pick you favorite dictionaries, and bypass unnecessary results.
+- CUSTOMIZABLE PREDICTING. You can customize the way search result predicting will be.
+- UNLIMITED HISTORY. Auto record all your search history, and you can erase them by a simple touch.
+- And MORE!
+
+*Notice:
+
+1. Please check the product size before purchasing. Large apps (larger than 10M) needs fast network connection. Please check other iDict products (with less dictionaries) if you want a fast installation.
+2. Although iDict is using the fastest database on iPhone, you may still experience unpleasant delay during data querying. In most cases it is due to the massive data, so please disable some unnecessary dictionaries, or increase the 'Search Length' value in the 'Settings' tab.
+3. You can check the details of all the dictionaries by touch the 'Dictionary' button in the 'Settings' tab.
+
+Please contact us if you have any problems or suggestions!v1.11046966379757
+1362564068339294173752iDict - Swahili Quick4+Super Art SoftwareLiu Yuehttp://sites.google.com/a/superarts.org/soft/Home/iDict-Serieshttp://sites.google.com/a/superarts.org/studio/Home/projects/superdichttp://itunes.apple.com/app/idict-swahili-quick/id294173752?uo=5http://a3.mzstatic.com/us/r1000/044/Purple/e1/96/79/mzl.egektuun.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/029/Purple/a5/89/35/mzl.qbjazxao.png2008 10 23Â© 2008 Super Art SoftwareiDict - Swahili Quick (From/To 6 Languages/Dictionaries)
+
+Dictionaries:
+ * iDict - Danish to Swahili (Quick)
+ * iDict - English to Swahili (Quick)
+ * iDict - Swahili to Danish (Quick)
+ * iDict - Swahili to English (Quick)
+ * iDict - Swahili to Swedish (Quick)
+ * iDict - svenska-suahili (Quick)
+
+Totally 4167 Entries.
+Size: 111KB.
+__________
+
+About iDict Series
+
+*Main features:
+
+- FAST AND CONVENIENCE. iDict is based on SQLite3 database, which is the most fast and reliable way of data storage and querying, so that you don't need any internet connection nor any additional downloading.
+- ALL THE DICTIONARIES YOU WANT. iDict is primary language oriented, which means when you buy an "English" version, you'll get all-languages-to-English and English-to-all-languages dictionaries.
+- YOUR OWN LIBRARY. You can pick you favorite dictionaries, and bypass unnecessary results.
+- CUSTOMIZABLE PREDICTING. You can customize the way search result predicting will be.
+- UNLIMITED HISTORY. Auto record all your search history, and you can erase them by a simple touch.
+- And MORE!
+
+*Notice:
+
+1. Please check the product size before purchasing. Large apps (larger than 10M) needs fast network connection. Please check other iDict products (with less dictionaries) if you want a fast installation.
+2. Although iDict is using the fastest database on iPhone, you may still experience unpleasant delay during data querying. In most cases it is due to the massive data, so please disable some unnecessary dictionaries, or increase the 'Search Length' value in the 'Settings' tab.
+3. You can check the details of all the dictionaries by touch the 'Dictionary' button in the 'Settings' tab.
+
+Please contact us if you have any problems or suggestions!v1.11066971196752
+1362564068339597295144é‡‘èžä¸“ä¸šè‹±è¯­ é¦–æ¬¾çº¯é‡‘èžä¸“ä¸šè‹±è¯­è¯æ±‡4+bai yundibai yundihttp://user.qzone.qq.com/191366523/infocenterhttp://itunes.apple.com/app/jin-rong-zhuan-ye-ying-yu/id597295144?uo=5http://a3.mzstatic.com/us/r1000/085/Purple2/v4/5f/d4/8b/5fd48b9b-db90-0756-7176-5239ea0b0a47/mzl.sjestlwo.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/086/Purple/v4/dc/3b/0c/dc3b0c66-a0f2-9fcc-005f-685b9aa39e86/Icon.png2013 01 29Â© W&Jè´¸æ˜“å›½é™…åŒ–ï¼Œé‡‘èžä¸“ä¸šè‹±è¯­é‡è¦åŒ–ï¼›
+é‡‘èžä¸“ä¸šè‹±è¯­è¯æ±‡å¤§å…¨ä¸»è¦å†…å®¹ï¼š
+1.å®žæ•ˆæ€§ï¼Œæ±‡èšäº†æœ€æ–°æœ€çƒ­æœ€å¸¸ç”¨çš„è‹±è¯­è¯æ±‡ï¼›
+2.åŒ…æ‹¬äº†è´¸æ˜“ã€é‡‘èžã€è´µé‡‘å±žã€è¯åˆ¸ã€å¤–æ±‡ã€é‡‘èžè¡ç”Ÿå“ç­‰æµ·é‡è‹±è¯­è¯æ±‡ï¼›
+3.æœç´¢åŠŸèƒ½ã€é›¶å¹¿å‘Šï¼›
+4.è½»è½»æ¾æ¾å­¦ä¹ ï¼Œå¿«å¿«ä¹ä¹èµšå›½é™…é’±ï¼›1.0137488469437436
+1362564068339288668768Tilt A Sketch4+Kuzmycz SoftwareMark Kuzmyczhttp://www.kuzmyczsoftware.com/TiltASketchhttp://www.kuzmyczsoftware.com/TiltASketch/Support.htmlhttp://itunes.apple.com/app/tilt-a-sketch/id288668768?uo=5http://a1.mzstatic.com/us/r1000/035/Purple/68/6d/c1/mzl.qwptjibq.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/053/Purple/51/26/d4/mzi.rmqqlqpx.png2008 08 22Â© 2008 Kuzmycz SoftwareMastered monkey ball and the tilt table? Do you have what it takes to tilt a masterpiece? 
+
+In this game you are the artist; however, can you create your masterpiece under the constant pressure of gravity where the slightest bump can ruin your work?
+
+Tilt-a-sketch uses the iPhone/iPod's accelerometer to draw on a canvas. For an extra challenge play the hard and extreme levels. If at any time the play gets too hot, touch the screen to halt play. Touch it again to continue (from rest).
+
+Once you have created your art save he work you your photo album.
+1.0134762399846
+1362564068339287953144ParveOMeterThe Jewish Learning GroupZalman Goldsteinhttp://www.JewishLearningGroup.comhttp://www.JewishLearningGroup.comhttp://itunes.apple.com/app/parveometer/id287953144?uo=5http://a1.mzstatic.com/us/r1000/016/Purple/0a/b4/ff/mzl.janngfyb.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/053/Purple/41/77/02/mzi.zbpepdtc.png2008 08 15Â© Zalman Goldstein/Jewish Learning Group, Inc.Am I "Dairy"? Am I "Meaty"?
+Keeping kosher? Want to start?
+
+With the new iPhone/iTouch PARVE-O-METER, you will never again have to wonder if you can eat meat or dairy food right now.
+
+A program of Biblical proportion, the PARVE-O-METER will help you keep track of the waiting times between eating meat or dairy, or dairy and meat.
+
+*Press the â€œMeatâ€ button when you have finished eating meat or meat products, and the timer counts down the requisite 6 hours before you can eat or drink dairy products.
+
+*Press the â€œDairyâ€ button when you have finished eating dairy or dairy products, and the timer counts down the requisite 0, 30, or 60 minutes (depending on the custom of your local Jewish community) before you can eat meat products again.
+
+*Set your waiting period preferences based on the custom of your local Jewish community.
+
+WHAT IS PARVE?
+According to kosher dietary law, meat and dairy products cannot be cooked or eaten together; they must always be separated. 
+
+Therefore, separate utensils are used for preparing, serving, and eating meaty and dairy foods, and a waiting time must elapse between eating one and the other.
+
+Parve is a Hebrew word which means  â€œneutralâ€ (neither meaty nor dairy). Kosher foods that are Parve may be eaten with either meat or dairy foods. 
+
+You, too, may be Parve!  â€œBeing Parveâ€ means you can either eat kosher meat or dairy products, whichever suites your fancy â€” if the required waiting time elapsed after your last meal of meat or dairy products.
+
+Bâ€™Tay-avon! (Hebrew for hearty appetite!)
+
+===============
+
+iPhone ParveOMeter concept by Devorah Goldstein1.0639633929476
+1362564068339296591296Mi experto en vocabulario .4+GameloftGamelofthttp://www.miexpertojuegos.comhttp://www.ubi.com/us/support/default.aspxhttp://itunes.apple.com/app/mi-experto-en-vocabulario-./id296591296?uo=5http://a1.mzstatic.com/us/r1000/001/Purple/da/d0/ea/mzl.rzukxzdn.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/008/Purple/97/fc/b9/mzl.xjgcnkuq.png2008 11 16Â© 2008 Ubisoft Entertainment. All rights Reserved. Ubisoft and the Ubisoft logo are trademarks of Ubisoft Entertainment in the US and/or other countries. En tu vida diaria, conocer la palabra exacta puede marcar la diferenciaâ€¦
+
+Mi Experto en Vocabulario es un mÃ©todo divertido y emocionante de mejorar tus habilidades verbales a travÃ©s de una serie de actividades y ejercicios que captarÃ¡n tu atenciÃ²n y te engancharÃ¡n.El juego estÃ¡ inspirado en el mÃ©todo de adquisiciÃ³n de vocabulario de Thomas Cobb, profesor de LingÃ¼Ã­stica Aplicada en la Universidad de Quebec. (www.lextutor.ca/cv/).Las actividades del juego incluyen reconocimiento de palabras, ejercicios de deletreo y definiciÃ³n de vocabulario.
+
+Cuando juegas, Mi Experto en Vocabulario evalÃºa, monitoriza y recompensa tu Potencial Expresivo!
+
+Publicado por Ubisoft, distribuido por Gameloft.1.0.01121394
+1362564068339292400768Financer : Easy to use financial ledger4+dBelement, LLCdBelement, LLChttp://dbelement.com/apps/financerhttp://dbelement.com/help/financerHelp.phphttp://itunes.apple.com/app/financer-easy-to-use-financial/id292400768?uo=5http://a4.mzstatic.com/us/r1000/026/Purple/08/e3/c5/mzl.eaeteqbn.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/016/Purple/7c/8b/36/mzl.yoeipazn.png2008 10 03Â© 2009 dBelement, LLCFinancer is a multi-functional application allowing you to track your spending and manage your bank accounts. As quick and intuitive as a checkbook register, Financer allows you to record all of your deposits and withdrawals.  You can also easily track your expenses and follow your monthly budgets; helping you stay on top of your monthly expenses.
+
+Financer allows you to manage an unlimited number of accounts in one convenient place.  Whether you are a busy professional, business owner, or a college student who wants to avoid those nasty overdraft charges, Financer can help you.
+
+Your finances are secure with Financer's optional password protection. This feature keeps your accounts safe and secure from unauthorized users.  Financer will empower you and set you on track to achieving your financial goals.1.41459151105472
+1362564068339314682808BunnyFarts LE Stinky Winky Fart4+BoxOnlineBoxOnlinehttp://bunnyfarts.boxonline.comhttp://forum.boxonline.comhttp://itunes.apple.com/app/bunnyfarts-le-stinky-winky/id314682808?uo=5http://a1.mzstatic.com/us/r1000/053/Purple/94/72/fe/mzl.qihzeswh.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/046/Purple/68/35/54/mzl.boxkagaq.png2009 05 24Â© 2009 BoxOnline"Our Kids Giggled With Delight!"
+
+The BunnyFarts series is pure and simple fun for kids of all ages. More bunnies and even funnier artwork should be available in the coming weeks.
+
+Sure there are a few more bells and whistles in the Original version of BunnyFarts and lots more bunnies and sounds in the Premium version, but if you need to make someone smile, this little App should do the trick. Here's what a few of our Customers shared with us:
+
+"Haha - you made me choke on a sandwich today, thx"
+
+"just the ticket for a rainy day on a school bus surrounded by kids"
+
+If you liked iFart, iWoopie and Atomic Fart then you will love this App.
+Here is how to say fart and flatulence in a few more languages:
+
+Danish: prut
+Dutch: scheet
+French: pÃ©ter
+German: furzen, pupsen, miefen, sausen
+Italy: peto, scoreggia
+Portugese: peido, peidar
+Spanish: pedo
+Swedish: fisa, fis, prutta, fjÃ¤rta
+Swiss German: furzÃ¤
+
+HOW TO USE THIS APP:
+Just tap the bunny, show it to some kids and get ready to laugh1.0016848315301564
+1362564068339301630216Pizza Hut Finder4+IntelligentMobilesintelligentmobiles GmbH i. Gr. http://www.intelligentmobiles.comhttp://www.intelligentmobiles.comhttp://itunes.apple.com/app/pizza-hut-finder/id301630216?uo=5http://a1.mzstatic.com/us/r1000/058/Purple/2c/8f/e9/mzl.bnfqoznk.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/030/Purple/42/eb/fa/mzl.kpvrxmmc.png2009 01 12Â© IntelligentMobiles GmbHIts only Pizza Hut for you ?
+
+a single press on our little app and the PH finder searches Pizza Hut restaurants around you and shows you the way.
+
+To get directions, press the pin of the desired restaurant, then the white arrow on blue ground and choose "directions to here". Start and End fileds open - the end field is already filled. Press the start field, then the blue book symbol on the right side and choose "current location". Finish with the button on the lower right corner.
+
+Missing your favourate food ? Send us an email and we will add it.
+
+Works in USA, Germany and english or german speaking countries. Please switch language of Iphone accordingly.
+
+Know Issues: some fast food restaurants are not everywhere. If that is the case, you might get some irrelevant data. GPS positioning needs view of Satellites. High mountains, large buildings, indoor or some weather situations may interfere with GPS reception. Bad GPS reception may result in showing a wrong position. This is not a fault of our app but a built in limitation of GPS.
+
+
+Reviews: like everybody we ask you to give us a good review. If you are not satisfied, please contact us and give us a fair chance to reply.1.0142981531810
+1362564068339304803328Addition Coach4+WebGames3D.comAndy Mileusnichttp://Webgames3d.comhttp://Webgames3d.comhttp://itunes.apple.com/app/addition-coach/id304803328?uo=5http://a1.mzstatic.com/us/r1000/037/Purple/88/92/6f/mzl.bltmabrr.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/023/Purple/f1/fb/7b/mzl.yzfrzmmn.png2009 02 14Â© WebGames3D.comAddition Coach is a perfect app for beginner mathematicians. It shows the relationship between objects and numbers.  This greatly enhances the learning and understanding of math.  Only positive reinforcement is used when the student gets the numbers correct.  This app is guaranteed to rapidly get the student understanding addition.  The beautiful 3D graphics illustrate math concepts in a fun and clear way.  Just tap on the blocks to add them up to the equal the number displayed at the top.  To delete you tap on the extra blocks and adjust them until you have the right answer.  Then you are rewarded by a big cheer.1.0146529312091426
+1362564068339289049840Blofeld4+WEsoftPatrick Warmboldhttp://www.warmbold.eu/Blofeldhttp://itunes.apple.com/app/blofeld/id289049840?uo=5http://a5.mzstatic.com/us/r1000/047/Purple/da/33/a8/mzl.hbrnzeat.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/005/Purple/3d/4a/09/mzl.qteiezve.png2008 08 28Â© 2008 Patrick Warmbold, Christian ErtelDo you like the contented purring and the relaxing effect of a cat?
+
+- But there is no one at hand when you want to relax a bit?
+- You'd like to have a cat but you are allergic?
+- Or are you simply a bad guy who wants to feel like Mr. Blofeld while seeking for world domination?
+
+Whatever your motivation is, this App will meet your needs and help you relax a bit in your stressful everyday life!
+Simply pet the pelt on the display in a smooth and pleasing way and after a short moment your virtual cat will start to purr contentedly.
+
+Double tap the screen to choose from one of four different pelts and enjoy the pleasant purring.
+
+Blofeld works great on the iPhone with its built-in speakers. iPod users need their headphones or external speakers.
+
+1.02085711783187
+1362564068339285731112iAdd - Simply Add (Maths)4+Shekhar YadavShekhar Yadavhttp://whohasiphone.comhttp://whohasiphone.comhttp://itunes.apple.com/app/iadd-simply-add-maths/id285731112?uo=5http://a4.mzstatic.com/us/r1000/107/Purple/67/b8/65/mzl.qizbzpna.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/064/Purple/b6/c4/09/mzl.gxbnqyzu.png2008 07 16Â© 2008 Shekhar YadavThis is a simple addition and makes math a lot more fun. It provides hours of fun while exercising your brain. In no time you will find yourself sharper at adding numbers. Surprise your friends, parents, spouse how smart you are. Perfect gift for kids too. 
+
+The game will give you a number, say 12. Using the number from the easy to use touch grid, you have to add up to 12. So e.g. you can tap 3 and 9. With different game it gives you different possible number spaces you have to fill while also maintaining the sum. E.g. if the number was 12, and the spaces (?) were 3. then 3 and 9 would be wrong answer. You will have to say 3, 8 and 1 or some combination using 3 numbers to add upto 12. 
+
+Try it, it is simple and at the same time challenging. Perfect game for iPhone.
+
+1.023441139687
+1362564068339313952080I'm At4+Nicholas PellowNicholas Pellowhttp://imat-iphone-app.appspot.com/http://imat-iphone-app.appspot.com/http://itunes.apple.com/app/im-at/id313952080?uo=5http://a3.mzstatic.com/us/r1000/043/Purple/5d/88/d6/mzl.jrspayni.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/002/Purple/f8/fd/a6/mzl.bineclzg.png2009 05 03Â© Nick PellowLet your friends know your location (lat/long) and street address at the click of a button.
+
+Currently supports broadcast via Twitter and Email.
+
+Other features:
+* Location is set via GPS, dragging pin or a location search
+* Option to modify message before sending
+* Auto-tweet preference for instant tweet of location
+* Message includes a link to an online map showing your location
+* Last sent location is stored for next time you run the app
+* Extremely fast and simple to use0.91652855150844
+1362564068339287116480Sudoku Daily4+Phase2 MediaPhase2 Mediahttp://http://phase2games.com/support.phphttp://itunes.apple.com/app/sudoku-daily/id287116480?uo=5http://a4.mzstatic.com/us/r1000/047/Purple/1a/76/87/mzl.gzsfbnfd.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/028/Purple/55/f9/12/mzl.dvdezkjy.png2008 08 06Â© 2008 Phase2 MediaMorning newspaper sudoku players, your time has come!
+
+We're proud to introduce Sudoku Daily, the free version of our awesome app, Sudoku Unlimited.
+
+Sudoku Daily gives you a new puzzle to solve every day in the difficulty of your choice, and all of the following great features:
+
+- A puzzle generator that makes a new puzzle from scratch every day
+- 4 gorgeous skins
+- 5 Difficulty settings, to accommodate players of every skill level
+- **Offline play** No network connection needed, ever
+- One-touch note filling
+- An intelligent hint system that shows you the next logical step
+-Automatically saves your progress when exiting the game or getting a phone call
+- Options to turn off sounds, animations, error display, in game timer and auto locking of the device
+- Option to switch the popup back and forth to a user-set level of transparency 
+- Draggable popup
+- Scores sorted by best time instead of date 
+- Interface localization 
+- Ability to enlarge the popup, for easier number selection 1.0516496132799175
+1362564068339317164208BrainBoggler4+Uwe MeierUwe Meierhttp://iphone.meier-clan.nethttp://iphone.meier-clan.net/http://itunes.apple.com/app/brainboggler/id317164208?uo=5http://a4.mzstatic.com/us/r1000/054/Purple/17/51/61/mzl.qhoybnbv.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/002/Purple/4d/ba/f3/mzl.ldmvbqif.png2009 05 25Â© Uwe MeierBrain Boggler is an addictive mind twister game. The rules are easy, but finding the correct solution will make you think to find the right strategy. There are several play modes to practice the game and modes to take a challenge. 
+
+Objective: Flip all the tiles back to light blue in as few moves as possible. Tap a tile with your finger, then choose a direction. All tiles in a straight line along the path you've chosen will be flipped to the opposite color. The game ends when all the tiles are light blue. 
+
+In the practice mode you can practice your skills for the different levels. 
+
+In the marathon mode you will be presented with a series of patterns. When you solve the pattern within the given number of moves, you will advance to the next level. 
+
+Finally there is the â€™50 boardâ€™ challenge board. You start with board number 1, once you solve it, you will unlock the next board. It will start out easy, but get harder over time.1.117302811953397
+1362564068339303072800Around the World in 80 DaysStandard Works LLCStandard Works LLChttp://StandardWorksApp.com/bookshttp://StandardWorksApp.com/bookshttp://itunes.apple.com/app/around-the-world-in-80-days/id303072800?uo=5http://a4.mzstatic.com/us/r1000/031/Purple/a3/e9/9a/mzl.lhqwugiz.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/018/Purple/3e/77/9f/mzl.jemzgmfk.png2009 01 21Â© 2009 Standard Works LLCAround the World in Eighty Days is a classic adventure novel by the French writer Jules Verne, first published in 1873.  In the story, Phileas Fogg of London and his newly employed French valet Passepartout attempt to circumnavigate the world in 80 days on a 20,000 pound wager set by his friends at the Reform Club.
+
+This eBook uses the established Standard Works book reader already enjoyed by thousands of users on a daily basis. It's also the same reader which powers our "U.S. Historical Documents" application which received a perfect 10/10 rating from AppCraver.com
+
+See a video demonstration of the Standard Works eBook reader at StandardWorksApp.com/books
+
+The Standard Works book reader is simple to use, but also contains many advanced features not usually found in other eBook readers.  Rather than continually flicking through little pages of text like some book readers, the Standard Works book reader displays an entire chapter or book at once for you convenience. The text can even automatically scroll for you in both portrait and landscape modes while reading.  Highlight important words or phrases using the absolute best highlighting system available on the iPhone platform.  Create notes for each paragraph which can be displayed inline and assign bookmarks to any paragraph in any book for future reference.  And if that's not enough, quickly and easily find any text from any book with the fastest and most powerful search engine available on the iPhone.
+
+The Standard Works book reader contains the following main features:
+â€¢ Auto-scrolling (both variable-speed and tilt-based, portrait and landscape modes are supported)
+â€¢ Adjustable fonts, size, colors, margins, spacing, and alignment (you can even adjust the font size by using a pinching gesture while reading!)
+â€¢ Highlighting - 12 background colors, 12 foreground colors, bold, italic, and underline
+â€¢ Night (low-light) mode - Black background with white text
+â€¢ Application tips
+â€¢ Bookmarks and even folders of bookmarks
+â€¢ Last location in each book is remembered
+â€¢ When re-launched, you're returned to the exact location you were last at while reading
+â€¢ Search for words or phrases with INSTANT search results
+â€¢ Powerful advanced search options
+â€¢ Create notes for each paragraph which can be displayed inline
+â€¢ Animated satin bookmark (similar to the one in the Classics application) 
+â€¢ Ability to choose the application's color theme
+
+Be sure to check out our Bible and "U.S. Historical Documents" applications as well as more books from world renowned authors like:
+â€¢ Charles Dickens
+â€¢ Edgar Allen Poe
+â€¢ Hans Christian Andersen
+â€¢ Jack London
+â€¢ Jane Austen
+â€¢ Jules Verne
+â€¢ H.G. Wells
+â€¢ Sir Arthur Conan Doyle1.9.414462761878955
+1362564068339313162704BLOCK x BLOCK FREE4+EXRANT Inc.EXRANT Inc.http://http://exrant.co.jp/support/blockblock.htmlhttp://itunes.apple.com/app/block-x-block-free/id313162704?uo=5http://a3.mzstatic.com/us/r1000/041/Purple/47/7c/71/mzl.pmpqaxci.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/012/Purple/0b/f2/a3/mzl.zjteriop.png2009 05 22Â© 2009 EXRANT Inc.We announce a new type of â€˜Block Breakerâ€™game, that is designed to be able to hit a ball toward blocks form 4 sides. Slant an iphone and move and controll the bar so that ball won't fly out from the screen. 
+How many stages can you clear? Check this game out! 
+
+If you would like to keep playing more, you can enjoy a toll game we have. 
+You can play more stage that is leveled up on this toll game.
+
+The frontiers of cool game is waiting for you!!
+
+Playing movie ( This movie is full version. ):
+http://www.youtube.com/watch?v=tgjzSToVrqE&feature=player_embedded
+1.11727155410491
+1362564068339317468720Flyswatter - Use your iPhone to swat flies!9+LOLriffic StuffAdan Vielmahttp://http://www.hostflare.com/support/http://itunes.apple.com/app/flyswatter-use-your-iphone/id317468720?uo=5http://a1.mzstatic.com/us/r1000/048/Purple/a9/79/0f/mzl.bejmqidc.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/043/Purple/e9/46/10/mzl.xszkycok.png2009 05 31Â© 2009 LOLriffic Crazy Funny Games for Parties****
+DOWNLOAD FLYSWATTER FOR FREE TODAY!
+
+HAVE FUN WITH YOUR FRIENDS WITH EACH FLY SPLAT!
+****
+
+Entertain your friends with fun and gross flyswatter action. Listen for the sound of a fly buzzing nearby from your iPhone or iPod and be quick to swing and swat it.
+
+Hit each fly and hear a splatter as you gain a point for hitting weird bugs. Be on a roll and you'll eventually get to hear the limited edition yet hilarious mega ultimate bug splatter. Miss squishing one bug and you'll see a miss screen message along with the humility that you were outpaced by a bug with a brain that is microscopic compared to your brain.
+
+Strike up a fun game of splattering bugs at lunch during a recess break or if you have a hot date tonight with a supermodel, invite him or her to splurge in their own child fun of playing with bugs and swatting flies. Maybe you'll connect on a deeper level of sexy love determined by your fly swatting skills. Make a night of it with your friends at a sleep over or "bug" your little sister or brother by sneaking into their room at night and swatting the mega bugz creatures right above their sleepyhead. Watch as they freak out upon hearing the splatter of bug stuff above them and don't realize your prank you're pulling on them.
+
+Even better, have a flyswatting olympic petition tryout. Start up your own swatting teams for each nation and see who has the best swat to miss ratio over everyone else. Then award the winner with a swat on the back of comical fun and laughter. Great for lunchtime breaks at school, university, work, or even at home. Entertain your pet dogs and cats as you swat around at mysterious and invisible flies. They'll probably think you're a lolperson and create a new lolcat like website after you with all your funny bug swatting skills. Overall, just enjoy the comedy and fun nature of swatting flies. Find your own funny situations to swat flies in and post them here. We'd all love to hear!
+
+Keywords: games, fly swat, funny, joke, prank, accelerometer, splat, gross yet cute in a strange way, bugz
+
+
+*** DOWNLOAD FLYSWATTER FREE TODAY ON ITUNES! ***1.117236512616498
+1362564068339317828936NY Traffic Jams4+PlanetDrivesKonstantin Klyatskinhttp://iphone.planetdrives.comhttp://iphone.planetdrives.comhttp://itunes.apple.com/app/ny-traffic-jams/id317828936?uo=5http://a3.mzstatic.com/us/r1000/047/Purple/14/bd/d0/mzl.thoavagd.100x100-75.jpghttp://a2.mzstatic.com/us/r1000/051/Purple/c0/84/da/mzl.ofsxcsai.png2009 06 04Â© PlanetDrives----------------------------------------------------
+Free as its functional has migrated to new free app: PD Maps Worldwide Edition.
+----------------------------------------------------
+
+NY Traffic Jams
+for iPhone/iPod Touch
+
+"I think we might lose the community character if every time you go out to the road, it's a traffic jam." - Keith Simpson
+
+Features:
+
+- latest map of New York area in 4 scales; 
+- GPS point of the current location on the map (updates automatically); 
+- super fast map scrolling; 
+- real-time traffic jams (the server updates every 4 minutes); 
+- auto/manual update of traffic information; 
+- strong compression of traffic information for fast data transfer over the net; 
+- loading indicator allows to monitor the quality of connection and evaluate the time required to update the traffic information; 
+- the traffic information is cached for being shown later without Internet-connection; 
+- real-time weather and weather forecast for 4 days (the server updates every 10 minutes); 
+- the application is optimized for using while driving (vibration and button clicks' sounds);
+
+The application requires Internet-connection for updating the traffic information. No Internet-connection is required for browsing the information received before.
+The program uses data provided by Google. The author is not affiliated with Google in any way.1.0217277282680176
+1362564068339315582080(1)DominionF/Shirow Masamune12+NTT SolmareNTT Solmarehttp://www.nttsolmare.com/jp/appstore/http://www.nttsolmare.com/jp/support/app_index.htmlhttp://itunes.apple.com/app/1-dominionf-shirow-masamune/id315582080?uo=5http://a2.mzstatic.com/us/r1000/005/Purple/ff/26/91/mzl.sdpdkdqy.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/052/Purple/31/6a/7a/mzl.vdybpdaw.png2009 05 14Â© SEISHINSHAâ€œDOMINIONâ€ a first manga series by Shirow Masamune, who created the popular manga â€œAppleseedâ€ has been releasedï¼In the Hyogo Prefectural Police Force of the future, Leona Ozaki who loves tanks, kicks some bad guysâ€™ butts. Some time in the future, bacterial air pollution has become so severe that people must wear gas masks when outdoors. The Hyogo Prefectural Police has a tank squadron to fight violent criminals. Thatâ€™s where Leona Ozaki works. She loves tanks and fights her arch-enemy Buaku and his gang on her tank â€œBonaparteâ€ï¼
+
+[Biography]
+The Ghost in the Shell (KOUKAKUKIDOUTAI)
+APPLESEED
+ORION
+DOMINION
+INTRON DEPOT
+INNOCENCE
+
+Enjoy more wonderful comics from NTT Solmare available for the iPhone and iPod Touch!
+
+Tags: manga mannga comic comics book books comicbook comicbookscartoon graphic illust illustration japan japanese jpn nihon nihonn nippon nipponn otaku anime animation movie sf science fiction adventure action fight battle war philosophy police detective soldier army criminal offender pirate machine gun rifle bombshell missile tank adult kids omnibus short stories short story long story teenager reona al buaku bonaparte environmental swat shirou sirow sirou 1.016978378621611
+1362564068339296114264å®¶ç´‹(æˆ¦å›½æ­¦å°†)4+ENOSENOShttp://www.enos.co.jphttp://www.enos.co.jphttp://itunes.apple.com/app/jia-wen-zhan-guo-wu-jiang/id296114264?uo=5http://a1.mzstatic.com/us/r1000/104/Purple/be/9f/a7/mzl.bcmhwncp.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/063/Purple/2d/d0/45/mzl.fvgzeiid.png2008 11 18Copyright Â© 2008, ENOS Co., Ltd.IIt introduces the family crest with a general in Japan the civil wars typical. 
+It is a grand civil wars picture scroll, and it is possible to see by 38 whole numbers in feelings that I become a civil wars general, too. 
+General's picture is displayed on the left when the family crest is selected from the map of Japan, and figure of the family crest is displayed when clicking. 
+All family crests can be displayed, and a family crest favorite by one is found to the list screen. 
+Warring lord's picture is displayed when the tap is done by the finger, and the family crest is displayed to the explanation of the large distinguished family. 
+Family crest and warring lord's self-portraits can be turned over one after another by doing flip by the finger. 
+Please enjoy family crest and civil wars general's slide shows with BGM of the samisen. 
+The self-portrait of a favorite family crest and the warring lord is preserved in the camera roll, and it makes it to the idle screen. 
+The preserved family crest can be freely used in a beautiful image of 512x512 pixel. 
+For instance, it takes into the personal computer and one-point is applied to the letter as a small mark. 
+It is possible possible to decorate variously, and to use it for your freedom by printing on T-shirt etc. and printing on making and other seals of T-shirt of a good-looking family crest. 
+This software corresponds to a multi national language (Japanese/English/German/French/Spanish/Italian). 
+
+Improvement point in Ver2.1.
+((1)It corresponded to iPhone OS 2.2.1 for the performance and the stability improvement. 
+
+*** notes ***
+(1)When the tap is done, the image without the photograph is displayed when there is no picture of the general who relates to the family crest. Even the slide show of this is similar. 
+(2)Mail Sending might not be able to be used according to compatibility with the SMTP server used. In that case, please use the standard mail function for conventional after it preserves it in the camera roll. 2.1.0146298321432632
+1362564068339315940288Sparkle Hearts4+ksoftKory Beckerhttp://www.dummysoftware.com/iphone/sparklehearts.htmlhttp://www.dummysoftware.com/iphone/sparklehearts.htmlhttp://itunes.apple.com/app/sparkle-hearts/id315940288?uo=5http://a2.mzstatic.com/us/r1000/039/Purple/05/18/67/mzl.jpuymquj.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/014/Purple/af/f9/cb/mzl.ajzzlrmo.png2009 05 20Â© 2009 ksoftAdd some glitter to your iPhone with the fun of bouncing sparkling hearts in the easy-to-play, finger-gripping game, Sparkle Hearts! The object of the game is simple. Just tap the heart to score 10 points. You'll find red hearts, blue hearts, solid hearts, broken hearts, pretty hearts, gothic hearts, and more! As easy as that sounds, Sparkle Hearts advances in difficulty with each point scored, so keep your focus on the iPhone screen and get ready to tap away! How many glittering hearts can you get?
+
+Features:
+
+- Extremely easy game-play, simply tap the hearts to score 10 points.
+- Skill level increases with each point scored.
+- High score saved for future game play.
+- Features 8 different glittering hearts, 8 different sparkle backgrounds.
+- Unlimited level of challenge awaits those with top tapping skill!
+- Great casual game to play during quick breaks, easy to start, easy to end.1.01703672884374
+1362564068339304982872DailyFlower4+Cedar Media, Inc.Cedar Media, Inc.http://www.cedarmedia.comhttp://www.cedarmedia.comhttp://itunes.apple.com/app/dailyflower/id304982872?uo=5http://a4.mzstatic.com/us/r1000/114/Purple/76/14/75/mzl.eavgiyar.100x100-75.jpghttp://a3.mzstatic.com/us/r1000/062/Purple/50/6f/71/mzl.dckudfem.png2009 02 16Â© 2009 Cedar Media, Inc.Flowers make us happy. Did your significant other leave you hanging without a flower today? Perhaps you're having a bad day at work and need to be cheered up to get through the day. Or maybe youâ€™re sitting in yet another dreadful meeting at work. DailyFlower is here to help.
+
+With DailyFlower, you will receive a new, refreshing and amazing flower photo everyday. 
+
+DailyFlower gives you an exclusive collection of high-quality photos, carefully selected just for you. You won't find these spectacular and inspiring flower photos anywhere else.
+
+And if you really like a particular flower, you can easily save it to your iPhone or iPod Touch and use it as a wallpaper. Once saved in your photo album, you can also share the flower with a friend or someone you love.1.014687612247910
+1362564068339294174160Invazion Project-R4+Craig PereraCraig Pererahttp://www.iiphone.biz/IPhone/Invazion_Support.htmlhttp://www.iiphone.biz/IPhone/Invazion_Support.htmlhttp://itunes.apple.com/app/invazion-project-r/id294174160?uo=5http://a2.mzstatic.com/us/r1000/008/Purple/80/c9/a8/mzl.xlcjuqnu.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/046/Purple/fa/5c/e0/mzl.iowescwd.png2008 10 21Â© 2008 Craig PereraPure retro heaven. If you like classic Arcade games then this is one for you.
+
+Based on Invazion this is a more traditional arcade game with retro graphics to match.
+
+You must save the earth from the rampaging aliens who will stop at nothing to destroy you or the earth. This game is a celebration of a classic game, updated to add some challenges. 
+
+You start out with 1 life and the aliens start quite tame. Each level they will increase in number and speed, they will also shoot more often over time.
+
+This version of the game allows you to earn achievements, these are earned by shooting the GOLD UFO which will scroll across the screen at random. You can gain a single achievement on each level. The achievements will allow you to Pause the Game, Save the Game, Get multiple lives and also Earn extra lives as you attain higher levels.
+
+There are 4 control schemes available which are Touch Control, Joystick Control, Button Control and Tilit Control. These are covered in the help screens and on the support site.
+
+To increase your score you can hit the random UFO which will appear at the top of the screen. This has a points value between 5 and 30 based which is calculated using a special formula. Hitting the GOLD UFO will earn you 50 points and 1 achievement, each level has at least 1 of the UFO's available, however once hit you will not see it again in this level.
+
+Invazion Project-R features an unlockable game saving ability. Anytime you exit the application (for example using the home key) the game state will be saved. In addition the pause screen in the full version features a save game option which can be used at any time.
+
+On re-entering the application you will have the option to resume a saved game provided you have attained the save feature.
+
+If you have any feature requests, comments, love or hate it or questions feel free to email me.1.07591633951836
+1362564068339310466160èˆŠå”æ›¸(ç¹é«”) (å…¨æœ¬) äºŒåå››å² ä¹‹ä¸€ jiutangshu ershisishi æ­·å²4+LoudReader IncJian Zhanghttp://www.loudreader.com/en/index.htmlhttp://www.loudreader.com/en/contact.htmlhttp://itunes.apple.com/app/jiu-tang-shu-fan-ti-quan-ben/id310466160?uo=5http://a2.mzstatic.com/us/r1000/050/Purple/e5/9d/62/mzl.bbkblmew.100x100-75.jpghttp://a5.mzstatic.com/us/r1000/029/Purple/e1/8e/94/mzl.tyhluwdo.png2009 04 03Â© LoudReader Incæœ¬ç€ä¸¥è°¨è®¤çœŸçš„æ²»å­¦æ€åº¦, LoudReader å‡ºç‰ˆçš„åŽ†å²å›¾ä¹¦åŒ…å«åŽŸä¹¦ä¸­çš„æ–‡å­—ä¸Žæ³¨é‡Š, æ‰€æœ‰çš„åŽ†å²è¡¨æ ¼. å¯¹äºŽå·²ç»æ¶ˆäº¡çš„æ±‰å­—åˆ™ç”¨å›¾åƒæ¥ä»£æ›¿, å°½åŠ›ç»™è¯»è€…ä»¥100%å‡†ç¡®åº¦. ä»¥ä¸åŒçš„é¢œè‰²å’Œå­—ä½“æ˜¾ç¤ºä¸åŒç±»åž‹çš„å†…å®¹, ç»™è¯»è€…ä»¥èµå¿ƒæ‚¦ç›®çš„é˜…è¯»äº«å—. 
+
+ã€ŠèˆŠå”æ›¸ã€‹ç‚ºå¾Œæ™‰åŠ‰æ˜«ç­‰æ’°ã€‚åŽŸåã€Šå”æ›¸ã€‹ï¼Œã€Šéƒ¡é½‹è®€æ›¸å¿—ã€‹ã€ã€Šç›´é½‹æ›¸éŒ„è§£é¡Œã€‹ã€ã€Šå®‹å²Â·è—æ–‡å¿—ã€‹åŠå—å®‹åˆ»æœ¬å‡é¡Œç‚ºã€Šå”æ›¸ã€‹ï¼Œå¾Œç‚ºå€åˆ¥åŒ—å®‹æ­é™½è„©ç­‰äººç·¨çš„ã€Šæ–°å”æ›¸ã€‹ï¼Œæ”¹åã€ŠèˆŠå”æ›¸ã€‹ã€‚å…±200å·ï¼ŒåŒ…æ‹¬æœ¬ç´€20å·ã€å¿—30å·åŠåˆ—å‚³150å·ã€‚è¨˜è¼‰å”é«˜ç¥–æ­¦å¾·å…ƒå¹´ï¼ˆ618å¹´ï¼‰è‡³å”å“€å¸å¤©ç¥å››å¹´ï¼ˆ907å¹´ï¼‰ã€‚
+
+LoudReader æ˜¯åˆ›æ–°æ€§çš„iPhone é˜…è¯»ç¨‹åº, å®ƒå…·æœ‰ä»¥ä¸‹å…ˆè¿›åŠŸèƒ½:
+* ä¸“ä¸ºiPhone è€Œåšçš„å­˜å‚¨ä¼˜åŒ–, å­˜å‚¨ç›¸åŒçš„å›¾ä¹¦æ¯”å…¶å®ƒç¨‹åºèŠ‚çœè¶…è¿‡30%çš„ç©ºé—´.
+* å…¨å±å¹•é˜…è¯»æ”¯æŒ. LoudReader åªåœ¨ç”¨æˆ·éœ€è¦æ—¶æ˜¾ç¤ºæŽ§åˆ¶å¯¹è¯æ¡†, è€Œå…¶å®ƒiPhone é˜…è¯»ç¨‹åºæ˜¾ç¤ºæŽ§åˆ¶å§‹ç»ˆå ç”¨å®è´µçš„å±å¹•.
+* ä½¿ç”¨HTMLæ˜¾ç¤ºå›¾ä¹¦çš„å¤šç§å­—ä½“, ä¼˜äºŽå…¶å®ƒç¨‹åºçš„å•ä¸€å­—ä½“æ–‡æœ¬æ˜¾ç¤ºæ–¹å¼.
+* é¡µå†…å·åŠ¨æŽ§åˆ¶å¸®åŠ©è¯»è€…åœ¨é•¿é¡µé¢å†…å¿«é€Ÿç§»åŠ¨åˆ°ä»»æ„ä½ç½®
+* ç”¨ä¸¤æ‰‹æŒ‡é æ‹¢/åˆ†å¼€æ¥ç›´è§‚è°ƒæ•´å­—ä½“å¤§å°æˆ–è€…é€šè¿‡æŽ§åˆ¶æŒ‰é’®æŽ§åˆ¶.
+* æ‰‹æŒ‡è½»å‡»å³å¯ä½¿ç”¨çš„ç« èŠ‚é€‰æ‹©, å­—ä½“å¤§å°æŽ§åˆ¶.
+* å¯å¿«é€Ÿåˆ°ä»»æ„ç« èŠ‚æˆ–å‰åŽç« èŠ‚
+* å‡†ç¡®å›žåˆ°ä¸Šæ¬¡é˜…è¯»ä½ç½®(ç”šè‡³åŒ…æ‹¬ä¸Šæ¬¡å·æ»šæ¡ä½ç½®)
+* æ”¯æŒæ°´å¹³æ–¹å‘é˜…è¯». ç¨‹åºè‡ªåŠ¨è°ƒæ•´å›¾ä¹¦æ˜¾ç¤ºæ–¹å¼.
+* æ”¯æŒå›¾ä¹¦ç« èŠ‚çš„å‰è¿›åŽé€€åŠŸèƒ½, åœ¨å¿«é€ŸæŸ¥é˜…å‚è€ƒå›¾ä¹¦çš„å…¶å®ƒç« èŠ‚åŽä¸€é”®å³å¯å›žåˆ°åŽŸæ¥é˜…è¯»çš„åœ°æ–¹
+Â 
+LoudReader æ“ä½œç®€ä»‹
+* æ¯ä¸€ç« ä¸ºä¸€é•¿é¡µ, ç”¨æ‰‹æŒ‡æ‹–åŠ¨å·æ»šé˜…è¯».
+* ç”¨ä¸¤æ‰‹æŒ‡é æ‹¢/åˆ†å¼€æ¥ç›´è§‚è°ƒæ•´å­—ä½“å¤§å°
+Â * è½»å‡»é¡µé¢å³å¯å¼¹å‡ºæŽ§åˆ¶é¢æ¿. é˜…è¯»å™¨çš„æ“ä½œç”±è¿™ä¸€ä¸ªå¼¹å‡ºå¼æŽ§åˆ¶é¢æ¿æŽ§åˆ¶, ç®€å•ç›´è§‚æ–¹ä¾¿æ˜“ç”¨.
+* è½»å‡»å³ä¸Šè§’è“è‰²å¿«é€Ÿå‰è¿›é”®/åŽé€€é”®æŽ§åˆ¶åˆ°ä¸‹ä¸€ç« /å‰ä¸€ç« . 
+* ä¸­é—´æ»šè½®é€‰æ‹©è¦åŽ»çš„ä»»ä½•ä¸€ç« , å†è½»å‡»å³ä¸‹è§’è“è‰²æ‰§è¡Œé”®æ‰§è¡Œ. 
+* å¦‚å¸Œæœ›å¿«é€Ÿåœ¨é¡µé¢å†…ç§»åŠ¨, å¯ç”¨æŽ§åˆ¶é¢æ¿å°æ»šè½®é€‰æ‹©é¡µé¢ä½ç½®ç™¾åˆ†æ¯”æˆ–å°ç« å·åŽè½»å‡»è“è‰²æ‰§è¡Œç®­å¤´è¿›è¡Œ.
+* è½»å‡»ä¸‹æ–¹ "+/-" æŒ‰é”®æ¥è°ƒæ•´å­—ä½“å¤§å°
+* è½»å‡»ä¸‹æ–¹ç»¿è‰²çš„ç®­å¤´æŽ§åˆ¶ç« èŠ‚å¯¼èˆªçš„åŽé€€å’Œå‰è¿›. 
+* è½»å‡»å·¦ä¸‹è§’çš„è“è‰²"i"æŒ‰é”®æ˜¾ç¤ºç›®å½•é¡µé¢. å¦‚æžœæœ‰å¤šæœ¬ä¹¦, ç›®å½•é¡µé¢çš„å·¦ä¸Šæ–¹å°†æ˜¾ç¤ºå›¾ä¹¦é€‰æ‹©æŒ‰é”®.
+* é€€å‡ºé˜…è¯»å™¨æ—¶ç¨‹åºä¼šè‡ªåŠ¨è®°ä½æœ€åŽçš„é˜…è¯»ä½ç½®(ç”šè‡³åŒ…æ‹¬ä¸Šæ¬¡å·æ»šæ¡ä½ç½®), ä¸‹æ¬¡è¿›å…¥é˜…è¯»å™¨æ—¶ç¨‹åºç›´æŽ¥æ‰“å¼€åˆ°æ­¤å¤„.
+
+
+LoudReader, an advanced iPhone reader application, featuring a simple and non-intrusive pop-up control panel through a tap, provides the following important customer benefits:
+* True full screen reading mode to give the best utilization of your precious screen.
+* Easy font size change with an intuitive pinch or a +/- button to suit your preference.
+* Easy scrolling navigation between chapters/stories to quickly go to next/previous story/chapter or any other stories/chapters in the book.
+* Quick scrolling navigation to provide an overview of the entire book.
+* Enhanced quick reference feature. Web browser style backward and forward functions maintain user's browser history. One tap brings user back to the original reading location. 
+* Portrait and landscape reading mode. Text automatically reflows.
+* Displays rich formatted HTML book (NOT plain text).
+* Remembers the last reading location (exact book, chapter and scroll position). 4.018030364653971
+1362564068339303969920DaysCounter4+eduzapps.comEduardo Resendehttp://www.eduzapps.comhttp://www.eduzapps.comhttp://itunes.apple.com/app/dayscounter/id303969920?uo=5http://a4.mzstatic.com/us/r1000/053/Purple/59/85/04/mzl.pspwhrjz.100x100-75.jpghttp://a4.mzstatic.com/us/r1000/005/Purple/6b/5c/ee/mzl.oiywbfyn.png2009 02 05Â© 2009 Eduardo ResendeAre you tired of fart jokes?
+
+Do you always wanted to have one of that "We are nn days without accidents" signs????
+
+With DaysCounter you can have it! You can personalize it with any message you want!
+
+Make jokes with your friends, put messages like: "There are 2 days I don't see a (censored) person" and when he sees the application tap on the tempting red button. A loud alarm will sound and the counter goes to zero!
+
+DaysCounter really counts the days, when you open it on the next day the counter is incremented.1.0145685168286
+1362564068339302658248ä»™è¡“è¶…æ”»æ®»ã‚ªãƒªã‚ªãƒ³(6)/å£«éƒŽæ­£å®—9+NTT SolmareNTT Solmarehttp://www.nttsolmare.com/jp/appstore/http://www.nttsolmare.com/jp/support/app_index.htmlhttp://itunes.apple.com/app/xian-shu-chao-gong-qiaoorion/id302658248?uo=5http://a5.mzstatic.com/us/r1000/032/Purple/f5/75/2e/mzl.dtvugwwn.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/017/Purple/5d/8c/53/mzl.tpxlikqm.png2009 01 20Â© å£«éƒŽæ­£å®—/æ ªå¼ä¼šç¤¾é’å¿ƒç¤¾å‰£ãƒ»é­”æ³•ãƒ»é¾ãƒ»ç¥žï¼ï¼³ï¼¦ã‚³ãƒŸãƒƒã‚¯ç•Œã®ãƒãƒ¬ãƒ¼å½—æ˜Ÿã€€ã€Œæ”»æ®»æ©Ÿå‹•éšŠã€ã€Œã‚¢ãƒƒãƒ—ãƒ«ã‚·ãƒ¼ãƒ‰ã€ã®å£«éƒŽæ­£å®—ãŒæ”¾ã¤ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚ªãƒªã‚¨ãƒ³ã‚¿ãƒ«ãƒ•ã‚¡ãƒ³ã‚¿ã‚¸ãƒ¼ï¼æ˜Ÿæš¦ï¼•ï¼’å¹´ã€€äººå£ï¼’ï¼•ï¼–å„„ã‚’ã‹ã‹ãˆã‚‹å¤§éŠ€æ²³äººæ°‘å¸å›½ã¯ã€€ãã®é™ã‚Šãªãæ¬²æœ›ã¨äººã€…ã®é‚ªå¿µã§å´©å£Šã®å±æ©Ÿã‚’è¿Žãˆã¦ã„ãŸã€‚ãƒ‡ãƒ†ã‚£ãƒ¼ãƒ«ã¨è¤‡é›‘ã•ã‚’æ—¨ã¨ã™ã‚‹ä»™è¡“ã€Œé‡‘å‰›é¾æ³•ã€ã®å¤§å®¶ãƒ˜ãƒ“ãƒ¡åšå£«ã¯ã“ã®å¸å›½ã®å±æ©Ÿã‚’ä¹—ã‚Šãã‚‹ç‚ºã€€ä¹é ­ç‚‰ã®è¡“ã§äººã€…ã®é‚ªå¿µã‚’ãŸã°ã­ã¦ç„¼ã“ã†ã¨è©¦ã¿ã‚‹ã€‚å¤©ä½“é‹è¡ŒåŠ›ãªã©ã‚’æ‰±ã†ä»™è¡“ã€Œå¤©å°é¾æ³•ã€ã®å¤§æ³•å¸«ãƒ•ã‚¼ãƒ³é“äººã¯ä¹é ­ç‚‰ã®è¡“ã®æ¬ é™¥ã¨å±é™ºæ€§ã«æ°—ã¥ããƒ˜ãƒ“ãƒ¡ã®è¨ˆç”»ã‚’é˜»æ­¢ã™ã‚‹ã¹ãæš—é»’ç¥žã‚¹ã‚µãƒŽã‚ªã‚’å¬å–šã—ç›—ã‚“ã ä¹é ­ç‚‰ã®é­”æ³•é™£ã‚’å¨˜ã‚»ã‚¹ã‚«ã«å†™ã™ãŒãƒ»ãƒ»ãƒ»ã€‚1.01438893
+1362564068339303632408WakeMyRig4+Stackswap, Costel MinceaStackswaphttp://iphone.stackswap.nethttp://iphone.stackswap.nethttp://itunes.apple.com/app/wakemyrig/id303632408?uo=5http://a1.mzstatic.com/us/r1000/028/Purple/05/61/76/mzl.jmlnserp.100x100-75.jpghttp://a1.mzstatic.com/us/r1000/054/Purple/e2/2f/83/mzl.cxymbrlb.png2009 02 19Â© 2009 Stackswap, Costel MinceaWakeMyRig is an easy usable tool to wake up remote hosts via a local network or even the internet (WakeOnLAN). The host which shall get woken up only has to be configured for WakeOnLAN and has to be connected to the network with a cable (a host connected via WiFi can NOT be woken up because of functional constraints of a WiFi connection).
+
+WakeMyRig supports Limited Broadcasts (also called LAN Broadcasts) as well as Directed Broadcast which can be forwarded by several routers.
+
+WakeMyRig shows on a well arranged information page not only all the settings of a host but also tries to determine the hosts status (online/offline) by "pinging".
+
+WakeMyRig itself and the integrated short help are available in German, English, French and Italian.
+
+1.11482170122104
+#recordsWritten:2

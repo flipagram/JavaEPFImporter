@@ -1,31 +1,28 @@
 /**
  * 
  */
-package com.spacehopperstudios.epf;
+package com.spacehopperstudios.epf.ingest;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
 import com.spacehopperstudios.database.Connection;
+import com.spacehopperstudios.epf.SubstringNotFoundException;
+import com.spacehopperstudios.epf.parse.V3Parser;
 
 /**
  * Used to ingest an EPF file into a MySQL database.
  */
-class Ingester {
+class MySqlIngester extends IngesterBase implements Ingester {
 
-	public static final String DATETIME_FORMAT = "%y-%m-%d %H:%M:%S";
-
-	private static final Logger LOGGER = Logger.getLogger(Ingester.class);
+	private static final Logger LOGGER = Logger.getLogger(MySqlIngester.class);
 
 	// MySQLdb turns MySQL warnings into python warnings, whose behavior is somewhat arcane
 	// (as compared with python exceptions.
@@ -35,9 +32,6 @@ class Ingester {
 	// so there's no point in cluttering up the output with them.
 	// warnings.filterwarnings('ignore', 'Unknown table.*');
 
-	private String filePath;
-	private String fileName;
-	private String tableName;
 	private String tmpTableName;
 	private String incTableName;
 	private String unionTableName;
@@ -45,30 +39,19 @@ class Ingester {
 	private String dbUser;
 	private String dbPassword;
 	private String dbName;
-	private long lastRecordIngested;
-	private Parser parser;
-	private Date startTime;
-	private Date endTime;
-	private Date abortTime;
-	private boolean didAbort;
-	private Map<String, String> statusDict;
-	private long lastRecordCheck = 0;
-	private Date lastTimeCheck;
 
-	public Ingester(String filePath, String tablePrefix/* =null */, String dbHost/* ='localhost' */, String dbUser/* ='epfimporter' */, String dbPassword/*
-																																						 * ='epf123'
-																																						 */,
-			String dbName/* ='epf' */, String recordDelim/* ='\x02\n' */, String fieldDelim/* ='\x01' */) throws IOException, SubstringNotFoundException {
-		/*
-        */
-		this.filePath = filePath;
-		this.fileName = (new File(filePath)).getName();
-		String pref = tablePrefix == null ? "" : String.format("%s_", tablePrefix);
-		this.tableName = (pref + this.fileName).replace("-", "_"); // hyphens aren't allowed in table names
+	@Override
+	public void init(String filePath, V3Parser parser, String tablePrefix/* =null */, String dbHost/* ='localhost' */, String dbUser/* ='epfimporter' */,
+			String dbPassword/*
+							 * ='epf123'
+							 */, String dbName/* ='epf' */, String recordDelim/* ='\x02\n' */, String fieldDelim/* ='\x01' */) throws IOException,
+			SubstringNotFoundException {
 
-		if (this.tableName.contains(".")) {
-			this.tableName = this.tableName.split(".", -1)[0];
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Init started");
 		}
+		
+		initTableName(filePath, tablePrefix);
 
 		this.tmpTableName = this.tableName + "_tmp";
 		this.incTableName = this.tableName + "_inc"; // used during incremental ingests
@@ -77,49 +60,11 @@ class Ingester {
 		this.dbUser = dbUser;
 		this.dbPassword = dbPassword;
 		this.dbName = dbName;
-		this.lastRecordIngested = -1;
 
-		this.parser = new Parser(filePath, Parser.DEFAULT_TYPE_MAP, recordDelim, fieldDelim);
-		this.startTime = null;
-		this.endTime = null;
-		this.abortTime = null;
-		this.didAbort = false;
-		this.statusDict = new HashMap<String, String>();
-		this.updateStatusDict();
-		this.lastRecordCheck = 0;
-		this.lastTimeCheck = new Date();
-	}
-
-	public void updateStatusDict() {
-		this.statusDict.put("fileName", this.fileName);
-		this.statusDict.put("filePath", this.filePath);
-		this.statusDict.put("lastRecordIngested", Long.toString(this.lastRecordIngested));
-
-		if (this.startTime != null) {
-			this.statusDict.put("startTime", this.startTime.toString());
-		}
-
-		if (endTime != null) {
-			this.statusDict.put("endTime", this.endTime.toString());
-		}
-
-		if (abortTime != null) {
-			this.statusDict.put("abortTime", this.abortTime.toString());
-		}
-
-		this.statusDict.put("didAbort", Boolean.toString(this.didAbort));
-	}
-
-	/**
-	 * Perform a full or incremental ingest, depending on this.parser.exportMode
-	 */
-	public void ingest(boolean skipKeyViolators/* =False */) throws IOException, SubstringNotFoundException, SQLException, NullPointerException,
-			InstantiationException, IllegalAccessException, ClassNotFoundException {
-
-		if ("INCREMENTAL".equals(this.parser.getExportMode())) {
-			this.ingestIncremental(0, skipKeyViolators);
-		} else {
-			this.ingestFull(skipKeyViolators);
+		initVariables(parser);
+		
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Init ended");
 		}
 	}
 
@@ -128,8 +73,7 @@ class Ingester {
 	 * 
 	 * This is done as follows: 1. Create a new table with a temporary name 2. Populate the new table 3. Drop the old table and rename the new one
 	 */
-	public void ingestFull(boolean skipKeyViolators/* =False */) throws IOException, SubstringNotFoundException, SQLException, NullPointerException,
-			InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void ingestFull(boolean skipKeyViolators/* =False */) {
 
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info(String.format("Beginning full ingest of %s (%d records)", this.tableName, this.parser.getRecordsExpected()));
@@ -146,7 +90,9 @@ class Ingester {
 			this.abortTime = new Date();
 			this.didAbort = true;
 			this.updateStatusDict();
-			throw e; // re-raise the exception
+			throw new RuntimeException(e); // re-raise the exception
+		} catch (Exception e) {
+			throw new RuntimeException(e); // re-raise the exception
 		}
 
 		// ingest completed
@@ -161,8 +107,7 @@ class Ingester {
 	/**
 	 * Resume an interrupted full ingest, continuing from fromRecord.
 	 */
-	public void ingestFullResume(long fromRecord/* =0 */, boolean skipKeyViolators/* =False */) throws IOException, SubstringNotFoundException, SQLException,
-			InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void ingestFullResume(long fromRecord/* =0 */, boolean skipKeyViolators/* =False */) {
 
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info(String.format("Resuming full ingest of %s (%d records)", this.tableName, this.parser.getRecordsExpected()));
@@ -178,7 +123,9 @@ class Ingester {
 			// LOGGER.error("Error %d: %s", e.args[0], e.args[1])
 			LOGGER.error(String.format("Error encountered while ingesting '%s'", this.filePath));
 			LOGGER.error(String.format("Last record ingested before failure: %d", this.lastRecordIngested));
-			throw e; // re-raise the exception
+			throw new RuntimeException(e); // re-raise the exception
+		} catch (Exception e) {
+			throw new RuntimeException(e); // re-raise the exception
 		}
 
 		endTime = new Date();
@@ -189,74 +136,69 @@ class Ingester {
 		}
 	}
 
-	/**
-	 * Update the table with the data in the file at filePath.
-	 * 
-	 * If the file to ingest has < 500,000 records, we do a simple REPLACE operation on the existing table. If it's larger than that, we use the following
-	 * 3-step process: 1. Create a temporary table, and populate it exactly as though it were a Full ingest 2. Perform a SQL query which selects all rows in the
-	 * old table whose primary keys *don't* match those in the new table, unions the result with all rows in the new table, and writes the resulting set to
-	 * another temporary table. 3. Swap out the old table for the new one via a rename (same as for Full ingests) This proves to be much faster for large files.
-	 */
-	public void ingestIncremental(long fromRecord/* =0 */, boolean skipKeyViolators /* =False */) throws NullPointerException, SQLException, IOException,
-			SubstringNotFoundException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void ingestIncremental(long fromRecord/* =0 */, boolean skipKeyViolators /* =False */) {
 
-		if (!this.tableExists(this.tableName, null)) {
-			// The table doesn't exist in the db; this can happen if the full ingest
-			// in which the table was added wasn't performed.
-			LOGGER.warn(String.format("Table '%s' does not exist in the database; skipping", this.tableName));
-		} else {
-			int tableColCount = this.columnCount(null, null);
-			int fileColCount = this.parser.getColumnNames().size();
+		try {
+			if (!this.tableExists(this.tableName, null)) {
+				// The table doesn't exist in the db; this can happen if the full ingest
+				// in which the table was added wasn't performed.
+				LOGGER.warn(String.format("Table '%s' does not exist in the database; skipping", this.tableName));
+			} else {
+				int tableColCount = this.columnCount(null, null);
+				int fileColCount = this.parser.getColumnNames().size();
 
-			assert (tableColCount <= fileColCount); // It's possible for the existing table
-			// to have fewer columns than the file we're importing, but it should never have more.
+				assert (tableColCount <= fileColCount); // It's possible for the existing table
+				// to have fewer columns than the file we're importing, but it should never have more.
 
-			if (fileColCount > tableColCount) { // file has "extra" columns
-				LOGGER.warn("File contains additional columns not in the existing table. These will not be imported.");
-				this.parser.setColumnNames(this.parser.getColumnNames().subList(0, tableColCount)); // trim the columnNames
-				// to equal those in the existing table. This will result in the returned records
-				// also being sliced.
-			}
-
-			String s = (fromRecord > 0 ? "Resuming" : "Beginning");
-			LOGGER.info(String.format("%s incremental ingest of %s (%d records)", s, this.tableName, this.parser.getRecordsExpected()));
-			this.startTime = new Date();
-
-			// Different ingest techniques are faster depending on the size of the input.
-			// If there are a large number of records, it's much faster to do a prune-and-merge technique;
-			// for fewer records, it's faster to update the existing table.
-			try {
-				if (this.parser.getRecordsExpected() < 500000) { // update table in place
-					populateTable(this.tableName, fromRecord, true, skipKeyViolators);
-				} else { // Import as full, then merge the proper records into a new table
-					createTable(this.incTableName);
-					LOGGER.info("Populating temporary table...");
-					populateTable(this.incTableName, 0, false, skipKeyViolators);
-					LOGGER.info("Creating merged table...");
-					createUnionTable();
-					dropTable(this.incTableName);
-					LOGGER.info("Applying primary key constraints...");
-					applyPrimaryKeyConstraints(this.unionTableName);
-					renameAndDrop(this.unionTableName, this.tableName);
+				if (fileColCount > tableColCount) { // file has "extra" columns
+					LOGGER.warn("File contains additional columns not in the existing table. These will not be imported.");
+					this.parser.setColumnNames(this.parser.getColumnNames().subList(0, tableColCount)); // trim the columnNames
+					// to equal those in the existing table. This will result in the returned records
+					// also being sliced.
 				}
 
-			} catch (SQLException e) {
-				// LOGGER.error("Error %d: %s", e.args[0], e.args[1])
-				LOGGER.error(String.format("Fatal error encountered while ingesting '%s'", this.filePath));
-				LOGGER.error(String.format("Last record ingested before failure: %d", this.lastRecordIngested));
-				this.abortTime = new Date();
-				this.didAbort = true;
-				this.updateStatusDict();
-				throw e; // re-raise the exception
-			}
+				String s = (fromRecord > 0 ? "Resuming" : "Beginning");
+				LOGGER.info(String.format("%s incremental ingest of %s (%d records)", s, this.tableName, this.parser.getRecordsExpected()));
+				this.startTime = new Date();
 
-			// ingest completed
-			this.endTime = new Date();
-			long ts = this.endTime.getTime() - this.startTime.getTime();
+				// Different ingest techniques are faster depending on the size of the input.
+				// If there are a large number of records, it's much faster to do a prune-and-merge technique;
+				// for fewer records, it's faster to update the existing table.
+				try {
+					if (this.parser.getRecordsExpected() < 500000) { // update table in place
+						populateTable(this.tableName, fromRecord, true, skipKeyViolators);
+					} else { // Import as full, then merge the proper records into a new table
+						createTable(this.incTableName);
+						LOGGER.info("Populating temporary table...");
+						populateTable(this.incTableName, 0, false, skipKeyViolators);
+						LOGGER.info("Creating merged table...");
+						createUnionTable();
+						dropTable(this.incTableName);
+						LOGGER.info("Applying primary key constraints...");
+						applyPrimaryKeyConstraints(this.unionTableName);
+						renameAndDrop(this.unionTableName, this.tableName);
+					}
 
-			if (LOGGER.isInfoEnabled()) {
-				LOGGER.info(String.format("Incremental ingest of %s took %d", this.tableName, ts));
+				} catch (SQLException e) {
+					// LOGGER.error("Error %d: %s", e.args[0], e.args[1])
+					LOGGER.error(String.format("Fatal error encountered while ingesting '%s'", this.filePath));
+					LOGGER.error(String.format("Last record ingested before failure: %d", this.lastRecordIngested));
+					this.abortTime = new Date();
+					this.didAbort = true;
+					this.updateStatusDict();
+					throw new RuntimeException(e); // re-raise the exception
+				}
+
+				// ingest completed
+				this.endTime = new Date();
+				long ts = this.endTime.getTime() - this.startTime.getTime();
+
+				if (LOGGER.isInfoEnabled()) {
+					LOGGER.info(String.format("Incremental ingest of %s took %d", this.tableName, ts));
+				}
 			}
+		} catch (Exception e) {
+			throw new RuntimeException(e); // re-raise the exception
 		}
 
 		this.updateStatusDict();
@@ -265,7 +207,7 @@ class Ingester {
 	/**
 	 * Establish a connection to the database, returning the connection object.
 	 */
-	public Connection connect() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	private Connection connect() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		return new Connection(dbHost, dbName, dbUser, dbPassword);
 	}
@@ -277,7 +219,7 @@ class Ingester {
 	 * 
 	 * If a connection object is specified, this method uses it and does not close it; if not, it creates one using connect(), uses it, and then closes it.
 	 */
-	public boolean tableExists(String tableName/* =null */, Connection connection/* =null */) throws SQLException, InstantiationException,
+	private boolean tableExists(String tableName/* =null */, Connection connection/* =null */) throws SQLException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
 
 		String exStr = "SELECT COUNT(*) AS count FROM information_schema.tables WHERE table_schema = '%s' AND table_name = '%s'";
@@ -311,7 +253,7 @@ class Ingester {
 	 * 
 	 * If a connection object is specified, this method uses it and does not close it; if not, it creates one using connect(), uses it, and then closes it.
 	 */
-	public int columnCount(String tableName/* =null */, Connection connection/* =null */) throws SQLException, InstantiationException, IllegalAccessException,
+	private int columnCount(String tableName/* =null */, Connection connection/* =null */) throws SQLException, InstantiationException, IllegalAccessException,
 			ClassNotFoundException {
 
 		if (tableName == null) {
@@ -398,7 +340,7 @@ class Ingester {
 			List<String> escRec = new ArrayList<String>();
 			for (String aField : aRec) {
 				String escaped = aField.replace("\\'", "'").replace("\\\\", "\\").replace("\\", "\\\\").replace("'", "\\'");
-				escRec.add("'" + escaped  + "'");
+				escRec.add("'" + escaped + "'");
 			}
 			escapedRecords.add(escRec);
 		}
@@ -464,26 +406,6 @@ class Ingester {
 		}
 
 		conn.disconnect();
-	}
-
-	/**
-	 * Checks whether recordGap or more records have been ingested since the last check; if so, checks whether timeGap seconds have elapsed since the last
-	 * check.
-	 * 
-	 * If both checks pass, returns this.lastRecordIngested; otherwise returns null.
-	 */
-	private long checkProgress(int recordGap/* =5000 */, long timeGap/* =datetime.timedelta(0, 120, 0) */) {
-
-		if (this.lastRecordIngested - this.lastRecordCheck >= recordGap) {
-			Date t = new Date();
-			if (t.getTime() - this.lastTimeCheck.getTime() >= timeGap) {
-				this.lastTimeCheck = t;
-				this.lastRecordCheck = this.lastRecordIngested;
-				return this.lastRecordCheck;
-			}
-		}
-
-		return 0;
 	}
 
 	/**
@@ -560,6 +482,7 @@ class Ingester {
 
 		String whereClause = incrementalWhereClause();
 		String selectString = String.format("SELECT * FROM %s WHERE 0 = (SELECT COUNT(*) FROM %s %s)", this.tableName, this.incTableName, whereClause);
+
 		return selectString;
 	}
 

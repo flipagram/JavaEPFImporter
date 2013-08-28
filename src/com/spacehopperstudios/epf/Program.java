@@ -38,6 +38,9 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
+import com.spacehopperstudios.epf.ingest.Ingester;
+import com.spacehopperstudios.epf.ingest.IngesterProvider;
+import com.spacehopperstudios.epf.parse.V3Parser;
 
 public class Program {
 
@@ -50,6 +53,8 @@ public class Program {
 
 	private static final String OPTION_SHORT_RESUME = "r";
 	private static final String OPTION_FULL_RESUME = "resume";
+
+	private static final String OPTION_FULL_INGESTERTYPE = "ingestertype";
 
 	private static final String OPTION_SHORT_DBHOST = "d";
 	private static final String OPTION_FULL_DBHOST = "dbhost";
@@ -148,6 +153,7 @@ public class Program {
 			flatOptions.add(OPTION_FULL_DBNAME, new JsonPrimitive("epf"));
 			flatOptions.add(OPTION_FULL_ALLOWEXTENSIONS, new JsonPrimitive(true));
 			flatOptions.add(OPTION_FULL_TABLEPREFIX, new JsonPrimitive("epfflat"));
+			flatOptions.add(OPTION_FULL_INGESTERTYPE, new JsonPrimitive("MySQL"));
 
 			JsonArray stringArray = null;
 			flatOptions.add(OPTION_FULL_WHITELIST, stringArray = new JsonArray());
@@ -175,6 +181,7 @@ public class Program {
 			defaultOptions.add(OPTION_FULL_DBNAME, new JsonPrimitive("epf"));
 			defaultOptions.add(OPTION_FULL_ALLOWEXTENSIONS, new JsonPrimitive(false));
 			defaultOptions.add(OPTION_FULL_TABLEPREFIX, new JsonPrimitive("epf"));
+			defaultOptions.add(OPTION_FULL_INGESTERTYPE, new JsonPrimitive("MySQL"));
 
 			JsonArray stringArray = null;
 			defaultOptions.add(OPTION_FULL_WHITELIST, stringArray = new JsonArray());
@@ -192,13 +199,17 @@ public class Program {
 
 	private static void overwriteDefaults(Map<String, Object> defaults, CommandLine commandLine) {
 		List<String> stringList = null;
-		
+
 		if (commandLine.hasOption(OPTION_SHORT_FLAT)) {
 			defaults.put(OPTION_FULL_FLAT, Boolean.TRUE);
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_RESUME)) {
 			defaults.put(OPTION_FULL_RESUME, Boolean.TRUE);
+		}
+
+		if (commandLine.hasOption(OPTION_FULL_INGESTERTYPE)) {
+			defaults.put(OPTION_FULL_INGESTERTYPE, commandLine.getOptionValue(OPTION_FULL_INGESTERTYPE));
 		}
 
 		if (commandLine.hasOption(OPTION_SHORT_DBHOST)) {
@@ -233,7 +244,7 @@ public class Program {
 			defaults.put(OPTION_FULL_TABLEPREFIX, commandLine.getOptionValue(OPTION_SHORT_TABLEPREFIX));
 		}
 
-		if (commandLine.hasOption(OPTION_SHORT_WHITELIST)) {			
+		if (commandLine.hasOption(OPTION_SHORT_WHITELIST)) {
 			defaults.put(OPTION_FULL_WHITELIST, stringList = new ArrayList<String>());
 			Collections.addAll(stringList, commandLine.getOptionValues(OPTION_SHORT_WHITELIST));
 		}
@@ -309,36 +320,36 @@ public class Program {
 
 			options.addOption(OPTION_SHORT_FLAT, OPTION_FULL_FLAT, false, "Import EPF Flat files, using values from EPFFlat.config if not overridden");
 			optionsMap.put(OPTION_FULL_FLAT, Boolean.FALSE);
-			
+
 			options.addOption(OPTION_SHORT_RESUME, OPTION_FULL_RESUME, false,
 					"Resume the most recent import according to the relevant .json status file (EPFStatusIncremental.json if -i, otherwise EPFStatusFull.json)");
 			optionsMap.put(OPTION_FULL_RESUME, Boolean.FALSE);
-			
+
 			options.addOption(OPTION_SHORT_DBHOST, OPTION_FULL_DBHOST, true, "The hostname of the database (default is localhost)");
-			
+
 			options.addOption(OPTION_SHORT_DBUSER, OPTION_FULL_DBUSER, true,
 					"The user which will execute the database commands; must have table create/drop priveleges");
-			
+
 			options.addOption(OPTION_SHORT_DBPASSWORD, OPTION_FULL_DBPASSWORD, true, "The user's password for the database");
-			
+
 			options.addOption(OPTION_SHORT_DBNAME, OPTION_FULL_DBNAME, true, "The name of the database to connect to");
-			
+
 			options.addOption(OPTION_SHORT_RECORDSEPARATOR, OPTION_FULL_RECORDSEPARATOR, true, "The string separating records in the file");
-			
+
 			options.addOption(OPTION_SHORT_FIELDSEPARATOR, OPTION_FULL_FIELDSEPARATOR, true, "The string separating fields in the file");
-			
+
 			options.addOption(OPTION_SHORT_ALLOWEXTENSIONS, OPTION_FULL_ALLOWEXTENSIONS, false, "Include files with dots in their names in the import");
 			optionsMap.put(OPTION_FULL_ALLOWEXTENSIONS, Boolean.FALSE);
-			
+
 			options.addOption(OPTION_SHORT_TABLEPREFIX, OPTION_FULL_TABLEPREFIX, true,
 					"Optional prefix which will be added to all table names, e.g. \"MyPrefix_video_translation\"");
-			
+
 			options.addOption(OPTION_SHORT_WHITELIST, OPTION_FULL_WHITELIST, true,
 					"A regular expression to add to the whiteList; repeated -w arguments will append");
-			
+
 			options.addOption(OPTION_SHORT_BLACKLIST, OPTION_FULL_BLACKLIST, true,
 					"A regular expression to add to the whiteList; repeated -b arguments will append");
-			
+
 			options.addOption(OPTION_SHORT_SKIPKEYVIOLATORS, OPTION_FULL_SKIPKEYVIOLATORS, false,
 					"Ignore inserts which would violate a primary key constraint; only applies to full imports");
 			optionsMap.put(OPTION_FULL_SKIPKEYVIOLATORS, Boolean.FALSE);
@@ -377,8 +388,9 @@ public class Program {
 	 * 
 	 * Returns a list of any files for which the import failed (empty if all succeeded)
 	 */
-	public static List<String> doImport(String directoryPath, String dbHost, String dbUser, String dbPassword, String dbName, List<String> whiteList,
-			List<String> blackList, String tablePrefix, boolean allowExtensions, boolean skipKeyViolators, String recordDelim, String fieldDelim) {
+	public static List<String> doImport(String ingesterType, String directoryPath, String dbHost, String dbUser, String dbPassword, String dbName,
+			List<String> whiteList, List<String> blackList, String tablePrefix, boolean allowExtensions, boolean skipKeyViolators, String recordDelim,
+			String fieldDelim) {
 
 		if (!allowExtensions) {
 			blackList.add(".*\\..*?");
@@ -420,6 +432,8 @@ public class Program {
 		List<String> filesLeft = new ArrayList<String>(fileList);
 		List<String> filesImported = new ArrayList<String>();
 		List<String> failedFiles = new ArrayList<String>();
+
+		SNAPSHOT_DICT.add(OPTION_FULL_INGESTERTYPE, new JsonPrimitive(ingesterType));
 
 		SNAPSHOT_DICT.add(OPTION_FULL_TABLEPREFIX, new JsonPrimitive(tablePrefix));
 
@@ -497,7 +511,11 @@ public class Program {
 
 			Ingester ing;
 			try {
-				ing = new Ingester(aPath, tablePrefix, dbHost, dbUser, dbPassword, dbName, recordDelim, fieldDelim);
+				ing = IngesterProvider.getNamed("MySql");
+				V3Parser parser = new V3Parser();
+				parser.init(aPath, V3Parser.DEFAULT_TYPE_MAP, recordDelim, fieldDelim);
+				ing.init(aPath, parser, tablePrefix, dbHost, dbUser, dbPassword, dbName, recordDelim, fieldDelim);
+
 			} catch (Exception e) {
 				LOGGER.error(String.format("Unable to create EPFIngester for %s", fName), e);
 				failedFiles.add(fName);
@@ -507,21 +525,26 @@ public class Program {
 
 			try {
 				ing.ingest(skipKeyViolators);
-				
+
 				filesLeft.remove(fName);
 				currentDict.add(SNAPSHOT_FILESLEFT, stringArray = new JsonArray());
 				for (String file : filesLeft) {
 					stringArray.add(new JsonPrimitive(file));
 				}
-				
+
 				filesImported.add(fName);
 				currentDict.add(SNAPSHOT_FILESIMPORTED, stringArray = new JsonArray());
 				for (String file : filesImported) {
 					stringArray.add(new JsonPrimitive(file));
 				}
-				
+
 				dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
-			} catch (SQLException e) {
+			} catch (RuntimeException e) {
+				if (e.getCause() instanceof SQLException) {
+				} else {
+					LOGGER.error("An error occured while ingesting data.", e);
+				}
+
 				failedFiles.add(fName);
 				dumpDict(SNAPSHOT_DICT, SNAPSHOT_PATH);
 				continue;
@@ -553,11 +576,13 @@ public class Program {
 	/**
 	 * Resume an interrupted full import based on the values in currentDict, which will normally be the currentDict unarchived from the EPFSnapshot.json file.
 	 */
-	public static List<String> resumeImport(JsonObject currentDict, String tablePrefix /* = null */, String dbHost /* = "localhost" */, String dbUser /*
+	public static List<String> resumeImport(JsonObject currentDict, String ingesterType, String tablePrefix /* = null */, String dbHost /* = "localhost" */,
+			String dbUser /*
+						 * = "epfimporter"
+						 */, String dbPassword /* = "epf123" */, String dbName /* = "epf" */, boolean skipKeyViolators /* = false */, String recordDelim /*
 																																						 * =
-																																						 * "epfimporter"
+																																						 * "\u0002\n"
 																																						 */,
-			String dbPassword /* = "epf123" */, String dbName /* = "epf" */, boolean skipKeyViolators /* = false */, String recordDelim /* ="\u0002\n" */,
 			String fieldDelim /* ="\u0001" */) {
 
 		String dirPath = currentDict.get(SNAPSHOT_DIRPATH).getAsString();
@@ -588,7 +613,7 @@ public class Program {
 			bList.add(String.format("^%s$", aFile)); // anchor the regexes for exact matches
 		}
 
-		return doImport(dirPath, dbHost, dbUser, dbPassword, dbName, wList, bList, tablePrefix, false, skipKeyViolators, recordDelim, fieldDelim);
+		return doImport(ingesterType, dirPath, dbHost, dbUser, dbPassword, dbName, wList, bList, tablePrefix, false, skipKeyViolators, recordDelim, fieldDelim);
 
 	}
 
@@ -684,13 +709,15 @@ public class Program {
 		Map<String, List<String>> failedFilesMap = new HashMap<String, List<String>>();
 
 		String tablePrefix = (String) optionsMap.get(OPTION_FULL_TABLEPREFIX);
-		
+
+		String ingesterType = (String) optionsMap.get(OPTION_FULL_INGESTERTYPE);
+
 		@SuppressWarnings("unchecked")
 		List<String> wList = (List<String>) optionsMap.get(OPTION_FULL_WHITELIST);
-		
+
 		@SuppressWarnings("unchecked")
 		List<String> bList = (List<String>) optionsMap.get(OPTION_FULL_BLACKLIST);
-		
+
 		String recordSep = (String) optionsMap.get(OPTION_FULL_RECORDSEPARATOR);
 		String fieldSep = (String) optionsMap.get(OPTION_FULL_FIELDSEPARATOR);
 		boolean allowExtensions = ((Boolean) optionsMap.get(OPTION_FULL_ALLOWEXTENSIONS)).booleanValue();
@@ -719,7 +746,7 @@ public class Program {
 				LOGGER.info(String.format("Resuming import for %s", currentDict.get(SNAPSHOT_DIRPATH).getAsString()));
 			}
 
-			List<String> failedFiles = resumeImport(currentDict, tablePrefix, (String) optionsMap.get(OPTION_FULL_DBHOST),
+			List<String> failedFiles = resumeImport(currentDict, ingesterType, tablePrefix, (String) optionsMap.get(OPTION_FULL_DBHOST),
 					(String) optionsMap.get(OPTION_FULL_DBUSER), (String) optionsMap.get(OPTION_FULL_DBPASSWORD), (String) optionsMap.get(OPTION_FULL_DBNAME),
 					((Boolean) optionsMap.get(OPTION_FULL_SKIPKEYVIOLATORS)).booleanValue(), recordSep, fieldSep);
 
@@ -772,9 +799,10 @@ public class Program {
 
 		if (dirsToImport != null && dirsToImport.size() > 0) {
 			for (String dirPath : dirsToImport) {
-				List<String> failedFiles = doImport(dirPath, (String) optionsMap.get(OPTION_FULL_DBHOST), (String) optionsMap.get(OPTION_FULL_DBUSER),
-						(String) optionsMap.get(OPTION_FULL_DBPASSWORD), (String) optionsMap.get(OPTION_FULL_DBNAME), wList, bList, tablePrefix,
-						allowExtensions, ((Boolean) optionsMap.get(OPTION_FULL_SKIPKEYVIOLATORS)).booleanValue(), recordSep, fieldSep);
+				List<String> failedFiles = doImport(ingesterType, dirPath, (String) optionsMap.get(OPTION_FULL_DBHOST),
+						(String) optionsMap.get(OPTION_FULL_DBUSER), (String) optionsMap.get(OPTION_FULL_DBPASSWORD),
+						(String) optionsMap.get(OPTION_FULL_DBNAME), wList, bList, tablePrefix, allowExtensions,
+						((Boolean) optionsMap.get(OPTION_FULL_SKIPKEYVIOLATORS)).booleanValue(), recordSep, fieldSep);
 
 				if (failedFiles != null && failedFiles.size() > 0) {
 					failedFilesMap.put(dirPath, failedFiles);

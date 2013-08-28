@@ -1,0 +1,1 @@
+{"ingestertype":"DataStore","dbhost":"localhost","dbuser":"epfimporter","dbpassword":"epf123","dbname":"","allowextensions":false,"tableprefix":"","whitelist":[".*?"],"blacklist":["^\\."],"recordseparator":"\u0002\n","fieldseparator":"\u0001"}
