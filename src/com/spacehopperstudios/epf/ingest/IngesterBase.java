@@ -92,7 +92,7 @@ public abstract class IngesterBase implements Ingester {
 
 		this.filePath = filePath;
 		this.fileName = (new File(filePath)).getName();
-		String pref = tablePrefix == null ? "" : String.format("%s_", tablePrefix);
+		String pref = tablePrefix == null || tablePrefix.length() == 0 ? "" : String.format("%s_", tablePrefix);
 		this.tableName = (pref + this.fileName).replace("-", "_"); // hyphens aren't allowed in table names
 
 		if (this.tableName.contains(".")) {

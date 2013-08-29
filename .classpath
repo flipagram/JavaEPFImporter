@@ -14,6 +14,8 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/log4j-1.2.16.jar" sourcepath="/Library/JavaDevLib/apache-log4j-1.2.16/src"/>
 	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.10-bin.jar" sourcepath="/Library/JavaDevLib/mysql-connector-java-5.1.10/src"/>
-	<classpathentry kind="lib" path="libs/guava-14.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/guava-14.0.1.jar" sourcepath="C:/Users/billy1380/.m2/repository/com/google/guava/guava/14.0.1/guava-14.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="libs/appengine-api.jar"/>
+	<classpathentry kind="lib" path="libs/appengine-remote-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

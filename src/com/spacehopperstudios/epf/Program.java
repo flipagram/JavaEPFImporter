@@ -54,6 +54,7 @@ public class Program {
 	private static final String OPTION_SHORT_RESUME = "r";
 	private static final String OPTION_FULL_RESUME = "resume";
 
+	private static final String OPTION_SHORT_INGESTERTYPE = "z";
 	private static final String OPTION_FULL_INGESTERTYPE = "ingestertype";
 
 	private static final String OPTION_SHORT_DBHOST = "d";
@@ -244,6 +245,10 @@ public class Program {
 			defaults.put(OPTION_FULL_TABLEPREFIX, commandLine.getOptionValue(OPTION_SHORT_TABLEPREFIX));
 		}
 
+		if (commandLine.hasOption(OPTION_SHORT_INGESTERTYPE)) {
+			defaults.put(OPTION_FULL_INGESTERTYPE, commandLine.getOptionValue(OPTION_SHORT_INGESTERTYPE));
+		}
+
 		if (commandLine.hasOption(OPTION_SHORT_WHITELIST)) {
 			defaults.put(OPTION_FULL_WHITELIST, stringList = new ArrayList<String>());
 			Collections.addAll(stringList, commandLine.getOptionValues(OPTION_SHORT_WHITELIST));
@@ -343,6 +348,9 @@ public class Program {
 
 			options.addOption(OPTION_SHORT_TABLEPREFIX, OPTION_FULL_TABLEPREFIX, true,
 					"Optional prefix which will be added to all table names, e.g. \"MyPrefix_video_translation\"");
+
+			options.addOption(OPTION_SHORT_INGESTERTYPE, OPTION_FULL_INGESTERTYPE, true,
+					"Ingester type name, currently the only ones supported are \"MySQL\" and \"DataStore\"");
 
 			options.addOption(OPTION_SHORT_WHITELIST, OPTION_FULL_WHITELIST, true,
 					"A regular expression to add to the whiteList; repeated -w arguments will append");
@@ -511,7 +519,7 @@ public class Program {
 
 			Ingester ing;
 			try {
-				ing = IngesterProvider.getNamed("MySql");
+				ing = IngesterProvider.getNamed(ingesterType);
 				V3Parser parser = new V3Parser();
 				parser.init(aPath, V3Parser.DEFAULT_TYPE_MAP, recordDelim, fieldDelim);
 				ing.init(aPath, parser, tablePrefix, dbHost, dbUser, dbPassword, dbName, recordDelim, fieldDelim);
