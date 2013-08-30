@@ -145,71 +145,92 @@ public class DataStoreIngester extends IngesterBase implements Ingester {
 	}
 
 	public void ingestIncremental(long fromRecord/* =0 */, boolean skipKeyViolators /* =False */) {
-		//
-		// try {
-		// if (!this.tableExists(this.tableName, null)) {
-		// // The table doesn't exist in the db; this can happen if the full ingest
-		// // in which the table was added wasn't performed.
-		// LOGGER.warn(String.format("Table '%s' does not exist in the database; skipping", this.tableName));
-		// } else {
-		// int tableColCount = this.columnCount(null, null);
-		// int fileColCount = this.parser.getColumnNames().size();
-		//
-		// assert (tableColCount <= fileColCount); // It's possible for the existing table
-		// // to have fewer columns than the file we're importing, but it should never have more.
-		//
-		// if (fileColCount > tableColCount) { // file has "extra" columns
-		// LOGGER.warn("File contains additional columns not in the existing table. These will not be imported.");
-		// this.parser.setColumnNames(this.parser.getColumnNames().subList(0, tableColCount)); // trim the columnNames
-		// // to equal those in the existing table. This will result in the returned records
-		// // also being sliced.
-		// }
-		//
-		// String s = (fromRecord > 0 ? "Resuming" : "Beginning");
-		// LOGGER.info(String.format("%s incremental ingest of %s (%d records)", s, this.tableName, this.parser.getRecordsExpected()));
-		// this.startTime = new Date();
-		//
-		// // Different ingest techniques are faster depending on the size of the input.
-		// // If there are a large number of records, it's much faster to do a prune-and-merge technique;
-		// // for fewer records, it's faster to update the existing table.
-		// try {
-		// if (this.parser.getRecordsExpected() < 500000) { // update table in place
-		// populateTable(this.tableName, fromRecord, true, skipKeyViolators);
-		// } else { // Import as full, then merge the proper records into a new table
-		// createTable(this.incTableName);
-		// LOGGER.info("Populating temporary table...");
-		// populateTable(this.incTableName, 0, false, skipKeyViolators);
-		// LOGGER.info("Creating merged table...");
-		// createUnionTable();
-		// dropTable(this.incTableName);
-		// LOGGER.info("Applying primary key constraints...");
-		// applyPrimaryKeyConstraints(this.unionTableName);
-		// renameAndDrop(this.unionTableName, this.tableName);
-		// }
-		//
-		// } catch (SQLException e) {
-		// // LOGGER.error("Error %d: %s", e.args[0], e.args[1])
-		// LOGGER.error(String.format("Fatal error encountered while ingesting '%s'", this.filePath));
-		// LOGGER.error(String.format("Last record ingested before failure: %d", this.lastRecordIngested));
-		// this.abortTime = new Date();
-		// this.didAbort = true;
-		// this.updateStatusDict();
-		// throw new RuntimeException(e); // re-raise the exception
-		// }
-		//
-		// // ingest completed
-		// this.endTime = new Date();
-		// long ts = this.endTime.getTime() - this.startTime.getTime();
-		//
-		// if (LOGGER.isInfoEnabled()) {
-		// LOGGER.info(String.format("Incremental ingest of %s took %d", this.tableName, ts));
-		// }
-		// }
-		// } catch (Exception e) {
-		// throw new RuntimeException(e); // re-raise the exception
-		// }
-		//
-		// this.updateStatusDict();
+
+		try {
+			if (!this.tableExists(this.tableName)) {
+				// The table doesn't exist in the db; this can happen if the full ingest
+				// in which the table was added wasn't performed.
+				LOGGER.warn(String.format("Table '%s' does not exist in the database; skipping", this.tableName));
+			} else {
+				int tableColCount = this.columnCount(null);
+				int fileColCount = this.parser.getColumnNames().size();
+
+				assert (tableColCount <= fileColCount); // It's possible for the existing table
+				// to have fewer columns than the file we're importing, but it should never have more.
+
+				if (fileColCount > tableColCount) { // file has "extra" columns
+					LOGGER.warn("File contains additional columns not in the existing table. These will not be imported.");
+					this.parser.setColumnNames(this.parser.getColumnNames().subList(0, tableColCount)); // trim the columnNames
+					// to equal those in the existing table. This will result in the returned records
+					// also being sliced.
+				}
+
+				String s = (fromRecord > 0 ? "Resuming" : "Beginning");
+				LOGGER.info(String.format("%s incremental ingest of %s (%d records)", s, this.tableName, this.parser.getRecordsExpected()));
+				this.startTime = new Date();
+
+				// Different ingest techniques are faster depending on the size of the input.
+				// If there are a large number of records, it's much faster to do a prune-and-merge technique;
+				// for fewer records, it's faster to update the existing table.
+				try {
+					if (this.parser.getRecordsExpected() < 500000) { // update table in place
+						populateTable(this.tableName, fromRecord, true, skipKeyViolators);
+					} else { 
+						// for now treat both as the same
+						populateTable(this.tableName, fromRecord, true, skipKeyViolators);
+					}
+
+				} catch (Exception e) {
+					// LOGGER.error("Error %d: %s", e.args[0], e.args[1])
+					LOGGER.error(String.format("Fatal error encountered while ingesting '%s'", this.filePath));
+					LOGGER.error(String.format("Last record ingested before failure: %d", this.lastRecordIngested));
+					this.abortTime = new Date();
+					this.didAbort = true;
+					this.updateStatusDict();
+					throw new RuntimeException(e); // re-raise the exception
+				}
+
+				// ingest completed
+				this.endTime = new Date();
+				long ts = this.endTime.getTime() - this.startTime.getTime();
+
+				if (LOGGER.isInfoEnabled()) {
+					LOGGER.info(String.format("Incremental ingest of %s took %d", this.tableName, ts));
+				}
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e); // re-raise the exception
+		}
+
+		this.updateStatusDict();
+	}
+
+	/**
+	 * @param object
+	 * @return
+	 */
+	private int columnCount(String tableName) {
+		Query query = new Query(tableName);
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		PreparedQuery preparedQuery = ds.prepare(query);
+		Entity entity = preparedQuery.asSingleEntity();
+		
+		return entity == null ? 0 : entity.getProperties().keySet().size();
+	}
+
+	/**
+	 * @param tableName
+	 * @return
+	 */
+	private boolean tableExists(String tableName) {
+		Query query = new Query(tableName);
+		query.setKeysOnly();
+
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		PreparedQuery preparedQuery = ds.prepare(query);
+		Entity entity = preparedQuery.asSingleEntity();
+
+		return entity != null;
 	}
 
 	/**
