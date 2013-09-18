@@ -28,14 +28,10 @@ public class Connection {
 			LOGGER.trace("Create connection with server " + server + ", database: " + database + ", username: " + username + " and password: " + password);
 		}
 
-		if (server == null)
-			throw new NullPointerException("server cannot be null");
-		if (database == null)
-			throw new NullPointerException("database cannot be null");
-		if (username == null)
-			throw new NullPointerException("username cannot be null");
-		if (password == null)
-			throw new NullPointerException("password cannot be null");
+		if (server == null) throw new NullPointerException("server cannot be null");
+		if (database == null) throw new NullPointerException("database cannot be null");
+		if (username == null) throw new NullPointerException("username cannot be null");
+		if (password == null) throw new NullPointerException("password cannot be null");
 
 		this.server = server;
 		this.database = database;
@@ -64,10 +60,8 @@ public class Connection {
 			LOGGER.trace("executing query: " + query);
 		}
 
-		if (query == null)
-			throw new NullPointerException("query cannot be null");
-		if (query.length() == 0)
-			throw new IllegalArgumentException("query cannot be empty");
+		if (query == null) throw new NullPointerException("query cannot be null");
+		if (query.length() == 0) throw new IllegalArgumentException("query cannot be empty");
 
 		affectedRowCount = -1;
 		statement = null;
@@ -101,13 +95,15 @@ public class Connection {
 		return insertedId;
 	}
 
-	public void fetchNextRow() throws SQLException {
-
+	public boolean fetchNextRow() throws SQLException {
+		boolean fetched = false;
 		if (queryResult != null) {
-			if (queryResult.next()) {
+			if (fetched = queryResult.next()) {
 				// everyone is happy
 			}
 		}
+
+		return fetched;
 	}
 
 	public Object getCurrentRowValue(String key) throws SQLException {

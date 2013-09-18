@@ -50,7 +50,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("Init started");
 		}
-		
+
 		initTableName(filePath, tablePrefix);
 
 		this.tmpTableName = this.tableName + "_tmp";
@@ -62,7 +62,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		this.dbName = dbName;
 
 		initVariables(parser);
-		
+
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("Init ended");
 		}
@@ -233,11 +233,19 @@ class MySqlIngester extends IngesterBase implements Ingester {
 			conn = this.connect();
 		} else {
 			conn = connection;
+
+			if (!conn.isConnected()) {
+				conn.connect();
+			}
 		}
 
 		conn.executeQuery(String.format(exStr, this.dbName, tableName));
-		conn.fetchNextRow(); // this will always be a 1-tuple; the items's value will be 0 or 1
-		boolean doesExist = (conn.getCurrentRowInteger("count") == 1);
+
+		boolean doesExist = false;
+
+		if (conn.fetchNextRow()) { // this will always be a 1-tuple; the items's value will be 0 or 1
+			doesExist = (conn.getCurrentRowInteger("count").intValue() == 1);
+		}
 
 		if (connection == null) {
 			conn.disconnect();
@@ -266,13 +274,21 @@ class MySqlIngester extends IngesterBase implements Ingester {
 			conn = this.connect();
 		} else {
 			conn = connection;
+
+			if (!conn.isConnected()) {
+				conn.connect();
+			}
 		}
 
 		String exStr = String.format("SELECT COUNT(*) AS count FROM information_schema.COLUMNS where TABLE_NAME='%s';", tableName);
 		conn.executeQuery(exStr); // cur.execute() returns the number of rows,
 		// which for SHOW COLUMNS is the number of columns in the table
 
-		int colCount = conn.getCurrentRowInteger("count");
+		int colCount = 0;
+
+		if (conn.fetchNextRow()) {
+			colCount = conn.getCurrentRowInteger("count").intValue();
+		}
 
 		if (connection == null) {
 			conn.disconnect();
@@ -366,6 +382,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		Connection conn = this.connect();
 
 		while (true) {
+			int retryCount = 2;
 			// By default, we concatenate 200 inserts into a single INSERT statement.
 			// a large batch size per insert improves performance, until you start hitting max_packet_size issues.
 			// If you increase MySQL server's max_packet_size, you may get increased performance by increasing maxNum
@@ -387,12 +404,23 @@ class MySqlIngester extends IngesterBase implements Ingester {
 			exStr = exStr.replace("'NULL'", "NULL");
 			exStr = exStr.replace("'null'", "NULL");
 
-			try {
-				conn.executeQuery(exStr);
-			} catch (SQLException e) {
-				LOGGER.error(String.format("Error occured executing: %s", exStr), e);
-				// } catch (SQLIntegrityConstraintViolationException e) {
-				// This is likely a primary key constraint violation; should only be hit if skipKeyViolators is False
+			while (retryCount > 0) {
+				try {
+					if (!conn.isConnected()) {
+						if (retryCount != 2) {
+							conn = this.connect();
+						}
+
+						conn.connect();
+					}
+					conn.executeQuery(exStr);
+				} catch (SQLException e) {
+					LOGGER.error(String.format("Error occured executing: %s", exStr), e);
+					// } catch (SQLIntegrityConstraintViolationException e) {
+					// This is likely a primary key constraint violation; should only be hit if skipKeyViolators is False
+
+					retryCount--;
+				}
 			}
 
 			this.lastRecordIngested = this.parser.getLatestRecordNum();
@@ -435,6 +463,10 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		}
 		// now rename the new table to replace the old table
 		try {
+			if (!conn.isConnected()) {
+				conn.connect();
+			}
+
 			conn.executeQuery(String.format("ALTER TABLE %s RENAME %s", sourceTable, targetTable));
 		} catch (SQLException e) {
 			LOGGER.error("Could not rename tmp table; reverting to original table (if it exists).", e);

@@ -719,6 +719,10 @@ public class Program {
 		String tablePrefix = (String) optionsMap.get(OPTION_FULL_TABLEPREFIX);
 
 		String ingesterType = (String) optionsMap.get(OPTION_FULL_INGESTERTYPE);
+		
+		if (ingesterType == null) {
+			ingesterType = "MySQL";
+		}
 
 		@SuppressWarnings("unchecked")
 		List<String> wList = (List<String>) optionsMap.get(OPTION_FULL_WHITELIST);
