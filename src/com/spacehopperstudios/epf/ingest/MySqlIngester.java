@@ -414,6 +414,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 						conn.connect();
 					}
 					conn.executeQuery(exStr);
+					retryCount = 0;
 				} catch (SQLException e) {
 					LOGGER.error(String.format("Error occured executing: %s", exStr), e);
 					// } catch (SQLIntegrityConstraintViolationException e) {
