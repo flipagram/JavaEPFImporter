@@ -20,15 +20,16 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Text;
 import com.google.appengine.api.datastore.Query.CompositeFilter;
 import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Text;
 import com.google.appengine.tools.remoteapi.RemoteApiInstaller;
 import com.google.appengine.tools.remoteapi.RemoteApiOptions;
 import com.spacehopperstudios.epf.SubstringNotFoundException;
+import com.spacehopperstudios.epf.TimeHelper;
 import com.spacehopperstudios.epf.parse.V3Parser;
 
 /**
@@ -107,7 +108,7 @@ public class DataStoreIngester extends IngesterBase implements Ingester {
 		this.updateStatusDict();
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info(String.format("Full ingest of %s took %d", this.tableName, this.endTime.getTime() - this.startTime.getTime()));
+			LOGGER.info(String.format("Full ingest of %s took %s", this.tableName, TimeHelper.durationText(startTime, endTime)));
 		}
 	}
 
@@ -137,10 +138,9 @@ public class DataStoreIngester extends IngesterBase implements Ingester {
 		}
 
 		endTime = new Date();
-		long ts = this.endTime.getTime() - this.startTime.getTime();
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info(String.format("Resumed full ingest of %s took %d", this.tableName, ts));
+			LOGGER.info(String.format("Resumed full ingest of %s took %s", this.tableName, TimeHelper.durationText(startTime, endTime)));
 		}
 	}
 
@@ -175,7 +175,7 @@ public class DataStoreIngester extends IngesterBase implements Ingester {
 				try {
 					if (this.parser.getRecordsExpected() < 500000) { // update table in place
 						populateTable(this.tableName, fromRecord, true, skipKeyViolators);
-					} else { 
+					} else {
 						// for now treat both as the same
 						populateTable(this.tableName, fromRecord, true, skipKeyViolators);
 					}
@@ -192,10 +192,9 @@ public class DataStoreIngester extends IngesterBase implements Ingester {
 
 				// ingest completed
 				this.endTime = new Date();
-				long ts = this.endTime.getTime() - this.startTime.getTime();
 
 				if (LOGGER.isInfoEnabled()) {
-					LOGGER.info(String.format("Incremental ingest of %s took %d", this.tableName, ts));
+					LOGGER.info(String.format("Incremental ingest of %s took %s", this.tableName, TimeHelper.durationText(startTime, endTime)));
 				}
 			}
 		} catch (Exception e) {
@@ -214,7 +213,7 @@ public class DataStoreIngester extends IngesterBase implements Ingester {
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 		PreparedQuery preparedQuery = ds.prepare(query);
 		Entity entity = preparedQuery.asSingleEntity();
-		
+
 		return entity == null ? 0 : entity.getProperties().keySet().size();
 	}
 

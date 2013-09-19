@@ -81,6 +81,7 @@ public abstract class IngesterBase implements Ingester {
 			if (t.getTime() - this.lastTimeCheck.getTime() >= timeGap) {
 				this.lastTimeCheck = t;
 				this.lastRecordCheck = this.lastRecordIngested;
+				
 				return this.lastRecordCheck;
 			}
 		}

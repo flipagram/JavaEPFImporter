@@ -370,7 +370,7 @@ public class Program {
 			if (LOGGER.isInfoEnabled()) {
 				LOGGER.info(DESCRIPTION);
 				LOGGER.info(VERSION);
-				LOGGER.info(String.format(USAGE_FORMAT, "epfimporter"));
+				LOGGER.info(String.format(USAGE_FORMAT, "java -jar epfimporter.jar"));
 			}
 
 		}
@@ -565,13 +565,12 @@ public class Program {
 		}
 
 		Date endTime = new Date();
-		long ts = endTime.getTime() - startTime.getTime();
 		String dirName = dirPath.getName();
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info(String.format("Import of %s completed at: %d", dirName, endTime.getTime()
+			LOGGER.info(String.format("Import of %s completed at: %s", dirName, TimeHelper.timeText(endTime)
 			/* Ingester.DATETIME_FORMAT endTime) */));
-			LOGGER.info(String.format("Total import time for %s: %d", dirName, ts));
+			LOGGER.info(String.format("Total import time for %s: %s", dirName, TimeHelper.durationText(startTime, endTime)));
 		}
 
 		if (failedFiles != null && failedFiles.size() > 0) {
@@ -824,8 +823,6 @@ public class Program {
 
 		Date endTime = new Date();
 
-		long ts = endTime.getTime() - startTime.getTime();
-
 		StringBuffer buffer = new StringBuffer();
 
 		for (String key : failedFilesMap.keySet()) {
@@ -838,7 +835,7 @@ public class Program {
 		}
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info(String.format("Total import time for all directories: %d", ts));
+			LOGGER.info(String.format("Total import time for all directories: %s", TimeHelper.durationText(startTime, endTime)));
 		}
 
 	}

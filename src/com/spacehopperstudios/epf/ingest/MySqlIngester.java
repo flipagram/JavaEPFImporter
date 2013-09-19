@@ -15,6 +15,7 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
 import com.spacehopperstudios.database.Connection;
 import com.spacehopperstudios.epf.SubstringNotFoundException;
+import com.spacehopperstudios.epf.TimeHelper;
 import com.spacehopperstudios.epf.parse.V3Parser;
 
 /**
@@ -100,7 +101,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		this.updateStatusDict();
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info(String.format("Full ingest of %s took %d", this.tableName, this.endTime.getTime() - this.startTime.getTime()));
+			LOGGER.info(String.format("Full ingest of %s took %d", this.tableName, TimeHelper.durationText(startTime, endTime)));
 		}
 	}
 
@@ -129,10 +130,9 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		}
 
 		endTime = new Date();
-		long ts = this.endTime.getTime() - this.startTime.getTime();
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info(String.format("Resumed full ingest of %s took %d", this.tableName, ts));
+			LOGGER.info(String.format("Resumed full ingest of %s took %s", this.tableName, TimeHelper.durationText(startTime, endTime)));
 		}
 	}
 
@@ -191,10 +191,9 @@ class MySqlIngester extends IngesterBase implements Ingester {
 
 				// ingest completed
 				this.endTime = new Date();
-				long ts = this.endTime.getTime() - this.startTime.getTime();
 
 				if (LOGGER.isInfoEnabled()) {
-					LOGGER.info(String.format("Incremental ingest of %s took %d", this.tableName, ts));
+					LOGGER.info(String.format("Incremental ingest of %s took %s", this.tableName, TimeHelper.durationText(startTime, endTime)));
 				}
 			}
 		} catch (Exception e) {
@@ -233,13 +232,9 @@ class MySqlIngester extends IngesterBase implements Ingester {
 			conn = this.connect();
 		} else {
 			conn = connection;
-
-			if (!conn.isConnected()) {
-				conn.connect();
-			}
 		}
 
-		conn.executeQuery(String.format(exStr, this.dbName, tableName));
+		executeQuery(conn, String.format(exStr, this.dbName, tableName), 2);
 
 		boolean doesExist = false;
 
@@ -274,14 +269,10 @@ class MySqlIngester extends IngesterBase implements Ingester {
 			conn = this.connect();
 		} else {
 			conn = connection;
-
-			if (!conn.isConnected()) {
-				conn.connect();
-			}
 		}
 
 		String exStr = String.format("SELECT COUNT(*) AS count FROM information_schema.COLUMNS where TABLE_NAME='%s';", tableName);
-		conn.executeQuery(exStr); // cur.execute() returns the number of rows,
+		executeQuery(conn, exStr, 2); // cur.execute() returns the number of rows,
 		// which for SHOW COLUMNS is the number of columns in the table
 
 		int colCount = 0;
@@ -307,7 +298,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 
 		Connection conn = this.connect();
 
-		conn.executeQuery(String.format("DROP TABLE IF EXISTS %s", tableName));
+		executeQuery(conn, String.format("DROP TABLE IF EXISTS %s", tableName), 2);
 		// create the column name part of the table creation string
 		String colDef;
 		List<String> lst = new ArrayList<String>();
@@ -319,7 +310,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		String paramStr = Joiner.on(", ").join(lst);
 		// paramString now looks like "export_date BIGINT, storefront_id INT, country_code VARCHAR(100)" etc.
 		String exStr = String.format("CREATE TABLE %s (%s)", tableName, paramStr);
-		conn.executeQuery(exStr); // create the table in the database
+		executeQuery(conn, exStr, 2); // create the table in the database
 		// set the primary key
 		conn.disconnect();
 		applyPrimaryKeyConstraints(tableName);
@@ -334,11 +325,12 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		List<String> pkLst = this.parser.getPrimaryKey();
 
 		if (pkLst != null) {
-			Connection conn = this.connect();
 			String pkStr = Joiner.on(", ").join(pkLst);
 
 			String exStr = String.format("ALTER TABLE %s ADD CONSTRAINT PRIMARY KEY (%s)", tableName, pkStr);
-			conn.executeQuery(exStr);
+
+			Connection conn = this.connect();
+			executeQuery(conn, exStr, 2);
 			conn.disconnect();
 		}
 	}
@@ -382,7 +374,6 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		Connection conn = this.connect();
 
 		while (true) {
-			int retryCount = 2;
 			// By default, we concatenate 200 inserts into a single INSERT statement.
 			// a large batch size per insert improves performance, until you start hitting max_packet_size issues.
 			// If you increase MySQL server's max_packet_size, you may get increased performance by increasing maxNum
@@ -404,24 +395,12 @@ class MySqlIngester extends IngesterBase implements Ingester {
 			exStr = exStr.replace("'NULL'", "NULL");
 			exStr = exStr.replace("'null'", "NULL");
 
-			while (retryCount > 0) {
-				try {
-					if (!conn.isConnected()) {
-						if (retryCount != 2) {
-							conn = this.connect();
-						}
-
-						conn.connect();
-					}
-					conn.executeQuery(exStr);
-					retryCount = 0;
-				} catch (SQLException e) {
-					LOGGER.error(String.format("Error occured executing: %s", exStr), e);
-					// } catch (SQLIntegrityConstraintViolationException e) {
-					// This is likely a primary key constraint violation; should only be hit if skipKeyViolators is False
-
-					retryCount--;
-				}
+			try {
+				executeQuery(conn, exStr, 2);
+			} catch (SQLException e) {
+				LOGGER.error(String.format("Error occured executing: %s", exStr), e);
+				// } catch (SQLIntegrityConstraintViolationException e) {
+				// This is likely a primary key constraint violation; should only be hit if skipKeyViolators is False
 			}
 
 			this.lastRecordIngested = this.parser.getLatestRecordNum();
@@ -443,7 +422,7 @@ class MySqlIngester extends IngesterBase implements Ingester {
 	private void dropTable(String tableName) throws NullPointerException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		Connection conn = this.connect();
-		conn.executeQuery(String.format("DROP TABLE IF EXISTS %s", tableName));
+		executeQuery(conn, String.format("DROP TABLE IF EXISTS %s", tableName), 2);
 		conn.disconnect();
 	}
 
@@ -458,26 +437,22 @@ class MySqlIngester extends IngesterBase implements Ingester {
 
 		// first, rename the existing "real" table, so we can restore it if something goes wrong
 		String targetOld = targetTable + "_old";
-		conn.executeQuery(String.format("DROP TABLE IF EXISTS %s", targetOld));
+		executeQuery(conn, String.format("DROP TABLE IF EXISTS %s", targetOld), 2);
 		if (this.tableExists(targetTable, conn)) {
-			conn.executeQuery(String.format("ALTER TABLE %s RENAME %s", targetTable, targetOld));
+			executeQuery(conn, String.format("ALTER TABLE %s RENAME %s", targetTable, targetOld), 2);
 		}
 		// now rename the new table to replace the old table
 		try {
-			if (!conn.isConnected()) {
-				conn.connect();
-			}
-
-			conn.executeQuery(String.format("ALTER TABLE %s RENAME %s", sourceTable, targetTable));
+			executeQuery(conn, String.format("ALTER TABLE %s RENAME %s", sourceTable, targetTable), 2);
 		} catch (SQLException e) {
 			LOGGER.error("Could not rename tmp table; reverting to original table (if it exists).", e);
 			if (this.tableExists(targetOld, conn)) {
-				conn.executeQuery(String.format("ALTER TABLE %s RENAME %s", targetOld, targetTable));
+				executeQuery(conn, String.format("ALTER TABLE %s RENAME %s", targetOld, targetTable), 2);
 			}
 		}
 		// Drop sourceTable so it's not hanging around
 		// drop the old table
-		conn.executeQuery(String.format("DROP TABLE IF EXISTS %s", targetOld));
+		executeQuery(conn, String.format("DROP TABLE IF EXISTS %s", targetOld), 2);
 	}
 
 	/**
@@ -486,9 +461,9 @@ class MySqlIngester extends IngesterBase implements Ingester {
 	private void createUnionTable() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		Connection conn = this.connect();
-		conn.executeQuery(String.format("DROP TABLE IF EXISTS %s", this.unionTableName));
+		executeQuery(conn, String.format("DROP TABLE IF EXISTS %s", this.unionTableName), 2);
 		String exStr = String.format("CREATE TABLE %s %s", this.unionTableName, incrementalUnionString());
-		conn.executeQuery(exStr);
+		executeQuery(conn, exStr, 2);
 		conn.disconnect();
 	}
 
@@ -530,5 +505,41 @@ class MySqlIngester extends IngesterBase implements Ingester {
 		String unionString = String.format("IGNORE SELECT * FROM %s UNION ALL %s", this.incTableName, selectString);
 
 		return unionString;
+	}
+
+	private void executeQuery(final Connection connection, final String query, final int retryCount) throws SQLException, InstantiationException,
+			IllegalAccessException, ClassNotFoundException {
+
+		Connection conn = null;
+		int retriesLeft = retryCount;
+		boolean done = false;
+
+		if (connection == null) {
+			conn = this.connect();
+		} else {
+			conn = connection;
+		}
+
+		while (retriesLeft >= 0 && !done) {
+			try {
+				if (!conn.isConnected()) {
+					if (retriesLeft != retryCount) {
+						conn = this.connect();
+					}
+
+					conn.connect();
+				}
+				conn.executeQuery(query);
+				done = true;
+			} catch (SQLException e) {
+				retriesLeft--;
+
+				if (retriesLeft < 0) {
+					throw e;
+				} else {
+					LOGGER.error(String.format("Error occured executing: %s", query), e);
+				}
+			}
+		}
 	}
 }
