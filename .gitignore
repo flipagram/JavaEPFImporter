@@ -4,3 +4,9 @@
 /bin
 /.DS_Store
 /EPFSnapshot.json
+.classpath
+.project
+.iml
+/build
+/target
+
